@@ -132,7 +132,11 @@ public class Player : MonoBehaviour
     {
         if (other.tag.Contains("Gate") && _preDetectTag != other.tag)
         {
-            if (other.gameObject.CompareTag("GateA1in"))
+            if(other.gameObject.CompareTag("GateCheck"))
+            {
+                Debug.Log("判定");
+            }
+            else if (other.gameObject.CompareTag("GateA1in"))
             {
                 if (_preDetectTag.Equals("GateA1out"))
                 {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Type
+enum Type
 {
     A,
     B
@@ -13,39 +13,43 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject LitalicoPrefab;
     private readonly Vector3 _POSITION_A = new Vector3(27.6f, 0.0f, -16.35f);
-    private GameObject _litalicoObj;
+    private GameObject _litalicoObjA;
+    private GameObject _litalicoObjB;
     private Type _currentType;
     private Litalico _litalico;
     private int _listLen;
     private int _preIhenIndex = 0;
     private bool _isIhen = false;
+    private GameInputs _gameInputs;
 
     void Start()
     {
+        _gameInputs = new GameInputs();
+        _gameInputs.Test.Space.started += ctx => SwitchLitalico();
+        _gameInputs.Test.Enable();
+
         InstantLitalico(Type.A);
         _currentType = Type.A;
         _listLen = _litalico.getListLen();
     }
 
-    private void Update()
+    private void OnDestroy()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SwitchLitalico();
-        }
+        _gameInputs.Test.Space.started -= ctx => SwitchLitalico();
+        _gameInputs.Test.Disable();
     }
 
     public void SwitchLitalico()
     {
         if (_currentType == Type.A)
         {
-            Destroy(_litalicoObj);
+            Destroy(_litalicoObjA);
             InstantLitalico(Type.B);
             _currentType = Type.B;
         }
         else if (_currentType == Type.B)
         {
-            Destroy(_litalicoObj);
+            Destroy(_litalicoObjB);
             InstantLitalico(Type.A);
             _currentType = Type.A;
         }
@@ -67,16 +71,17 @@ public class GameManager : MonoBehaviour
         switch (type)
         {
             case Type.A:
-                _litalicoObj = Instantiate(LitalicoPrefab, _POSITION_A, new Quaternion(0, 180, 0, 0));
-                _litalicoObj.name = "LitalicoA";
+                _litalicoObjA = Instantiate(LitalicoPrefab, _POSITION_A, Quaternion.Euler(0, 180, 0));
+                _litalicoObjA.name = "LitalicoA";
+                _litalico = _litalicoObjA.GetComponent<Litalico>();
                 break;
             case Type.B:
-                _litalicoObj = Instantiate(LitalicoPrefab, _POSITION_A * -1, Quaternion.identity);
-                _litalicoObj.name = "LitalicoB";
+                _litalicoObjB = Instantiate(LitalicoPrefab, _POSITION_A * -1, Quaternion.identity);
+                _litalicoObjB.name = "LitalicoB";
+                _litalico = _litalicoObjB.GetComponent<Litalico>();
                 break;
         }
 
-        _litalico = _litalicoObj.GetComponent<Litalico>();
         if (_litalico == null)
         {
             Debug.LogError("Litalico component not found on the object.");
@@ -91,6 +96,12 @@ public class GameManager : MonoBehaviour
 
     private void RandomIhenDo()
     {
+        if(_listLen <= 1)
+        {
+            Debug.LogError("List length is less than or equal to 1, skipping IhenDo.");
+            return;
+        }
+
         int index = _preIhenIndex;
         while (index == _preIhenIndex)
         {

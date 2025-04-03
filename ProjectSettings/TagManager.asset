@@ -12,7 +12,7 @@ TagManager:
   - GateB1out
   - GateA2in
   - GateA2out
-  - Ihen
+  - GateCheck
   layers:
   - Default
   - TransparentFX

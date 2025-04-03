@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
         // Rayを飛ばして、障害物に当たったかどうかをチェック
         RaycastHit hit;
         float rayDistance = _moveSpeed + 0.1f; // 少し余裕を持たせるために0.1fを追加
-        bool isHit = Physics.Raycast(rayStart, rayDirection, out hit, 0.7f);
+        bool isHit = Physics.Raycast(rayStart, rayDirection, out hit, 1f);
         if (!isHit || hit.collider.tag.Contains("Gate"))
         {
             // Rayが何もヒットしない場合、プレイヤーを移動

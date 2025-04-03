@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 enum Side
 {
     A,
@@ -12,10 +12,12 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private GameObject LitalicoPrefab;
-    [SerializeField] private int correctNum = 0;
+
     private readonly Vector3 _POSITION_A = new Vector3(27.6f, 0.0f, -16.35f);
     private GameObject _litalicoObjA;
     private GameObject _litalicoObjB;
+    private TMP_Text _correctNumText;
+    private int correctNum = 0;
     private Side _currentSide;
     private IhenList _ihenList;
     private int _listLen;
@@ -37,7 +39,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Answer is null, skipping Ihen check.");
             return;
         }
-        else if(_isIhen == answerIhen)
+        else if (_isIhen == answerIhen)
         {
             correctNum++;
             Debug.Log("answer is correct.");
@@ -66,7 +68,7 @@ public class GameManager : MonoBehaviour
             _currentSide = Side.A;
         }
 
-        if(IhenOrNot())
+        if (IhenOrNot())
         {
             _isIhen = true;
             RandomIhenDo();
@@ -86,11 +88,14 @@ public class GameManager : MonoBehaviour
                 _litalicoObjA = Instantiate(LitalicoPrefab, _POSITION_A, Quaternion.Euler(0, 180, 0));
                 _litalicoObjA.name = "LitalicoA";
                 _ihenList = _litalicoObjA.GetComponent<IhenList>();
+                _correctNumText = _litalicoObjA.transform.Find("CorrectNum").GetComponent<TMP_Text>();
+
                 break;
             case Side.B:
                 _litalicoObjB = Instantiate(LitalicoPrefab, _POSITION_A * -1, Quaternion.identity);
                 _litalicoObjB.name = "LitalicoB";
                 _ihenList = _litalicoObjB.GetComponent<IhenList>();
+                _correctNumText = _litalicoObjB.transform.Find("CorrectNum").GetComponent<TMP_Text>();
                 break;
         }
 
@@ -99,6 +104,12 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Litalico component not found on the object.");
             return;
         }
+        else if (_correctNumText == null)
+        {
+            Debug.LogError("CorrectNum text component not found on the object.");
+            return;
+        }
+        _correctNumText.text = correctNum.ToString();
     }
 
     private bool IhenOrNot()
@@ -108,7 +119,7 @@ public class GameManager : MonoBehaviour
 
     private void RandomIhenDo()
     {
-        if(_listLen <= 1)
+        if (_listLen <= 1)
         {
             Debug.LogError("List length is less than or equal to 1, skipping IhenDo.");
             return;

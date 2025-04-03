@@ -11,6 +11,8 @@ enum Side
 public class GameManager : MonoBehaviour
 {
 
+    [SerializeField] private bool _isTest = false;
+    [SerializeField] private int _testIndex = 0;
     [SerializeField] private GameObject LitalicoPrefab;
 
     private readonly Vector3 _POSITION_A = new Vector3(27.6f, 0.0f, -16.35f);
@@ -42,12 +44,12 @@ public class GameManager : MonoBehaviour
         else if (_isIhen == answerIhen)
         {
             correctNum++;
-            Debug.Log("answer is correct.");
+            // Debug.Log("answer is correct.");
         }
         else
         {
             correctNum = 0;
-            Debug.Log("answer is incorrect.");
+            // Debug.Log("answer is incorrect.");
         }
         SwitchLitalico();
     }
@@ -68,7 +70,13 @@ public class GameManager : MonoBehaviour
             _currentSide = Side.A;
         }
 
-        if (IhenOrNot())
+        if(_isTest)
+        {
+            _isIhen = true;
+            _ihenList.DoIhen(_testIndex, true);
+            Debug.Log("[Test] Ihen index: " + _testIndex);
+        }
+        else if (IhenOrNot())
         {
             _isIhen = true;
             RandomIhenDo();

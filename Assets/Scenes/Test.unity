@@ -664,8 +664,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c0e44e33c2aa6c44a41531aac0a8b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isTest: 0
+  _testIndex: 0
   LitalicoPrefab: {fileID: 2571640606531183773, guid: 5218e2446d00cee4985340dc8e789495, type: 3}
-  correctNum: 0
 --- !u!1 &952732785 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3522293797121156136, guid: f322b981de245e34c980897ad4c62457, type: 3}

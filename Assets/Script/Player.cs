@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
                 transform.position += _direction * _moveSpeed * Time.deltaTime;
             }
         }
-        Debug.DrawRay(rayStart, rayDirection * rayDistance, Color.red); // Rayの可視化
+        // Debug.DrawRay(rayStart, rayDirection * rayDistance, Color.red); // Rayの可視化
     }
 
     private void Look()
@@ -138,7 +138,7 @@ public class Player : MonoBehaviour
             {
                 if (_preDetectTag.Equals("GateCheckB"))
                 {
-                    Debug.Log("判定B");
+                    // Debug.Log("判定B");
                     _path.CheckB();
                     _gameManager.CheckIhen(_answer);
                     _answer = null;
@@ -149,7 +149,7 @@ public class Player : MonoBehaviour
             {
                 if (_preDetectTag.Equals("GateCheckA"))
                 {
-                    Debug.Log("判定A");
+                    // Debug.Log("判定A");
                     _path.CheckA();
                     _gameManager.CheckIhen(_answer);
                     _answer = null;
@@ -159,7 +159,7 @@ public class Player : MonoBehaviour
             {
                 if (_preDetectTag.Equals("GateA1out"))
                 {
-                    Debug.Log("GateA1から入った");
+                    // Debug.Log("GateA1から入った");
                     _path.InA1();
                     _answer = true;
                 }
@@ -168,7 +168,7 @@ public class Player : MonoBehaviour
             {
                 if (_preDetectTag.Equals("GateA1in"))
                 {
-                    Debug.Log("GateA1から出た");
+                    // Debug.Log("GateA1から出た");
                     _path.Out();
                 }
             }
@@ -176,7 +176,7 @@ public class Player : MonoBehaviour
             {
                 if (_preDetectTag.Equals("GateA2out"))
                 {
-                    Debug.Log("GateA2から入った");
+                    // Debug.Log("GateA2から入った");
                     _path.InA2();
                     _answer = false;
                 }
@@ -185,7 +185,7 @@ public class Player : MonoBehaviour
             {
                 if (_preDetectTag.Equals("GateA2in"))
                 {
-                    Debug.Log("GateA2から出た");
+                    // Debug.Log("GateA2から出た");
                     _path.Out();
                 }
             }
@@ -193,7 +193,7 @@ public class Player : MonoBehaviour
             {
                 if (_preDetectTag.Equals("GateB1out"))
                 {
-                    Debug.Log("GateB1から入った");
+                    // Debug.Log("GateB1から入った");
                     _path.InB1();
                     _answer = true;
                 }
@@ -202,7 +202,7 @@ public class Player : MonoBehaviour
             {
                 if (_preDetectTag.Equals("GateB1in"))
                 {
-                    Debug.Log("GateB1から出た");
+                    // Debug.Log("GateB1から出た");
                     _path.Out();
                 }
             }
@@ -210,7 +210,7 @@ public class Player : MonoBehaviour
             {
                 if (_preDetectTag.Equals("GateB2out"))
                 {
-                    Debug.Log("GateB2から入った");
+                    // Debug.Log("GateB2から入った");
                     _path.InB2();
                     _answer = false;
                 }
@@ -219,7 +219,7 @@ public class Player : MonoBehaviour
             {
                 if (_preDetectTag.Equals("GateB2in"))
                 {
-                    Debug.Log("GateB2から出た");
+                    // Debug.Log("GateB2から出た");
                     _path.Out();
                 }
             }

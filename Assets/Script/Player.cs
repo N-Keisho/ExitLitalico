@@ -8,19 +8,19 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _verRot;
     [SerializeField] private Path _path;
     private GameInputs _gameInputs;
-    private float _rotationX = 0f;
-    private float _rotationY = 0f;
-    private bool _isDash = false;  
-    private string _preDetectTag = "";
     private float _moveSpeed;
     private float _dashSpeed;
     private float _sensX;
     private float _sensY;
     private float _minY;
     private float _maxY;
+    private float _rotationX = 0f;
+    private float _rotationY = 0f;
     private Vector2 _moveInputValue;
     private Vector2 _rotateInputValue;
     private Vector3 _direction;
+    private bool _isDash = false;
+    private string _preDetectTag = "";
 
     void Start()
     {
@@ -46,6 +46,10 @@ public class Player : MonoBehaviour
         _sensY = GV.sensY;
         _minY = GV.minY;
         _maxY = GV.maxY;
+
+        // 初期の向きを設定
+        _rotationX = transform.localRotation.eulerAngles.y;
+        _rotationY = _verRot.transform.localRotation.eulerAngles.x;
     }
 
     void Update()
@@ -128,65 +132,65 @@ public class Player : MonoBehaviour
     {
         if (other.tag.Contains("Gate") && _preDetectTag != other.tag)
         {
-            if(other.gameObject.CompareTag("GateA1in"))
+            if (other.gameObject.CompareTag("GateA1in"))
             {
-                if(_preDetectTag.Equals("GateA1out"))
+                if (_preDetectTag.Equals("GateA1out"))
                 {
                     Debug.Log("GateA1から入った");
                     _path.InA1();
                 }
             }
-            else if(other.gameObject.CompareTag("GateA1out"))
+            else if (other.gameObject.CompareTag("GateA1out"))
             {
-                if(_preDetectTag.Equals("GateA1in"))
+                if (_preDetectTag.Equals("GateA1in"))
                 {
                     Debug.Log("GateA1から出た");
                     _path.Out();
                 }
             }
-            else if(other.gameObject.CompareTag("GateA2in"))
+            else if (other.gameObject.CompareTag("GateA2in"))
             {
-                if(_preDetectTag.Equals("GateA2out"))
+                if (_preDetectTag.Equals("GateA2out"))
                 {
                     Debug.Log("GateA2から入った");
                     _path.InA2();
                 }
             }
-            else if(other.gameObject.CompareTag("GateA2out"))
+            else if (other.gameObject.CompareTag("GateA2out"))
             {
-                if(_preDetectTag.Equals("GateA2in"))
+                if (_preDetectTag.Equals("GateA2in"))
                 {
                     Debug.Log("GateA2から出た");
                     _path.Out();
                 }
             }
-            else if(other.gameObject.CompareTag("GateB1in"))
+            else if (other.gameObject.CompareTag("GateB1in"))
             {
-                if(_preDetectTag.Equals("GateB1out"))
+                if (_preDetectTag.Equals("GateB1out"))
                 {
                     Debug.Log("GateB1から入った");
                     _path.InB1();
                 }
             }
-            else if(other.gameObject.CompareTag("GateB1out"))
+            else if (other.gameObject.CompareTag("GateB1out"))
             {
-                if(_preDetectTag.Equals("GateB1in"))
+                if (_preDetectTag.Equals("GateB1in"))
                 {
                     Debug.Log("GateB1から出た");
                     _path.Out();
                 }
             }
-            else if(other.gameObject.CompareTag("GateB2in"))
+            else if (other.gameObject.CompareTag("GateB2in"))
             {
-                if(_preDetectTag.Equals("GateB2out"))
+                if (_preDetectTag.Equals("GateB2out"))
                 {
                     Debug.Log("GateB2から入った");
                     _path.InB2();
                 }
             }
-            else if(other.gameObject.CompareTag("GateB2out"))
+            else if (other.gameObject.CompareTag("GateB2out"))
             {
-                if(_preDetectTag.Equals("GateB2in"))
+                if (_preDetectTag.Equals("GateB2in"))
                 {
                     Debug.Log("GateB2から出た");
                     _path.Out();

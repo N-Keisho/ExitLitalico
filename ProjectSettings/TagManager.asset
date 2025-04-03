@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - GateB1in
+  - GateA1in
+  - GateA1out
+  - GateB2out
+  - GateB2in
+  - GateB1out
+  - GateA2in
+  - GateA2out
+  - Ihen
   layers:
   - Default
   - TransparentFX

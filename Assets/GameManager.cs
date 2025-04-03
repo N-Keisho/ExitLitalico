@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum Type
+enum Side
 {
     A,
     B
@@ -12,11 +12,12 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private GameObject LitalicoPrefab;
+    [SerializeField] private int correctNum = 0;
     private readonly Vector3 _POSITION_A = new Vector3(27.6f, 0.0f, -16.35f);
     private GameObject _litalicoObjA;
     private GameObject _litalicoObjB;
-    private Type _currentType;
-    private Litalico _litalico;
+    private Side _currentSide;
+    private IhenList _ihenList;
     private int _listLen;
     private int _preIhenIndex = 0;
     private bool _isIhen = false;
@@ -24,34 +25,45 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        _gameInputs = new GameInputs();
-        _gameInputs.Test.Space.started += ctx => SwitchLitalico();
-        _gameInputs.Test.Enable();
-
-        InstantLitalico(Type.A);
-        _currentType = Type.A;
-        _listLen = _litalico.getListLen();
+        InstantLitalico(Side.A);
+        _currentSide = Side.A;
+        _listLen = _ihenList.getListLen();
     }
 
-    private void OnDestroy()
+    public void CheckIhen(bool? answerIhen) // ?をつけるとnull許容型になる
     {
-        _gameInputs.Test.Space.started -= ctx => SwitchLitalico();
-        _gameInputs.Test.Disable();
+        if (answerIhen == null)
+        {
+            Debug.LogError("Answer is null, skipping Ihen check.");
+            return;
+        }
+        else if(_isIhen == answerIhen)
+        {
+            correctNum++;
+            Debug.Log("answer is correct.");
+        }
+        else
+        {
+            correctNum = 0;
+            Debug.Log("answer is incorrect.");
+        }
+        SwitchLitalico();
     }
 
-    public void SwitchLitalico()
+
+    private void SwitchLitalico()
     {
-        if (_currentType == Type.A)
+        if (_currentSide == Side.A)
         {
             Destroy(_litalicoObjA);
-            InstantLitalico(Type.B);
-            _currentType = Type.B;
+            InstantLitalico(Side.B);
+            _currentSide = Side.B;
         }
-        else if (_currentType == Type.B)
+        else if (_currentSide == Side.B)
         {
             Destroy(_litalicoObjB);
-            InstantLitalico(Type.A);
-            _currentType = Type.A;
+            InstantLitalico(Side.A);
+            _currentSide = Side.A;
         }
 
         if(IhenOrNot())
@@ -66,23 +78,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void InstantLitalico(Type type)
+    private void InstantLitalico(Side type)
     {
         switch (type)
         {
-            case Type.A:
+            case Side.A:
                 _litalicoObjA = Instantiate(LitalicoPrefab, _POSITION_A, Quaternion.Euler(0, 180, 0));
                 _litalicoObjA.name = "LitalicoA";
-                _litalico = _litalicoObjA.GetComponent<Litalico>();
+                _ihenList = _litalicoObjA.GetComponent<IhenList>();
                 break;
-            case Type.B:
+            case Side.B:
                 _litalicoObjB = Instantiate(LitalicoPrefab, _POSITION_A * -1, Quaternion.identity);
                 _litalicoObjB.name = "LitalicoB";
-                _litalico = _litalicoObjB.GetComponent<Litalico>();
+                _ihenList = _litalicoObjB.GetComponent<IhenList>();
                 break;
         }
 
-        if (_litalico == null)
+        if (_ihenList == null)
         {
             Debug.LogError("Litalico component not found on the object.");
             return;
@@ -108,7 +120,7 @@ public class GameManager : MonoBehaviour
             index = Random.Range(0, _listLen);
         }
         Debug.Log("Ihen index: " + index);
-        _litalico.DoIhen(index, true);
+        _ihenList.DoIhen(index, true);
         _preIhenIndex = index;
     }
 }

@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private GameObject _verRot;
     [SerializeField] private Path _path;
+    [SerializeField] private GameManager _gameManager;
     private GameInputs _gameInputs;
     private float _moveSpeed;
     private float _dashSpeed;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     private Vector3 _direction;
     private bool _isDash = false;
     private string _preDetectTag = "";
+    private bool? _answer = null;       // true: 異変アリ(1)， false: 異変ナシ(2), null: 未回答
 
     void Start()
     {
@@ -132,9 +134,26 @@ public class Player : MonoBehaviour
     {
         if (other.tag.Contains("Gate") && _preDetectTag != other.tag)
         {
-            if(other.gameObject.CompareTag("GateCheck"))
+            if (other.gameObject.CompareTag("GateCheckA") && _answer != null)
             {
-                Debug.Log("判定");
+                if (_preDetectTag.Equals("GateCheckB"))
+                {
+                    Debug.Log("判定B");
+                    _path.CheckB();
+                    _gameManager.CheckIhen(_answer);
+                    _answer = null;
+
+                }
+            }
+            else if (other.gameObject.CompareTag("GateCheckB") && _answer != null)
+            {
+                if (_preDetectTag.Equals("GateCheckA"))
+                {
+                    Debug.Log("判定A");
+                    _path.CheckA();
+                    _gameManager.CheckIhen(_answer);
+                    _answer = null;
+                }
             }
             else if (other.gameObject.CompareTag("GateA1in"))
             {
@@ -142,6 +161,7 @@ public class Player : MonoBehaviour
                 {
                     Debug.Log("GateA1から入った");
                     _path.InA1();
+                    _answer = true;
                 }
             }
             else if (other.gameObject.CompareTag("GateA1out"))
@@ -158,6 +178,7 @@ public class Player : MonoBehaviour
                 {
                     Debug.Log("GateA2から入った");
                     _path.InA2();
+                    _answer = false;
                 }
             }
             else if (other.gameObject.CompareTag("GateA2out"))
@@ -174,6 +195,7 @@ public class Player : MonoBehaviour
                 {
                     Debug.Log("GateB1から入った");
                     _path.InB1();
+                    _answer = true;
                 }
             }
             else if (other.gameObject.CompareTag("GateB1out"))
@@ -190,6 +212,7 @@ public class Player : MonoBehaviour
                 {
                     Debug.Log("GateB2から入った");
                     _path.InB2();
+                    _answer = false;
                 }
             }
             else if (other.gameObject.CompareTag("GateB2out"))

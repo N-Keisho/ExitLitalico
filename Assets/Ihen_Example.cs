@@ -5,7 +5,7 @@ using UnityEngine;
 //<summary>
 // 何かしらの異変を起こすクラスの例
 // </summary>
-public class IhenExample : IhenBase
+public class Ihen_Example : IhenBase
 {
     void Update()
     {

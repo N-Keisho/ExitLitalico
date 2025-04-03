@@ -47,6 +47,21 @@ public class Path : MonoBehaviour
         _stopperB2.SetActive(false);
     }
 
+    public void CheckA()
+    {
+        _stopperA1.SetActive(true);
+        _stopperA2.SetActive(true);
+        _stopperB1.SetActive(false);
+        _stopperB2.SetActive(true);
+    }
+    public void CheckB()
+    {
+        _stopperA1.SetActive(false);
+        _stopperA2.SetActive(true);
+        _stopperB1.SetActive(true);
+        _stopperB2.SetActive(true);
+    }
+
     public void Out(){
         _stopperA1.SetActive(false);
         _stopperA2.SetActive(false);

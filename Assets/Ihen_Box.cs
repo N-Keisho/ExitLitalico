@@ -5,7 +5,7 @@ using UnityEngine;
 //<summary>
 // 色がかわるやーつ
 // </summary>
-public class IhenBox : IhenBase
+public class Ihen_Box : IhenBase
 {
     [SerializeField] private Color color;
     protected override void DoIhen()

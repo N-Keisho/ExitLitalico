@@ -12,7 +12,8 @@ TagManager:
   - GateB1out
   - GateA2in
   - GateA2out
-  - GateCheck
+  - GateCheckA
+  - GateCheckB
   layers:
   - Default
   - TransparentFX

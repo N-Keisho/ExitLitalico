@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Litalico : MonoBehaviour
+public class IhenList : MonoBehaviour
 {
     [SerializeField] private List<IhenBase> _ihenList = new List<IhenBase>();
     public int getListLen()

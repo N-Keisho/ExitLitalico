@@ -467,6 +467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _verRot: {fileID: 963194225}
   _path: {fileID: 930434021}
+  _gameManager: {fileID: 930434024}
 --- !u!136 &809652862
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -664,6 +665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LitalicoPrefab: {fileID: 2571640606531183773, guid: 5218e2446d00cee4985340dc8e789495, type: 3}
+  correctNum: 0
 --- !u!1 &952732785 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3522293797121156136, guid: f322b981de245e34c980897ad4c62457, type: 3}

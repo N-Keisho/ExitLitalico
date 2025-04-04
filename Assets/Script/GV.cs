@@ -50,7 +50,7 @@ public class GV : MonoBehaviour
     {
         get
         {
-            return PlayerPrefs.GetFloat("sensX", 15f);
+            return PlayerPrefs.GetFloat("sensX", 150f);
         }
         set
         {
@@ -61,7 +61,7 @@ public class GV : MonoBehaviour
     {
         get
         {
-            return PlayerPrefs.GetFloat("sensY", 15f);
+            return PlayerPrefs.GetFloat("sensY", 100f);
         }
         set
         {

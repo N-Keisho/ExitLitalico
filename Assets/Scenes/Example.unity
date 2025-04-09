@@ -908,7 +908,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isTest: 0
   _testIndex: 0
-  LitalicoPrefab: {fileID: 2571640606531183773, guid: 1ef9ec6fb99f9614581b69db205a47bd, type: 3}
+  LitalicoPrefab: {fileID: 456981256593743237, guid: 1e2fae9b9bbe81a4b96aaf8a30e7a905, type: 3}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

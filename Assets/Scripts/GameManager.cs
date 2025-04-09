@@ -25,17 +25,12 @@ public class GameManager : MonoBehaviour
     private int _listLen;
     private int _preIhenIndex = 0;
     private bool _isIhen = false;
-    private GameInputs _gameInputs;
 
     void Start()
     {
         InstantLitalico(Side.A);
         _currentSide = Side.A;
         _listLen = _ihenList.getListLen();
-
-        // カーソルを非表示にし、ロックする
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void CheckIhen(bool? answerIhen) // ?をつけるとnull許容型になる

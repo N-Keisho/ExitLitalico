@@ -235,11 +235,11 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""Test"",
+            ""name"": ""System"",
             ""id"": ""e1bb3d72-03e2-4c92-b8a1-9e93275b4c06"",
             ""actions"": [
                 {
-                    ""name"": ""Space"",
+                    ""name"": ""Config"",
                     ""type"": ""Button"",
                     ""id"": ""5276c901-866e-4c6c-9b36-29a0296e291e"",
                     ""expectedControlType"": ""Button"",
@@ -252,11 +252,44 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c374a426-6d5f-4e35-a7f3-34cbc6f0d6ad"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/tab"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Space"",
+                    ""action"": ""Config"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""85ee0a0c-0e8f-4834-9230-c42c531a9451"",
+                    ""path"": ""<SwitchProControllerHID>/home"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Config"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b8933d16-be93-463f-8371-53cd256b0164"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Config"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9d6389a7-7e81-45fd-b281-7948a87f4b54"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Config"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -270,9 +303,9 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
-        // Test
-        m_Test = asset.FindActionMap("Test", throwIfNotFound: true);
-        m_Test_Space = m_Test.FindAction("Space", throwIfNotFound: true);
+        // System
+        m_System = asset.FindActionMap("System", throwIfNotFound: true);
+        m_System_Config = m_System.FindAction("Config", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -393,59 +426,59 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
     }
     public PlayerActions @Player => new PlayerActions(this);
 
-    // Test
-    private readonly InputActionMap m_Test;
-    private List<ITestActions> m_TestActionsCallbackInterfaces = new List<ITestActions>();
-    private readonly InputAction m_Test_Space;
-    public struct TestActions
+    // System
+    private readonly InputActionMap m_System;
+    private List<ISystemActions> m_SystemActionsCallbackInterfaces = new List<ISystemActions>();
+    private readonly InputAction m_System_Config;
+    public struct SystemActions
     {
         private @GameInputs m_Wrapper;
-        public TestActions(@GameInputs wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Space => m_Wrapper.m_Test_Space;
-        public InputActionMap Get() { return m_Wrapper.m_Test; }
+        public SystemActions(@GameInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Config => m_Wrapper.m_System_Config;
+        public InputActionMap Get() { return m_Wrapper.m_System; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(TestActions set) { return set.Get(); }
-        public void AddCallbacks(ITestActions instance)
+        public static implicit operator InputActionMap(SystemActions set) { return set.Get(); }
+        public void AddCallbacks(ISystemActions instance)
         {
-            if (instance == null || m_Wrapper.m_TestActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_TestActionsCallbackInterfaces.Add(instance);
-            @Space.started += instance.OnSpace;
-            @Space.performed += instance.OnSpace;
-            @Space.canceled += instance.OnSpace;
+            if (instance == null || m_Wrapper.m_SystemActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_SystemActionsCallbackInterfaces.Add(instance);
+            @Config.started += instance.OnConfig;
+            @Config.performed += instance.OnConfig;
+            @Config.canceled += instance.OnConfig;
         }
 
-        private void UnregisterCallbacks(ITestActions instance)
+        private void UnregisterCallbacks(ISystemActions instance)
         {
-            @Space.started -= instance.OnSpace;
-            @Space.performed -= instance.OnSpace;
-            @Space.canceled -= instance.OnSpace;
+            @Config.started -= instance.OnConfig;
+            @Config.performed -= instance.OnConfig;
+            @Config.canceled -= instance.OnConfig;
         }
 
-        public void RemoveCallbacks(ITestActions instance)
+        public void RemoveCallbacks(ISystemActions instance)
         {
-            if (m_Wrapper.m_TestActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_SystemActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(ITestActions instance)
+        public void SetCallbacks(ISystemActions instance)
         {
-            foreach (var item in m_Wrapper.m_TestActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_SystemActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_TestActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_SystemActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public TestActions @Test => new TestActions(this);
+    public SystemActions @System => new SystemActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
     }
-    public interface ITestActions
+    public interface ISystemActions
     {
-        void OnSpace(InputAction.CallbackContext context);
+        void OnConfig(InputAction.CallbackContext context);
     }
 }

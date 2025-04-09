@@ -213,11 +213,11 @@
             ]
         },
         {
-            "name": "Test",
+            "name": "System",
             "id": "e1bb3d72-03e2-4c92-b8a1-9e93275b4c06",
             "actions": [
                 {
-                    "name": "Space",
+                    "name": "Config",
                     "type": "Button",
                     "id": "5276c901-866e-4c6c-9b36-29a0296e291e",
                     "expectedControlType": "Button",
@@ -230,11 +230,44 @@
                 {
                     "name": "",
                     "id": "c374a426-6d5f-4e35-a7f3-34cbc6f0d6ad",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Space",
+                    "action": "Config",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "85ee0a0c-0e8f-4834-9230-c42c531a9451",
+                    "path": "<SwitchProControllerHID>/home",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Config",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b8933d16-be93-463f-8371-53cd256b0164",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Config",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9d6389a7-7e81-45fd-b281-7948a87f4b54",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Config",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

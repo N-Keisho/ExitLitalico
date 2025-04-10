@@ -24,7 +24,10 @@ public class Player : MonoBehaviour
     private float _sensY_buf;
     private string _preDetectTag = "";
     private bool _isDash = false;
+    private bool _isMove = false;
     private bool? _answer = null;       // true: 異変アリ(1)， false: 異変ナシ(2), null: 未回答
+    public bool IsMove { get { return _isMove; }}   // 読み取り専用プロパティ
+    public bool IsDash { get { return _isDash; }}   // 読み取り専用プロパティ
 
     void Start()
     {
@@ -56,6 +59,7 @@ public class Player : MonoBehaviour
     {
         Move();
         Look();
+        _isMove = (_moveInputValue != Vector2.zero); // プレイヤーが移動しているかどうかを判定
     }
 
     private void OnDestroy()

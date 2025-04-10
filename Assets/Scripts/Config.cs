@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class Config : MonoBehaviour
 {
+    [SerializeField] private Player _player;
+    [SerializeField] private Param _sensX;
+    [SerializeField] private Param _sensY;
     private GameObject _configPanel;
     private GameInputs _gameInputs;
     private bool _isOpen = false;
@@ -44,5 +47,18 @@ public class Config : MonoBehaviour
             _configPanel.SetActive(false);
             Time.timeScale = 1f;
         }
+    }
+
+    public void OnSensXChange()
+    {
+        float value = _sensX.value;
+        GV.sensX_buf = value;
+        _player.SetSensX(value);
+    }
+    public void OnSensYChange()
+    {
+        float value = _sensY.value;
+        GV.sensY_buf = value;
+        _player.SetSensY(value);
     }
 }

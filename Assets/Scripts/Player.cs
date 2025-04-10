@@ -8,20 +8,22 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject _verRot;
     [SerializeField] private Path _path;
     [SerializeField] private GameManager _gameManager;
+    private readonly float _MOVE_SPEED = 5f;
+    private readonly float _DASH_SPEED = 10f;
+    private readonly float _MIN_Y = -60f;
+    private readonly float _MAX_Y = 60f;
+    private readonly float _SENS_X = 150f;
+    private readonly float _SENS_Y = 150f;
     private GameInputs _gameInputs;
-    private float _moveSpeed;
-    private float _dashSpeed;
-    private float _sensX;
-    private float _sensY;
-    private float _minY;
-    private float _maxY;
-    private float _rotationX = 0f;
-    private float _rotationY = 0f;
     private Vector2 _moveInputValue;
     private Vector2 _rotateInputValue;
     private Vector3 _direction;
-    private bool _isDash = false;
+    private float _rotationX = 0f;
+    private float _rotationY = 0f;
+    private float _sensX_buf;
+    private float _sensY_buf;
     private string _preDetectTag = "";
+    private bool _isDash = false;
     private bool? _answer = null;       // true: 異変アリ(1)， false: 異変ナシ(2), null: 未回答
 
     void Start()
@@ -42,12 +44,8 @@ public class Player : MonoBehaviour
         _gameInputs.Enable();
 
         // GVから値を取得
-        _moveSpeed = GV.moveSpeed;
-        _dashSpeed = GV.dashSpeed;
-        _sensX = GV.sensX;
-        _sensY = GV.sensY;
-        _minY = GV.minY;
-        _maxY = GV.maxY;
+        _sensX_buf = GV.sensX_buf;
+        _sensY_buf = GV.sensY_buf;
 
         // 初期の向きを設定
         _rotationX = transform.localRotation.eulerAngles.y;
@@ -74,18 +72,18 @@ public class Player : MonoBehaviour
 
         // Rayを飛ばして、障害物に当たったかどうかをチェック
         RaycastHit hit;
-        float rayDistance = _moveSpeed + 0.1f; // 少し余裕を持たせるために0.1fを追加
+        float rayDistance = _MOVE_SPEED + 0.1f; // 少し余裕を持たせるために0.1fを追加
         bool isHit = Physics.Raycast(rayStart, rayDirection, out hit, 1f);
         if (!isHit || hit.collider.tag.Contains("Gate"))
         {
             // Rayが何もヒットしない場合、プレイヤーを移動
             if (_isDash)
             {
-                transform.position += _direction * _dashSpeed * Time.deltaTime;
+                transform.position += _direction * _DASH_SPEED * Time.deltaTime;
             }
             else
             {
-                transform.position += _direction * _moveSpeed * Time.deltaTime;
+                transform.position += _direction * _MOVE_SPEED * Time.deltaTime;
             }
         }
         // Debug.DrawRay(rayStart, rayDirection * rayDistance, Color.red); // Rayの可視化
@@ -94,9 +92,9 @@ public class Player : MonoBehaviour
     private void Look()
     {
         // Y軸の回転を計算
-        _rotationX += _rotateInputValue.x * _sensX * Time.deltaTime;
-        _rotationY -= _rotateInputValue.y * _sensY * Time.deltaTime;
-        _rotationY = Mathf.Clamp(_rotationY, _minY, _maxY);
+        _rotationX += _rotateInputValue.x * _SENS_X * _sensX_buf * Time.deltaTime;
+        _rotationY -= _rotateInputValue.y * _SENS_Y * _sensY_buf * Time.deltaTime;
+        _rotationY = Mathf.Clamp(_rotationY, _MIN_Y, _MAX_Y);
 
         // プレイヤーの回転を適用
         transform.localRotation = Quaternion.Euler(0, _rotationX, 0);
@@ -130,6 +128,17 @@ public class Player : MonoBehaviour
         }
     }
 
+    // --- 感度の変更 ---
+    public void SetSensX(float value)
+    {
+        _sensX_buf = value;
+    }
+    public void SetSensY(float value)
+    {
+        _sensY_buf = value;
+    }
+
+    // --- ゲートの判定 ---
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag.Contains("Gate") && _preDetectTag != other.tag)

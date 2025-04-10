@@ -1670,17 +1670,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 809652861}
-  footstepAsfaults:
+  _footstepAsfaults:
   - {fileID: 8300000, guid: c51fced64016e114baddc7aa9d457e3c, type: 3}
   - {fileID: 8300000, guid: 3f40d0537fa5f6347a7dc13dd4016061, type: 3}
   - {fileID: 8300000, guid: c9371fd9335e55749b2c4d648aa7fd2e, type: 3}
   - {fileID: 8300000, guid: 09baccc2791bfec4da82d38308476ee5, type: 3}
-  footstepCurpets:
+  _footstepCurpets:
   - {fileID: 8300000, guid: 27798df6688727f4cac62c568600a8c7, type: 3}
   - {fileID: 8300000, guid: ccea6955bbb6c594386327fedbabfce7, type: 3}
   - {fileID: 8300000, guid: e939053f975b04e4b92e1772b5cf8bc7, type: 3}
   - {fileID: 8300000, guid: e72abbfc4ff04e14090a025fb47398bb, type: 3}
-  footstepInterval: 1
+  _footstepInterval: 0.5
 --- !u!82 &963194232
 AudioSource:
   m_ObjectHideFlags: 0

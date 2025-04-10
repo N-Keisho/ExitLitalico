@@ -11,9 +11,14 @@ enum Side
 public class GameManager : MonoBehaviour
 {
 
+
+    [SerializeField] private GameObject _LitalicoPrefab;
+    [SerializeField] private GameObject _CellingA;
+    [SerializeField] private GameObject _CellingB;
+
+    [Header("Test")]
     [SerializeField] private bool _isTest = false;
     [SerializeField] private int _testIndex = 0;
-    [SerializeField] private GameObject LitalicoPrefab;
 
     private readonly Vector3 _POSITION_A = new Vector3(27.6f, 0.0f, -16.35f);
     private GameObject _litalicoObjA;
@@ -30,6 +35,8 @@ public class GameManager : MonoBehaviour
     {
         InstantLitalico(Side.A);
         _currentSide = Side.A;
+        _CellingA.SetActive(true);
+        _CellingB.SetActive(false);
         _listLen = _ihenList.getListLen();
     }
 
@@ -69,7 +76,7 @@ public class GameManager : MonoBehaviour
             _currentSide = Side.A;
         }
 
-        if(_isTest)
+        if (_isTest)
         {
             _isIhen = true;
             _ihenList.DoIhen(_testIndex, true);
@@ -92,17 +99,21 @@ public class GameManager : MonoBehaviour
         switch (type)
         {
             case Side.A:
-                _litalicoObjA = Instantiate(LitalicoPrefab, _POSITION_A, Quaternion.Euler(0, 180, 0));
+                _litalicoObjA = Instantiate(_LitalicoPrefab, _POSITION_A, Quaternion.Euler(0, 180, 0));
                 _litalicoObjA.name = "LitalicoA";
                 _ihenList = _litalicoObjA.GetComponent<IhenList>();
                 _correctNumText = _litalicoObjA.transform.Find("CorrectNum").GetComponent<TMP_Text>();
+                _CellingA.SetActive(true);
+                _CellingB.SetActive(false);
 
                 break;
             case Side.B:
-                _litalicoObjB = Instantiate(LitalicoPrefab, _POSITION_A * -1, Quaternion.identity);
+                _litalicoObjB = Instantiate(_LitalicoPrefab, _POSITION_A * -1, Quaternion.identity);
                 _litalicoObjB.name = "LitalicoB";
                 _ihenList = _litalicoObjB.GetComponent<IhenList>();
                 _correctNumText = _litalicoObjB.transform.Find("CorrectNum").GetComponent<TMP_Text>();
+                _CellingA.SetActive(false);
+                _CellingB.SetActive(true);
                 break;
         }
 

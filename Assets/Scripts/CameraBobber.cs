@@ -6,23 +6,23 @@ public class CameraBobber : MonoBehaviour
 {
 
     [SerializeField] private Player _player;
-    private HeadBobber bob;
-    private Vector3 originalLocalPosition;
+    private HeadBobber _bob;
+    private Vector3 _originalLocalPosition;
 
     [Header("Footstep Settings")]
-    private AudioSource audioSource;
-    [SerializeField] private AudioClip[] footstepAsfaults;
-    [SerializeField] private AudioClip[] footstepCurpets;
-    [SerializeField] private float footstepInterval = 0.5f;
+    private AudioSource _audioSource;
+    [SerializeField] private AudioClip[] _footstepAsfaults;
+    [SerializeField] private AudioClip[] _footstepCurpets;
+    [SerializeField] private float _footstepInterval = 0.5f;
 
     private float footstepTimer;
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        bob = GetComponent<HeadBobber>();
-        originalLocalPosition = transform.localPosition;
-        bob.Initialize();
+        _audioSource = GetComponent<AudioSource>();
+        _bob = GetComponent<HeadBobber>();
+        _originalLocalPosition = transform.localPosition;
+        _bob.Initialize();
     }
 
     void Update()
@@ -40,14 +40,14 @@ public class CameraBobber : MonoBehaviour
 
         if (speed > 0f)
         {
-            Vector3 offset = bob.GetVectorOffset(speed);
-            transform.localPosition = originalLocalPosition + offset;
+            Vector3 offset = _bob.GetVectorOffset(speed);
+            transform.localPosition = _originalLocalPosition + offset;
 
             HandleFootstep(speed);
         }
         else
         {
-            transform.localPosition = Vector3.Lerp(transform.localPosition, originalLocalPosition, Time.deltaTime * 5f);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, _originalLocalPosition, Time.deltaTime * 5f);
             footstepTimer = 0.5f; // 停止時はタイマーリセット
         }
     }
@@ -56,7 +56,7 @@ public class CameraBobber : MonoBehaviour
     {
         footstepTimer += Time.deltaTime;
 
-        float interval = footstepInterval / speed; // スピードが速いほど間隔は短く
+        float interval = _footstepInterval / speed; // スピードが速いほど間隔は短く
 
         if (footstepTimer >= interval)
         {
@@ -67,10 +67,10 @@ public class CameraBobber : MonoBehaviour
 
     void PlayFootstepSound()
     {
-        if (footstepCurpets.Length > 0 && footstepAsfaults.Length > 0 &&audioSource != null)
+        if (_footstepCurpets.Length > 0 && _footstepAsfaults.Length > 0 &&_audioSource != null)
         {
-            AudioClip clip = _player.IsCurpet ? footstepCurpets[Random.Range(0, footstepCurpets.Length)] : footstepAsfaults[Random.Range(0, footstepAsfaults.Length)];
-            audioSource.PlayOneShot(clip);
+            AudioClip clip = _player.IsCurpet ? _footstepCurpets[Random.Range(0, _footstepCurpets.Length)] : _footstepAsfaults[Random.Range(0, _footstepAsfaults.Length)];
+            _audioSource.PlayOneShot(clip);
         }
     }
 }

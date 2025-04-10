@@ -30,4 +30,15 @@ public class GV : MonoBehaviour
             PlayerPrefs.SetFloat("sensY_buf", value);
         }
     }
+    static public float bobber_buf
+    {
+        get
+        {
+            return PlayerPrefs.GetFloat("bobber_buf", 1f);
+        }
+        set
+        {
+            PlayerPrefs.SetFloat("bobber_buf", value);
+        }
+    }
 }

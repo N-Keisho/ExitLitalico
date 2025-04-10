@@ -6,8 +6,11 @@ using UnityEngine.InputSystem;
 public class Config : MonoBehaviour
 {
     [SerializeField] private Player _player;
+    [SerializeField] private HeadBobber _headBobber;
     [SerializeField] private Param _sensX;
     [SerializeField] private Param _sensY;
+    [SerializeField] private Param _bobber;
+
     private GameObject _configPanel;
     private GameInputs _gameInputs;
     private bool _isOpen = false;
@@ -60,5 +63,12 @@ public class Config : MonoBehaviour
         float value = _sensY.value;
         GV.sensY_buf = value;
         _player.SetSensY(value);
+    }
+
+    public void OnBobberChange()
+    {
+        float value = _bobber.value;
+        GV.bobber_buf = value;
+        _headBobber.SetBobber(value);
     }
 }

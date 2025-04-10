@@ -252,7 +252,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Curpet"))
         {
             _isCurpet = true;
-            Debug.Log("Curpetに乗った");
+            // Debug.Log("Curpetに乗った");
         }
     }
 
@@ -261,7 +261,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Curpet"))
         {
             _isCurpet = false;
-            Debug.Log("Curpetから出た");
+            // Debug.Log("Curpetから出た");
         }
     }
 }

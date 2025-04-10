@@ -438,6 +438,7 @@ GameObject:
   m_Component:
   - component: {fileID: 944725286480004927}
   - component: {fileID: 8408820869354631817}
+  - component: {fileID: 3191059994894270688}
   m_Layer: 0
   m_Name: LitalicoDefo
   m_TagString: Untagged
@@ -478,6 +479,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ihenList: []
+--- !u!114 &3191059994894270688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456981256593743237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a85451cda262b245b596416791b4a4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _videoPlayer: {fileID: 1053000250277246299}
+  _streamingAssetsMoviePath: Test2.mp4
 --- !u!1 &589817430812971877
 GameObject:
   m_ObjectHideFlags: 0
@@ -12877,7 +12892,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8705190080345539168}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 1128c5f10f366024db740643eeceb208, type: 3}
+  m_VideoClip: {fileID: 0}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}

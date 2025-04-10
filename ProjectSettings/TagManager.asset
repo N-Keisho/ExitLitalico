@@ -15,6 +15,7 @@ TagManager:
   - GateCheckA
   - GateCheckB
   - Ihen
+  - Curpet
   layers:
   - Default
   - TransparentFX

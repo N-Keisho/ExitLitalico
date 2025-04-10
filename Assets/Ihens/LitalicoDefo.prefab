@@ -4659,7 +4659,7 @@ GameObject:
   - component: {fileID: 6864880547864725959}
   m_Layer: 0
   m_Name: ground_curpet
-  m_TagString: Untagged
+  m_TagString: Curpet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

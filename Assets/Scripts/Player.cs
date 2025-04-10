@@ -23,11 +23,13 @@ public class Player : MonoBehaviour
     private float _sensX_buf;
     private float _sensY_buf;
     private string _preDetectTag = "";
-    private bool _isDash = false;
     private bool _isMove = false;
+    private bool _isDash = false;
+    private bool _isCurpet = false;
     private bool? _answer = null;       // true: 異変アリ(1)， false: 異変ナシ(2), null: 未回答
-    public bool IsMove { get { return _isMove; }}   // 読み取り専用プロパティ
-    public bool IsDash { get { return _isDash; }}   // 読み取り専用プロパティ
+    public bool IsMove { get { return _isMove; } }   // 読み取り専用プロパティ
+    public bool IsDash { get { return _isDash; } }   // 読み取り専用プロパティ
+    public bool IsCurpet { get { return _isCurpet; } }   // 読み取り専用プロパティ
 
     void Start()
     {
@@ -57,9 +59,9 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        Move();
+        _isMove = (_moveInputValue != Vector2.zero);
+        if (_isMove) Move();
         Look();
-        _isMove = (_moveInputValue != Vector2.zero); // プレイヤーが移動しているかどうかを判定
     }
 
     private void OnDestroy()
@@ -80,6 +82,7 @@ public class Player : MonoBehaviour
         bool isHit = Physics.Raycast(rayStart, rayDirection, out hit, 1f);
         if (!isHit || hit.collider.tag.Contains("Gate"))
         {
+
             // Rayが何もヒットしない場合、プレイヤーを移動
             if (_isDash)
             {
@@ -89,6 +92,10 @@ public class Player : MonoBehaviour
             {
                 transform.position += _direction * _MOVE_SPEED * Time.deltaTime;
             }
+        }
+        else
+        {
+            _isMove = false;
         }
         // Debug.DrawRay(rayStart, rayDirection * rayDistance, Color.red); // Rayの可視化
     }
@@ -237,6 +244,24 @@ public class Player : MonoBehaviour
                 }
             }
             _preDetectTag = other.tag;
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Curpet"))
+        {
+            _isCurpet = true;
+            Debug.Log("Curpetに乗った");
+        }
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.CompareTag("Curpet"))
+        {
+            _isCurpet = false;
+            Debug.Log("Curpetから出た");
         }
     }
 }

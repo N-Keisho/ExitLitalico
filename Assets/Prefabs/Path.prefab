@@ -947,6 +947,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SideWall4x6m
       objectReference: {fileID: 0}
+    - target: {fileID: 5565094096301596683, guid: 513d9490959a422429b984675488bd88, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eb84b933f535f524aa677d3967b97692, type: 2}
     - target: {fileID: 5570156578052950580, guid: 513d9490959a422429b984675488bd88, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -1952,6 +1956,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SideWall4x6m
       objectReference: {fileID: 0}
+    - target: {fileID: 5565094096301596683, guid: 513d9490959a422429b984675488bd88, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eb84b933f535f524aa677d3967b97692, type: 2}
     - target: {fileID: 5570156578052950580, guid: 513d9490959a422429b984675488bd88, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -2158,6 +2166,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SideWall4x6m
       objectReference: {fileID: 0}
+    - target: {fileID: 5565094096301596683, guid: 513d9490959a422429b984675488bd88, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eb84b933f535f524aa677d3967b97692, type: 2}
     - target: {fileID: 5570156578052950580, guid: 513d9490959a422429b984675488bd88, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -4586,6 +4598,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SideWall4x6m
       objectReference: {fileID: 0}
+    - target: {fileID: 5565094096301596683, guid: 513d9490959a422429b984675488bd88, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eb84b933f535f524aa677d3967b97692, type: 2}
     - target: {fileID: 5570156578052950580, guid: 513d9490959a422429b984675488bd88, type: 3}
       propertyPath: m_RootOrder
       value: -1

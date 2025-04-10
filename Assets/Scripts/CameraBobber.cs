@@ -16,6 +16,7 @@ public class CameraBobber : MonoBehaviour
     [SerializeField] private float _footstepInterval = 0.5f;
 
     private float footstepTimer;
+    private bool _isPlayingFootstep = false;
 
     void Start()
     {
@@ -67,10 +68,17 @@ public class CameraBobber : MonoBehaviour
 
     void PlayFootstepSound()
     {
-        if (_footstepCurpets.Length > 0 && _footstepAsfaults.Length > 0 &&_audioSource != null)
+        if (_footstepCurpets.Length > 0 && _footstepAsfaults.Length > 0 &&_audioSource != null && !_isPlayingFootstep)
         {
             AudioClip clip = _player.IsCurpet ? _footstepCurpets[Random.Range(0, _footstepCurpets.Length)] : _footstepAsfaults[Random.Range(0, _footstepAsfaults.Length)];
+            _isPlayingFootstep = true;
             _audioSource.PlayOneShot(clip);
+            Invoke("ResetFootstep", 0.2f);
         }
+    }
+
+    void ResetFootstep()
+    {
+        _isPlayingFootstep = false;
     }
 }

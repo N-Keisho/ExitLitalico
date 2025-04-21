@@ -10,9 +10,10 @@ enum Side
 
 public class GameManager : MonoBehaviour
 {
-
-    // 仕様変更 -> 異変ごとに教室をが変わるようにする
+    [Header("IhenList")]
     [SerializeField] private IhenList _ihenList;
+
+    [Header("Celling")]
     [SerializeField] private GameObject _CellingA;
     [SerializeField] private GameObject _CellingB;
 
@@ -23,10 +24,11 @@ public class GameManager : MonoBehaviour
     private readonly Vector3 _POSITION_A = new Vector3(27.6f, 0.0f, -16.35f);
     private GameObject _litalicoObjA;
     private GameObject _litalicoObjB;
-    private TMP_Text _correctNumText;
-    private int correctNum = 0;
+    private CurrentNum _currentNum;
+    // private int correctNum = 0;
+    public int correctNum = 0; // For testing purposes, make it public to see in the inspector
     private Side _currentSide;
-    
+
     private int _listLen;
     private int _preIhenIndex = 0;
     private bool _isIhen = false;
@@ -112,26 +114,27 @@ public class GameManager : MonoBehaviour
             case Side.A:
                 _litalicoObjA = Instantiate(_nextLita, _POSITION_A, Quaternion.Euler(0, 180, 0));
                 _litalicoObjA.name = "LitalicoA";
-                _correctNumText = _litalicoObjA.transform.Find("CorrectNum").GetComponent<TMP_Text>();
+
+                _currentNum = _litalicoObjA.transform.Find("CurrentNumPannel").GetComponent<CurrentNum>();
                 _CellingA.SetActive(true);
                 _CellingB.SetActive(false);
                 break;
-                
+
             case Side.B:
                 _litalicoObjB = Instantiate(_nextLita, _POSITION_A * -1, Quaternion.identity);
                 _litalicoObjB.name = "LitalicoB";
-                _correctNumText = _litalicoObjB.transform.Find("CorrectNum").GetComponent<TMP_Text>();
+                _currentNum = _litalicoObjB.transform.Find("CurrentNumPannel").GetComponent<CurrentNum>();
                 _CellingA.SetActive(false);
                 _CellingB.SetActive(true);
                 break;
         }
 
-        if (_correctNumText == null)
+        if (_currentNum == null)
         {
-            Debug.LogError("CorrectNum text component not found on the object.");
+            Debug.LogError("CurrentNum component not found on the object.");
             return;
         }
-        _correctNumText.text = correctNum.ToString();
+        _currentNum.SetCurrentNum(correctNum);
     }
 
     private bool IhenOrNot()

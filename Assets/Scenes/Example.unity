@@ -1417,7 +1417,7 @@ MonoBehaviour:
   _ihenList: {fileID: 930434025}
   _CellingA: {fileID: 1371729857}
   _CellingB: {fileID: 1394242978}
-  _isTest: 1
+  _isTest: 0
   _testIndex: 0
 --- !u!114 &930434025
 MonoBehaviour:
@@ -2647,7 +2647,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1701383366}
   m_Layer: 0
-  m_Name: Const
+  m_Name: Static
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

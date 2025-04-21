@@ -254,6 +254,17 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""357682a6-957b-40d8-a859-0db84725ddd8"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""6ca96917-975e-4363-a775-2b4bfd7742bb"",
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",

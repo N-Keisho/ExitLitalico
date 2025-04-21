@@ -9,8 +9,6 @@ public class CurrentNum : MonoBehaviour
 
     [Header("Text")]
     [SerializeField] private TMP_Text _currentNumText;
-    [SerializeField] private TMP_Text _WelcomeText;
-    [SerializeField] private TMP_Text _EnterText;
 
     public void SetCurrentNum(int num)
     {
@@ -24,12 +22,6 @@ public class CurrentNum : MonoBehaviour
         for (int i = 0; i < num; i++)
         {
             _currentNumText.text += _words[i];
-        }
-
-        if(num == _words.Count)
-        {
-            _WelcomeText.text = "ありがとう！";
-            _EnterText.text = "出口はこちら→";
         }
     }
 

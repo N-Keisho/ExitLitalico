@@ -17,11 +17,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _CellingA;
     [SerializeField] private GameObject _CellingB;
 
+    [Header("Goal")]
+    [SerializeField] private GameObject _goalPath;
+
     [Header("Test")]
     [SerializeField] private bool _isTest = false;
     [SerializeField] private int _testIndex = 0;
 
     private readonly Vector3 _POSITION_A = new Vector3(27.6f, 0.0f, -16.35f);
+    private readonly Vector3 _POSITION_GOAL_PATH_A = new Vector3(18, 0, -6);
     private GameObject _litalicoObjA;
     private GameObject _litalicoObjB;
     private CurrentNum _currentNum;
@@ -62,7 +66,6 @@ public class GameManager : MonoBehaviour
         }
         SwitchLitalico();
     }
-
 
     private void SwitchLitalico()
     {
@@ -159,5 +162,18 @@ public class GameManager : MonoBehaviour
         Debug.Log("Ihen index: " + index);
         _preIhenIndex = index;
         return _ihenList.getIhenLitalico(index, _isIhen);
+    }
+
+    private void Goal(Side type)
+    {
+        switch (type)
+        {
+            case Side.A:
+                Instantiate(_goalPath, _POSITION_GOAL_PATH_A, Quaternion.Euler(0, 180, 0));
+                break;
+            case Side.B:
+                Instantiate(_goalPath, _POSITION_GOAL_PATH_A * -1, Quaternion.identity);
+                break;
+        }
     }
 }

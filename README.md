@@ -6,15 +6,18 @@
 
 ### 基本操作
 
-- 移動：WASD or ゲームパッドの左スティック
-- 視点：マウス or ゲームパッドの右スティック
+- 移動：WASD or 左スティック
+- 視点：マウス移動 or 右スティック
+- ダッシュ：Shift or 左右トリガー（R2L2）
+- ズーム：マウス中央押し込み or 左右ショルダー（R1L1）
+- ポーズ画面：Tab or Homeボタン or Startボタン or Selectボタン
 
 ### ルール
 
 - 異変を見逃さないこと
 - 異変を見つけたら，すぐに引き返すこと（出入り口から戻る）
 - 異変がみつからなかったら，引き返さないこと（休憩口に進む）
-- ワンダー町田から外に出ること（回数未定）
+- ワンダー町田から外に出ること（8回）
 
 ## 開発メモ
 
@@ -71,12 +74,91 @@ Debug.Log(GV.moveSpeed);
 - 異変は町田教室が生成されるたびにランダムで行なわれるようになっている．
 - 町田教室は Player が通路（`Path`）の真ん中まで行くと削除され，反対側に生成される．
 - 削除のタイミングですべてリセットされるので，異変で教室をめちゃくちゃにしても問題がない．
-- 通路（`Path`）の真ん中にいくと，`_System_`の`GameManagaer`コンポーネントにて審議判定が行なわれる
+- 通路（`Path`）の真ん中にいくと，`_GameManager_`の`GameManagaer`コンポーネントにて審議判定が行なわれる
 - 仕様上一度通路（`Path`）から町田教室に出入りする必要があるので，通路（`Path`）正面（異変の数字が見えるところ付近）に異変を置いてはいけない
 
 #### 異変作成のルール
 
 異変の作成に伴い，いくつかのルールがある．Exampleシーンに試作例があるのでご参考までに．
+
+**なお，4/21に仕様を変更しました**
+
+### 最新版
+1. 異変に関するものは `Assets/Ihen/Main` に入れよう
+2. 異変は，`Assets/Ihen` にある `LitalicoDefo.prefab` を複製して作成しよう（以後「異変ワンダー」と呼称）
+3. 異変のスクリプトは必ず `IhenBase` を継承し，`I_XX.cs` という名前にしよう
+4. 異変のスクリプトは異変ワンダーにアタッチしよう
+5. 異変ワンダーの名前はスクリプト名と同じにしよう
+6. 異変ワンダーは `_GameManager_` の `IhenList`コンポーネントの `IhenList` に追加しよう
+
+#### IhenBase とスクリプト例
+
+IhenBase は異変のひな形．これを継承して異変を作成していく．
+
+```C#
+// IhenBase.cs
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+abstract public class IhenBase : MonoBehaviour
+{
+    protected bool _ihenDo = false;
+}
+```
+
+継承例
+
+```C#
+// I_Example.cs
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+//<summary>
+// 何かしらの異変を起こすクラスの例
+// </summary>
+public class I_Example : IhenBase
+{
+    void Start()
+    {
+        // 異変の初期化処理
+        _ihenDo = true; // 異変が起きている状態にする
+        Debug.Log("Ihen_Example: 異変が起きました！");
+    }
+
+    void Update()
+    {
+        // いらないときは削除推奨
+    }
+}
+```
+
+具体例：色が変わる異変
+
+```C#
+// I_BoxColor.cs
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+//<summary>
+// 色がかわるやーつ
+// </summary>
+public class I_BoxColor : IhenBase
+{
+    [SerializeField] private GameObject _targetObject;
+    [SerializeField] private Color color;
+    void Start()
+    {
+        _ihenDo = true;
+        _targetObject.GetComponent<Renderer>().material.color = color;
+    }
+}
+```
+
+#### dev1以前（Legacy）
+**以降に書かれているのは古いバージョンのモノなので無視してOK．**
 
 1. 1 つ 1 つの異変に関連するものは，`Assets/Ihen` に入れること
 2. 異変のスクリプトは必ず `IhenBase` を継承し，`Ihen_XX.cs` という名前にすること

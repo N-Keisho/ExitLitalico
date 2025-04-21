@@ -10,8 +10,9 @@ public class PlayVideo : MonoBehaviour
 
     // StreamingAssetsの動画ファイルへのパス
     [SerializeField] private string _streamingAssetsMoviePath;
+    [SerializeField] private float _waitTime = 1f; // 待機時間
 
-    private void Start()
+    private void Awake()
     {
         // URL指定
         _videoPlayer.source = VideoSource.Url;
@@ -19,7 +20,20 @@ public class PlayVideo : MonoBehaviour
         // StreamingAssetsフォルダ配下のパスの動画をURLとして指定する
         _videoPlayer.url = Application.streamingAssetsPath + "/" + _streamingAssetsMoviePath;
 
-        // 再生
+        Invoke("Play", _waitTime);
+    }
+
+    private void OnDestroy()
+    {
+        if (_videoPlayer != null && _videoPlayer.targetTexture != null)
+        {
+            // VideoPlayerのtargetTextureを解放する
+            _videoPlayer.targetTexture.Release();
+        }
+    }
+
+    private void Play()
+    {
         _videoPlayer.Play();
     }
 }

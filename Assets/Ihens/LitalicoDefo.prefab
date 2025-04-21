@@ -587,6 +587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _videoPlayer: {fileID: 1053000250277246299}
   _streamingAssetsMoviePath: Test2.mp4
+  _waitTime: 0
 --- !u!1 &589817430812971877
 GameObject:
   m_ObjectHideFlags: 0

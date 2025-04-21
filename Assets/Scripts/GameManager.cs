@@ -29,8 +29,7 @@ public class GameManager : MonoBehaviour
     private GameObject _litalicoObjA;
     private GameObject _litalicoObjB;
     private CurrentNum _currentNum;
-    // private int correctNum = 0;
-    public int correctNum = 0; // For testing purposes, make it public to see in the inspector
+    private int correctNum = 0;
     private Side _currentSide;
 
     private int _listLen;
@@ -64,7 +63,15 @@ public class GameManager : MonoBehaviour
             correctNum = 0;
             // Debug.Log("answer is incorrect.");
         }
-        SwitchLitalico();
+
+        if (correctNum >= 8)
+        {
+            Goal(_currentSide == Side.A ? Side.B : Side.A);
+        }
+        else
+        {
+            SwitchLitalico();
+        }
     }
 
     private void SwitchLitalico()
@@ -117,7 +124,6 @@ public class GameManager : MonoBehaviour
             case Side.A:
                 _litalicoObjA = Instantiate(_nextLita, _POSITION_A, Quaternion.Euler(0, 180, 0));
                 _litalicoObjA.name = "LitalicoA";
-
                 _currentNum = _litalicoObjA.transform.Find("CurrentNumPannel").GetComponent<CurrentNum>();
                 _CellingA.SetActive(true);
                 _CellingB.SetActive(false);
@@ -169,10 +175,12 @@ public class GameManager : MonoBehaviour
         switch (type)
         {
             case Side.A:
-                Instantiate(_goalPath, _POSITION_GOAL_PATH_A, Quaternion.Euler(0, 180, 0));
+                Instantiate(_goalPath, _POSITION_GOAL_PATH_A, Quaternion.identity);
+                _CellingA.SetActive(true);
                 break;
             case Side.B:
-                Instantiate(_goalPath, _POSITION_GOAL_PATH_A * -1, Quaternion.identity);
+                Instantiate(_goalPath, _POSITION_GOAL_PATH_A * -1, Quaternion.Euler(0, 180, 0));
+                _CellingB.SetActive(true);
                 break;
         }
     }

@@ -11,7 +11,6 @@ public class I_BoxColor : IhenBase
     [SerializeField] private Color color;
     void Start()
     {
-        _ihenDo = true;
         _targetObject.GetComponent<Renderer>().material.color = color;
     }
 }

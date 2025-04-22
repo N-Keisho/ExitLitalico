@@ -31,7 +31,6 @@ public class GameManager : MonoBehaviour
     private CurrentNum _currentNum;
     private int correctNum = 0;
     private Side _currentSide;
-
     private int _listLen;
     private int _preIhenIndex = 0;
     private bool _isIhen = false;
@@ -56,12 +55,10 @@ public class GameManager : MonoBehaviour
         else if (_isIhen == answerIhen)
         {
             correctNum++;
-            // Debug.Log("answer is correct.");
         }
         else
         {
             correctNum = 0;
-            // Debug.Log("answer is incorrect.");
         }
 
         if (correctNum >= 8)
@@ -165,7 +162,6 @@ public class GameManager : MonoBehaviour
         {
             index = Random.Range(0, _listLen);
         }
-        Debug.Log("Ihen index: " + index);
         _preIhenIndex = index;
         return _ihenList.getIhenLitalico(index, _isIhen);
     }

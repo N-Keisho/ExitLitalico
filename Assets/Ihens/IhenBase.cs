@@ -4,7 +4,13 @@ using UnityEngine;
 
 abstract public class IhenBase : MonoBehaviour
 {
-    protected bool _ihenDo = false;
     [SerializeField] protected string _explanation = "初期値";
     public string Explanation { get { return _explanation; } }
+
+    private void Awake()
+    {
+        string name = this.name.Replace("(Clone)", "");
+        Debug.Log(name + " : " + _explanation);
+        GV.SetDoneIhen(name);
+    }
 }

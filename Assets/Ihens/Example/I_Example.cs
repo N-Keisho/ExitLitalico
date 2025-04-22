@@ -10,7 +10,6 @@ public class I_Example : IhenBase
     void Start()
     {
         // 異変の初期化処理
-        _ihenDo = true; // 異変が起きている状態にする
         Debug.Log("Ihen_Example: 異変が起きました！");
     }
 

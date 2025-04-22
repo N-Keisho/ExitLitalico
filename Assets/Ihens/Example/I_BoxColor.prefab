@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef716b05f2cb3d40ab36b144906f828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explanation: "\u6905\u5B50\u306E\u8272\u304C\u5909\u308F\u308B\u7570\u5909"
+  _explanation: "\u6905\u5B50\u306E\u8272\u304C\u5909\u308F\u308B"
   _targetObject: {fileID: 8984578804331284018}
   color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &8984578804331284018 stripped

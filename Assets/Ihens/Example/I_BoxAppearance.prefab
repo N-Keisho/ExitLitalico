@@ -196,5 +196,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b114d3ce0052944abd473b821ebeb51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explanation: "\u7BB1\u304C\u6025\u306B\u73FE\u308C\u308B\u7570\u5909"
+  _explanation: "\u7BB1\u304C\u6025\u306B\u73FE\u308C\u308B"
   _targetObject: {fileID: 7080742606556008885}

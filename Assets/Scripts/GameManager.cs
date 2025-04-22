@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 enum Side
 {
     A,
@@ -29,11 +30,12 @@ public class GameManager : MonoBehaviour
     private GameObject _litalicoObjA;
     private GameObject _litalicoObjB;
     private CurrentNum _currentNum;
-    private int correctNum = 0;
+    private int _correctNum = 0;
     private Side _currentSide;
     private int _listLen;
     private int _preIhenIndex = 0;
     private bool _isIhen = false;
+    private GameInputs _gameInputs;
 
     void Start()
     {
@@ -43,6 +45,16 @@ public class GameManager : MonoBehaviour
         _CellingA.SetActive(true);
         _CellingB.SetActive(false);
         _listLen = _ihenList.getListLen();
+
+        _gameInputs = new GameInputs();
+        _gameInputs.System.Cheat.started += OnCheat;
+        _gameInputs.System.Cheat.Enable();
+    }
+
+    void OnDestroy()
+    {
+        _gameInputs.System.Cheat.started -= OnCheat;
+        _gameInputs.Disable();
     }
 
     public void CheckIhen(bool? answerIhen) // ?をつけるとnull許容型になる
@@ -54,14 +66,14 @@ public class GameManager : MonoBehaviour
         }
         else if (_isIhen == answerIhen)
         {
-            correctNum++;
+            _correctNum++;
         }
         else
         {
-            correctNum = 0;
+            _correctNum = 0;
         }
 
-        if (correctNum >= 8)
+        if (_correctNum >= 8)
         {
             Goal(_currentSide == Side.A ? Side.B : Side.A);
         }
@@ -140,7 +152,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("CurrentNum component not found on the object.");
             return;
         }
-        _currentNum.SetCurrentNum(correctNum);
+        _currentNum.SetCurrentNum(_correctNum);
     }
 
     private bool IhenOrNot()
@@ -178,6 +190,15 @@ public class GameManager : MonoBehaviour
                 Instantiate(_goalPath, _POSITION_GOAL_PATH_A * -1, Quaternion.Euler(0, 180, 0));
                 _CellingB.SetActive(true);
                 break;
+        }
+    }
+
+    private void OnCheat(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            _correctNum = 7;
+            Debug.Log("Cheat activated! Correct number set to 7.");
         }
     }
 }

@@ -299,6 +299,15 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cheat"",
+                    ""type"": ""Button"",
+                    ""id"": ""b8872003-1ec9-4f30-be2d-04d6f4ab29f7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -345,6 +354,94 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Config"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""KeyBord"",
+                    ""id"": ""94459588-a363-4960-963b-3ef6a895b140"",
+                    ""path"": ""TwoModifiers"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cheat"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier1"",
+                    ""id"": ""b700d100-6c62-479b-9a8b-cb1bcf795f70"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cheat"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""modifier2"",
+                    ""id"": ""76b38803-daa4-4b21-b3ef-c06af89f1729"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cheat"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""12522c3b-79ae-46cf-9e9a-ff158bf4fc4f"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cheat"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Pad"",
+                    ""id"": ""8a8fac97-18a7-4ee5-8bdd-5fcd37e90aa0"",
+                    ""path"": ""TwoModifiers"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cheat"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier1"",
+                    ""id"": ""044aadbc-75d2-43cd-92b3-cd62001dd074"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cheat"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""modifier2"",
+                    ""id"": ""0ece295d-59d3-4ee1-bec8-a41126da3752"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cheat"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""1749076b-d84a-41c6-ac6a-62b814e16c87"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cheat"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -360,6 +457,7 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
         // System
         m_System = asset.FindActionMap("System", throwIfNotFound: true);
         m_System_Config = m_System.FindAction("Config", throwIfNotFound: true);
+        m_System_Cheat = m_System.FindAction("Cheat", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -492,11 +590,13 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_System;
     private List<ISystemActions> m_SystemActionsCallbackInterfaces = new List<ISystemActions>();
     private readonly InputAction m_System_Config;
+    private readonly InputAction m_System_Cheat;
     public struct SystemActions
     {
         private @GameInputs m_Wrapper;
         public SystemActions(@GameInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Config => m_Wrapper.m_System_Config;
+        public InputAction @Cheat => m_Wrapper.m_System_Cheat;
         public InputActionMap Get() { return m_Wrapper.m_System; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -509,6 +609,9 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
             @Config.started += instance.OnConfig;
             @Config.performed += instance.OnConfig;
             @Config.canceled += instance.OnConfig;
+            @Cheat.started += instance.OnCheat;
+            @Cheat.performed += instance.OnCheat;
+            @Cheat.canceled += instance.OnCheat;
         }
 
         private void UnregisterCallbacks(ISystemActions instance)
@@ -516,6 +619,9 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
             @Config.started -= instance.OnConfig;
             @Config.performed -= instance.OnConfig;
             @Config.canceled -= instance.OnConfig;
+            @Cheat.started -= instance.OnCheat;
+            @Cheat.performed -= instance.OnCheat;
+            @Cheat.canceled -= instance.OnCheat;
         }
 
         public void RemoveCallbacks(ISystemActions instance)
@@ -543,5 +649,6 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
     public interface ISystemActions
     {
         void OnConfig(InputAction.CallbackContext context);
+        void OnCheat(InputAction.CallbackContext context);
     }
 }

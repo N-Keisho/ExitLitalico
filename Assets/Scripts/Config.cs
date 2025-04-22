@@ -20,7 +20,7 @@ public class Config : MonoBehaviour
 
         _gameInputs = new GameInputs();
         _gameInputs.System.Config.started += OnConfig;
-        _gameInputs.Enable();
+        _gameInputs.System.Config.Enable();
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
         _gameInputs.Player.Dash.started += OnDash;
         _gameInputs.Player.Dash.canceled += OnDash;
 
-        _gameInputs.Enable();
+        _gameInputs.Player.Enable();
 
         // GVから値を取得
         _sensX_buf = GV.sensX_buf;

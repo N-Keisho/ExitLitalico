@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-public class Fade : MonoBehaviour
+public class Ending : MonoBehaviour
 {
     [Header("Time")]
     [SerializeField] private float _fadeDuration = 1.0f;
@@ -24,8 +25,8 @@ public class Fade : MonoBehaviour
     {
         _fadeOutObj.SetActive(false);
         _fadeInObj.SetActive(false);
-        Invoke("StartFadeIn", _inStart);
-        Invoke("StartFadeOut", _outStart);
+        StartCoroutine(FadeIn());
+        StartCoroutine(FadeOut());
     }
 
     private void SetAlpha(GameObject obj, float alpha, FadeType type)
@@ -44,14 +45,10 @@ public class Fade : MonoBehaviour
         }
     }
 
-
-    private void StartFadeIn()
-    {
-        _fadeInObj.SetActive(true);
-        StartCoroutine(FadeIn());
-    }
     private IEnumerator FadeIn()
-    {
+    {   
+        yield return new WaitForSeconds(_inStart);
+        _fadeInObj.SetActive(true);
         float elapsedTime = 0f;
         SetAlpha(_fadeInObj, 0f, FadeType.In);
         while (elapsedTime < _fadeDuration)
@@ -63,14 +60,11 @@ public class Fade : MonoBehaviour
         }
     }
 
-    private void StartFadeOut()
-    {
-        _fadeOutObj.SetActive(true);
-        StartCoroutine(FadeOut());
-    }
 
     private IEnumerator FadeOut()
     {
+        yield return new WaitForSeconds(_outStart);
+        _fadeOutObj.SetActive(true);
         float elapsedTime = 0f;
         while (elapsedTime < _fadeDuration)
         {
@@ -79,5 +73,6 @@ public class Fade : MonoBehaviour
             SetAlpha(_fadeOutObj, alpha, FadeType.Out);
             yield return null;
         }
+        SceneManager.LoadScene("StaffRoll");
     }
 }

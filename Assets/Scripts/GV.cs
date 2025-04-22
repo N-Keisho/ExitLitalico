@@ -47,8 +47,15 @@ public class GV : MonoBehaviour
         return PlayerPrefs.GetInt(name, 0) == 1;
     }
 
-    static public void SetDoneIhen(string name)
+    static public void SetDoneIhen(string name, bool isDone = true)
     {
-        PlayerPrefs.SetInt(name, 1);
+        if (isDone)
+        {
+            PlayerPrefs.SetInt(name, 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt(name, 0);
+        }
     }
 }

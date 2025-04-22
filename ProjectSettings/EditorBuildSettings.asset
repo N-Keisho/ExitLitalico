@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ending.unity
     guid: d4e9184a594280b41bd785d30080b383
+  - enabled: 1
+    path: Assets/Scenes/StaffRoll.unity
+    guid: 3fa86bd5105ccba43b71658da9b972f2
   m_configObjects: {}

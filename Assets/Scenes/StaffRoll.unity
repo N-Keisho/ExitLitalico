@@ -2572,7 +2572,7 @@ MonoBehaviour:
   _endObj: {fileID: 1602684800}
   _fadeImage: {fileID: 450214039}
   _speed: 1
-  _highSpeed: 10
+  _highSpeed: 5
   _afterListOffset: 105
   _endPosY: 540
   _waitTime: 1.5

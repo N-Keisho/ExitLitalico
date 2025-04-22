@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class StaffRoll : MonoBehaviour
 {
@@ -31,6 +33,8 @@ public class StaffRoll : MonoBehaviour
     private float _baseSpeed = 100f;
     private int _unknownCount = 0;
     private bool _isFin = false;
+    private bool _isHighSpeed = false;
+    private GameInputs _gameInputs;
 
     void Start()
     {
@@ -55,19 +59,38 @@ public class StaffRoll : MonoBehaviour
         _afterListObj.anchoredPosition = _POSITION_UNKNOWN - new Vector2(0, _ihenList.Count * _afterListOffset);
         _unknownText.text = _unknownCount.ToString();
         _allIhenText.text = _ihenList.Count.ToString();
+
+        _gameInputs = new GameInputs();
+        _gameInputs.Player.Dash.started += ctx => _isHighSpeed = true;
+        _gameInputs.Player.Dash.canceled += ctx => _isHighSpeed = false;
+        _gameInputs.Player.Dash.Enable();
     }
 
     void Update()
     {
         if (_endObj.position.y <= _endPosY)
         {
-            _staffRollRoot.anchoredPosition += new Vector2(0, _speed * Time.deltaTime * _baseSpeed);
+            if(!_isHighSpeed)
+            {
+                _staffRollRoot.anchoredPosition += new Vector2(0, _speed * Time.deltaTime * _baseSpeed);
+            }
+            else
+            {
+                _staffRollRoot.anchoredPosition += new Vector2(0, _highSpeed * Time.deltaTime * _baseSpeed);
+            }
+
+            
         }
         else if (!_isFin)
         {
             _isFin = true;
             StartCoroutine(FadeOut());
         }
+    }
+
+    private void OnDestroy()
+    {
+        _gameInputs.Disable();
     }
 
     IEnumerator FadeOut()

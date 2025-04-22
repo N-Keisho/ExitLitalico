@@ -44,7 +44,6 @@ public class StaffRoll : MonoBehaviour
 
         foreach (IhenBase ihen in _ihenList)
         {
-            GV.SetDoneIhen(ihen.name, false);
             if (GV.IsDoneIhen(ihen.name))
             {
                 _ihenText.text += ihen.Explanation + "\n";

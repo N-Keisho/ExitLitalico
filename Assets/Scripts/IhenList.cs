@@ -51,7 +51,7 @@ public class IhenList : MonoBehaviour
     {
         if (isIhen == false)
         {
-            Debug.Log("Ihen is false, skipping DoIhen.");
+            Debug.Log("Ihen is false.");
             return _litalicoDefo;
         }
         else if (_ihenList == null || _ihenList.Count == 0)

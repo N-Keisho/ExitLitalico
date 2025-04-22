@@ -588,7 +588,7 @@ GameObject:
   - component: {fileID: 3885616271978688484}
   - component: {fileID: 5717378391688207793}
   m_Layer: 0
-  m_Name: LITALICO (1)
+  m_Name: paleLITALICO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -685,8 +685,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 436207616
-  m_fontColor: {r: 0, g: 0, b: 0, a: 0.101960786}
+    rgba: 218103808
+  m_fontColor: {r: 0, g: 0, b: 0, a: 0.050980393}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

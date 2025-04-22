@@ -232,8 +232,6 @@ MonoBehaviour:
   - C
   - O
   _currentNumText: {fileID: 1840746352935684782}
-  _WelcomeText: {fileID: 2976219856442419760}
-  _EnterText: {fileID: 5511999652558581810}
 --- !u!1 &5345795943656560496
 GameObject:
   m_ObjectHideFlags: 0

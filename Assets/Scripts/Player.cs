@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
     private readonly float _MAX_Y = 60f;
     private readonly float _SENS_X = 150f;
     private readonly float _SENS_Y = 150f;
-    private GameInputs _gameInputs;
     private Vector2 _moveInputValue;
     private Vector2 _rotateInputValue;
     private Vector3 _direction;
@@ -33,20 +32,6 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        _gameInputs = new GameInputs();
-
-        _gameInputs.Player.Move.started += OnMove;
-        _gameInputs.Player.Move.performed += OnMove;
-        _gameInputs.Player.Move.canceled += OnMove;
-
-        _gameInputs.Player.Look.started += OnLook;
-        _gameInputs.Player.Look.performed += OnLook;
-        _gameInputs.Player.Look.canceled += OnLook;
-
-        _gameInputs.Player.Dash.started += OnDash;
-        _gameInputs.Player.Dash.canceled += OnDash;
-
-        _gameInputs.Player.Enable();
 
         // GVから値を取得
         _sensX_buf = GV.sensX_buf;
@@ -62,11 +47,6 @@ public class Player : MonoBehaviour
         _isMove = (_moveInputValue != Vector2.zero);
         if (_isMove) Move();
         Look();
-    }
-
-    private void OnDestroy()
-    {
-        _gameInputs.Disable();
     }
 
     // --- プレイヤーの行動 ---
@@ -116,18 +96,18 @@ public class Player : MonoBehaviour
 
     // --- Input System からの入力を受け取るメソッド ---
     // 発火のタイミングは、Input System の設定に依存するので，値の更新だけ行う
-    private void OnMove(InputAction.CallbackContext context)
+    public void OnMove(InputAction.CallbackContext context)
     {
         _moveInputValue = context.ReadValue<Vector2>();
         _direction = (transform.forward * _moveInputValue.y + transform.right * _moveInputValue.x).normalized;
     }
 
-    private void OnLook(InputAction.CallbackContext context)
+    public void OnLook(InputAction.CallbackContext context)
     {
         _rotateInputValue = context.ReadValue<Vector2>();
     }
 
-    private void OnDash(InputAction.CallbackContext context)
+    public void OnDash(InputAction.CallbackContext context)
     {
         if (context.started)
         {

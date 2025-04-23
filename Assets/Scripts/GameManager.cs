@@ -35,26 +35,15 @@ public class GameManager : MonoBehaviour
     private int _listLen;
     private int _preIhenIndex = 0;
     private bool _isIhen = false;
-    private GameInputs _gameInputs;
 
     void Start()
     {
-
         InstantLitalico(_ihenList.getDefoLitalico(), Side.A);
         _currentSide = Side.A;
         _CellingA.SetActive(true);
         _CellingB.SetActive(false);
         _listLen = _ihenList.getListLen();
 
-        _gameInputs = new GameInputs();
-        _gameInputs.System.Cheat.started += OnCheat;
-        _gameInputs.System.Cheat.Enable();
-    }
-
-    void OnDestroy()
-    {
-        _gameInputs.System.Cheat.started -= OnCheat;
-        _gameInputs.Disable();
     }
 
     public void CheckIhen(bool? answerIhen) // ?をつけるとnull許容型になる
@@ -193,7 +182,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnCheat(InputAction.CallbackContext context)
+    public void OnCheat(InputAction.CallbackContext context)
     {
         if (context.started)
         {

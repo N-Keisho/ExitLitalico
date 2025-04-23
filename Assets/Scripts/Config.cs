@@ -12,15 +12,10 @@ public class Config : MonoBehaviour
     [SerializeField] private Param _bobber;
 
     private GameObject _configPanel;
-    private GameInputs _gameInputs;
     private bool _isOpen = false;
     void Start()
     {
         _configPanel = this.gameObject;
-
-        _gameInputs = new GameInputs();
-        _gameInputs.System.Config.started += OnConfig;
-        _gameInputs.System.Config.Enable();
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -28,12 +23,7 @@ public class Config : MonoBehaviour
         _configPanel.SetActive(false);
     }
 
-    void OnDestroy()
-    {
-        _gameInputs.Disable();
-    }
-
-    private void OnConfig(InputAction.CallbackContext context)
+    public void OnConfig(InputAction.CallbackContext context)
     {
         _isOpen = !_isOpen;
         if (_isOpen)

@@ -24,8 +24,10 @@ public class Ending : MonoBehaviour
 
     void Start()
     {
+        _fadeInObj.SetActive(true);
         _fadeOutObj.SetActive(false);
-        _fadeInObj.SetActive(false);
+        SetAlpha(_fadeInObj, 0f, FadeType.In);
+        
         StartCoroutine(FadeIn());
         StartCoroutine(FadeOut());
     }
@@ -47,11 +49,10 @@ public class Ending : MonoBehaviour
     }
 
     private IEnumerator FadeIn()
-    {   
+    {
         yield return new WaitForSeconds(_inStart);
-        _fadeInObj.SetActive(true);
+
         float elapsedTime = 0f;
-        SetAlpha(_fadeInObj, 0f, FadeType.In);
         _videoPlayer.SetDirectAudioVolume(0, 0f);
         while (elapsedTime < _fadeDuration)
         {

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Path : MonoBehaviour
 {
+
     [Header("Stopper")]
     [SerializeField] private GameObject _stopperA1;
     [SerializeField] private GameObject _stopperA2;
@@ -17,6 +18,8 @@ public class Path : MonoBehaviour
     [Header("Poster Sprite")]
     [SerializeField] private Sprite _watch;
     [SerializeField] private Sprite _follow;
+    [SerializeField] private Sprite _goHome;
+    private bool isClear = false;
     void Start()
     {
         _stopperA1.SetActive(false);
@@ -27,6 +30,8 @@ public class Path : MonoBehaviour
 
     public void InA1()
     {
+        if (isClear) return;
+
         _stopperA1.SetActive(false);
         _stopperA2.SetActive(true);
         _stopperB1.SetActive(false);
@@ -49,6 +54,8 @@ public class Path : MonoBehaviour
 
     public void InB1()
     {
+        if (isClear) return;
+
         _stopperA1.SetActive(false);
         _stopperA2.SetActive(true);
         _stopperB1.SetActive(false);
@@ -70,6 +77,8 @@ public class Path : MonoBehaviour
 
     public void CheckA()
     {
+        if (isClear) return;
+
         _stopperA1.SetActive(true);
         _stopperA2.SetActive(true);
         _stopperB1.SetActive(false);
@@ -79,6 +88,8 @@ public class Path : MonoBehaviour
     }
     public void CheckB()
     {
+        if (isClear) return;
+
         _stopperA1.SetActive(false);
         _stopperA2.SetActive(true);
         _stopperB1.SetActive(true);
@@ -87,10 +98,31 @@ public class Path : MonoBehaviour
         _posterB.sprite = _watch;
     }
 
-    public void Out(){
+    public void Out()
+    {
+        if (isClear) return;
+
         _stopperA1.SetActive(false);
         _stopperA2.SetActive(false);
         _stopperB1.SetActive(false);
         _stopperB2.SetActive(false);
     }
+
+    public void Clear(GameManager.Side type)
+    {
+        isClear = true;
+        switch (type)
+        {
+            case GameManager.Side.A:
+                _posterB.sprite = _goHome;
+                break;
+            case GameManager.Side.B:
+                _posterA.sprite = _goHome;
+                break;
+            default:
+                Debug.LogError("Invalid side type for clearing path.");
+                break;
+        }
+    }
+
 }

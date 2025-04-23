@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
-enum Side
-{
-    A,
-    B
-}
 
 public class GameManager : MonoBehaviour
 {
-    [Header("IhenList")]
+    public enum Side
+    {
+        A,
+        B
+    }
+
+
+    [Header("GameObjects")]
     [SerializeField] private IhenList _ihenList;
+    [SerializeField] private Path _path;
 
     [Header("Celling")]
     [SerializeField] private GameObject _CellingA;
@@ -35,6 +38,7 @@ public class GameManager : MonoBehaviour
     private int _listLen;
     private int _preIhenIndex = 0;
     private bool _isIhen = false;
+    private bool _isClear = false;
 
     void Start()
     {
@@ -48,7 +52,8 @@ public class GameManager : MonoBehaviour
 
     public void CheckIhen(bool? answerIhen) // ?をつけるとnull許容型になる
     {
-        if (answerIhen == null)
+        if (_isClear) return; // クリア済みなら何もしない
+        else if (answerIhen == null)
         {
             Debug.LogError("Answer is null, skipping Ihen check.");
             return;
@@ -105,8 +110,6 @@ public class GameManager : MonoBehaviour
             InstantLitalico(_nextLita, Side.A);
             _currentSide = Side.A;
         }
-
-
     }
 
     private void InstantLitalico(GameObject _nextLita, Side type)
@@ -169,6 +172,8 @@ public class GameManager : MonoBehaviour
 
     private void Goal(Side type)
     {
+        _isClear = true;
+        _path.Clear(type);
         switch (type)
         {
             case Side.A:
@@ -186,7 +191,7 @@ public class GameManager : MonoBehaviour
     {
         if (context.started)
         {
-            _correctNum = 6;
+            _correctNum = 7;
             Debug.Log("Cheat activated! Correct number set to 6.");
         }
     }

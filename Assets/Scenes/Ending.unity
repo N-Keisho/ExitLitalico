@@ -257,10 +257,10 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 0
+  m_DataSource: 1
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
-  m_AudioOutputMode: 0
+  m_AudioOutputMode: 2
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
@@ -447,6 +447,7 @@ MonoBehaviour:
   _outStart: 22
   _fadeInObj: {fileID: 218843528}
   _fadeOutObj: {fileID: 206619190}
+  _videoPlayer: {fileID: 218843530}
 --- !u!1 &1910865836
 GameObject:
   m_ObjectHideFlags: 0

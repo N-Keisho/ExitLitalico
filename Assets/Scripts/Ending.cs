@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.Video;
 public class Ending : MonoBehaviour
 {
     [Header("Time")]
@@ -14,6 +14,7 @@ public class Ending : MonoBehaviour
     [Header("Objects")]
     [SerializeField] private GameObject _fadeInObj;
     [SerializeField] private GameObject _fadeOutObj;
+    [SerializeField] private VideoPlayer _videoPlayer;
 
     enum FadeType
     {
@@ -51,11 +52,13 @@ public class Ending : MonoBehaviour
         _fadeInObj.SetActive(true);
         float elapsedTime = 0f;
         SetAlpha(_fadeInObj, 0f, FadeType.In);
+        _videoPlayer.SetDirectAudioVolume(0, 0f);
         while (elapsedTime < _fadeDuration)
         {
             elapsedTime += Time.deltaTime;
             float alpha = Mathf.Clamp01(elapsedTime / _fadeDuration);
             SetAlpha(_fadeInObj, alpha, FadeType.In);
+            _videoPlayer.SetDirectAudioVolume(0, alpha/2);
             yield return null;
         }
     }
@@ -66,11 +69,13 @@ public class Ending : MonoBehaviour
         yield return new WaitForSeconds(_outStart);
         _fadeOutObj.SetActive(true);
         float elapsedTime = 0f;
+        _videoPlayer.SetDirectAudioVolume(0, 0.5f);
         while (elapsedTime < _fadeDuration)
         {
             elapsedTime += Time.deltaTime;
             float alpha = Mathf.Clamp01(elapsedTime / _fadeDuration);
             SetAlpha(_fadeOutObj, alpha, FadeType.Out);
+            _videoPlayer.SetDirectAudioVolume(0, 0.5f - alpha/2);
             yield return null;
         }
         SceneManager.LoadScene("StaffRoll");

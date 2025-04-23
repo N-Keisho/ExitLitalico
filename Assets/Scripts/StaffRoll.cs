@@ -16,6 +16,7 @@ public class StaffRoll : MonoBehaviour
     [SerializeField] private TMP_Text _allIhenText;
     [SerializeField] private RectTransform _endObj;
     [SerializeField] private Image _fadeImage;
+    [SerializeField] private AudioSource _bgmSource;
 
     [Header("Parameters")]
     [SerializeField] private float _speed = 1f;
@@ -101,12 +102,14 @@ public class StaffRoll : MonoBehaviour
         color.a = 0f;
         _fadeImage.color = color;
         _fadeImage.gameObject.SetActive(true);
+        float _bgmVolume = _bgmSource.volume;
 
         while (elapsedTime < _fadeDuration)
         {
             elapsedTime += Time.deltaTime;
             color.a = Mathf.Lerp(0f, 1f, elapsedTime / _fadeDuration);
             _fadeImage.color = color;
+            _bgmSource.volume = Mathf.Lerp(_bgmVolume, 0f, elapsedTime / _fadeDuration);
             yield return null;
         }
     }

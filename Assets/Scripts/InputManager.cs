@@ -16,7 +16,6 @@ public class InputManager : MonoBehaviour
     void Start()
     {
         _gameInputs = new GameInputs();
-        _gameInputs.System.Cheat.started += _gameManager.OnCheat;
 
         _gameInputs.Player.Move.started += _player.OnMove;
         _gameInputs.Player.Move.performed += _player.OnMove;
@@ -29,6 +28,8 @@ public class InputManager : MonoBehaviour
         _gameInputs.Player.Dash.started += _player.OnDash;
         _gameInputs.Player.Dash.canceled += _player.OnDash;
 
+        _gameInputs.System.Cheat.started += _gameManager.OnCheat;
+
         _gameInputs.System.Config.started += _config.OnConfig;
 
         Invoke("Enabled", _waitTime);
@@ -39,8 +40,8 @@ public class InputManager : MonoBehaviour
         _gameInputs.Enable();
     }
 
-    void OnDestroy()
+    public void Dispose() 
     {
-        _gameInputs.Disable();
+        _gameInputs?.Dispose();
     }
 }

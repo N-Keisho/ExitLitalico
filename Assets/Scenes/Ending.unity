@@ -442,9 +442,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4249a3fa8fce5fa42b7ba80532a38f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fadeDuration: 2
+  _fadeDuration: 3
   _inStart: 2
-  _outStart: 22
+  _outStart: 21
   _fadeInObj: {fileID: 218843528}
   _fadeOutObj: {fileID: 206619190}
   _videoPlayer: {fileID: 218843530}

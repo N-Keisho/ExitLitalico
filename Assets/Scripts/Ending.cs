@@ -58,7 +58,7 @@ public class Ending : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float alpha = Mathf.Clamp01(elapsedTime / _fadeDuration);
             SetAlpha(_fadeInObj, alpha, FadeType.In);
-            _videoPlayer.SetDirectAudioVolume(0, alpha/2);
+            _videoPlayer.SetDirectAudioVolume(0, alpha);
             yield return null;
         }
     }
@@ -69,13 +69,13 @@ public class Ending : MonoBehaviour
         yield return new WaitForSeconds(_outStart);
         _fadeOutObj.SetActive(true);
         float elapsedTime = 0f;
-        _videoPlayer.SetDirectAudioVolume(0, 0.5f);
+        _videoPlayer.SetDirectAudioVolume(0, 1f);
         while (elapsedTime < _fadeDuration)
         {
             elapsedTime += Time.deltaTime;
             float alpha = Mathf.Clamp01(elapsedTime / _fadeDuration);
             SetAlpha(_fadeOutObj, alpha, FadeType.Out);
-            _videoPlayer.SetDirectAudioVolume(0, 0.5f - alpha/2);
+            _videoPlayer.SetDirectAudioVolume(0, 1f - alpha);
             yield return null;
         }
         SceneManager.LoadScene("StaffRoll");

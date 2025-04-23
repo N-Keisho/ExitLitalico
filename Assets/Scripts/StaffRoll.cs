@@ -8,13 +8,17 @@ using UnityEngine.InputSystem;
 
 public class StaffRoll : MonoBehaviour
 {
-    [Header("Objects")]
-    [SerializeField] private RectTransform _staffRollRoot;
+    [Header("TMP_Text")]
     [SerializeField] private TMP_Text _ihenText;
-    [SerializeField] private RectTransform _afterListObj;
     [SerializeField] private TMP_Text _unknownText;
     [SerializeField] private TMP_Text _allIhenText;
+
+    [Header("RectTransform")]
+    [SerializeField] private RectTransform _staffRollRoot;
+    [SerializeField] private RectTransform _afterListObj;
     [SerializeField] private RectTransform _endObj;
+
+    [Header("OtherGameObjects")]
     [SerializeField] private Image _fadeImage;
     [SerializeField] private AudioSource _bgmSource;
 
@@ -25,6 +29,7 @@ public class StaffRoll : MonoBehaviour
     [SerializeField] private float _endPosY = 580f;
     [SerializeField] private float _waitTime = 1f;
     [SerializeField] private float _fadeDuration = 1f;
+    [SerializeField] private string _nextSceneName = "Main";
 
     [Header("IhenList")]
     [SerializeField] private List<IhenBase> _ihenList = new List<IhenBase>();
@@ -70,7 +75,7 @@ public class StaffRoll : MonoBehaviour
     {
         if (_endObj.position.y <= _endPosY)
         {
-            if(!_isHighSpeed)
+            if (!_isHighSpeed)
             {
                 _staffRollRoot.anchoredPosition += new Vector2(0, _speed * Time.deltaTime * _baseSpeed);
             }
@@ -79,7 +84,7 @@ public class StaffRoll : MonoBehaviour
                 _staffRollRoot.anchoredPosition += new Vector2(0, _highSpeed * Time.deltaTime * _baseSpeed);
             }
 
-            
+
         }
         else if (!_isFin)
         {
@@ -112,5 +117,8 @@ public class StaffRoll : MonoBehaviour
             _bgmSource.volume = Mathf.Lerp(_bgmVolume, 0f, elapsedTime / _fadeDuration);
             yield return null;
         }
+
+        yield return new WaitForSeconds(_waitTime);
+        SceneManager.LoadScene(_nextSceneName);
     }
 }

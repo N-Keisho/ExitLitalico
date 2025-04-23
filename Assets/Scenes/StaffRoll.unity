@@ -2565,11 +2565,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d20b6845d856544a517cfb677847b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _staffRollRoot: {fileID: 1430887214}
   _ihenText: {fileID: 284933786}
-  _afterListObj: {fileID: 1345665778}
   _unknownText: {fileID: 478007714}
   _allIhenText: {fileID: 414610586}
+  _staffRollRoot: {fileID: 1430887214}
+  _afterListObj: {fileID: 1345665778}
   _endObj: {fileID: 1602684800}
   _fadeImage: {fileID: 450214039}
   _bgmSource: {fileID: 1808282795}
@@ -2578,7 +2578,8 @@ MonoBehaviour:
   _afterListOffset: 105
   _endPosY: 540
   _waitTime: 1.5
-  _fadeDuration: 1
+  _fadeDuration: 2
+  _nextSceneName: Main
   _ihenList:
   - {fileID: 90935716102495418, guid: abcff76a256445442ba7e1656f43cde7, type: 3}
   - {fileID: 3466584305382362904, guid: 6a4cc2ea25897f4498ae54ebd3714288, type: 3}

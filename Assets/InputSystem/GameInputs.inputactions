@@ -286,6 +286,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "GameQuit",
+                    "type": "Button",
+                    "id": "1126e79f-25e7-4877-bc4b-adc7c2d30f62",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -420,6 +429,17 @@
                     "action": "Cheat",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "4b4907b4-bc83-40ea-a3c9-a681e2e5dc98",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GameQuit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

@@ -46,6 +46,16 @@ public class Config : MonoBehaviour
         }
     }
 
+    public void OnGameQuit(InputAction.CallbackContext context)
+    {
+        if(!_isOpen) return;
+        #if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;//ゲームプレイ終了
+        #else
+                Application.Quit();//ゲームプレイ終了
+        #endif
+    }
+
     public void OnSensXChange()
     {
         float value = _sensX.value;

@@ -32,6 +32,8 @@ public class InputManager : MonoBehaviour
 
         _gameInputs.System.Config.started += _config.OnConfig;
 
+        _gameInputs.System.GameQuit.started += _config.OnGameQuit;
+
         Invoke("Enabled", _waitTime);
     }
 

@@ -308,6 +308,15 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GameQuit"",
+                    ""type"": ""Button"",
+                    ""id"": ""1126e79f-25e7-4877-bc4b-adc7c2d30f62"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -442,6 +451,17 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Cheat"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4b4907b4-bc83-40ea-a3c9-a681e2e5dc98"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GameQuit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -458,6 +478,7 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
         m_System = asset.FindActionMap("System", throwIfNotFound: true);
         m_System_Config = m_System.FindAction("Config", throwIfNotFound: true);
         m_System_Cheat = m_System.FindAction("Cheat", throwIfNotFound: true);
+        m_System_GameQuit = m_System.FindAction("GameQuit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -591,12 +612,14 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
     private List<ISystemActions> m_SystemActionsCallbackInterfaces = new List<ISystemActions>();
     private readonly InputAction m_System_Config;
     private readonly InputAction m_System_Cheat;
+    private readonly InputAction m_System_GameQuit;
     public struct SystemActions
     {
         private @GameInputs m_Wrapper;
         public SystemActions(@GameInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Config => m_Wrapper.m_System_Config;
         public InputAction @Cheat => m_Wrapper.m_System_Cheat;
+        public InputAction @GameQuit => m_Wrapper.m_System_GameQuit;
         public InputActionMap Get() { return m_Wrapper.m_System; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -612,6 +635,9 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
             @Cheat.started += instance.OnCheat;
             @Cheat.performed += instance.OnCheat;
             @Cheat.canceled += instance.OnCheat;
+            @GameQuit.started += instance.OnGameQuit;
+            @GameQuit.performed += instance.OnGameQuit;
+            @GameQuit.canceled += instance.OnGameQuit;
         }
 
         private void UnregisterCallbacks(ISystemActions instance)
@@ -622,6 +648,9 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
             @Cheat.started -= instance.OnCheat;
             @Cheat.performed -= instance.OnCheat;
             @Cheat.canceled -= instance.OnCheat;
+            @GameQuit.started -= instance.OnGameQuit;
+            @GameQuit.performed -= instance.OnGameQuit;
+            @GameQuit.canceled -= instance.OnGameQuit;
         }
 
         public void RemoveCallbacks(ISystemActions instance)
@@ -650,5 +679,6 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
     {
         void OnConfig(InputAction.CallbackContext context);
         void OnCheat(InputAction.CallbackContext context);
+        void OnGameQuit(InputAction.CallbackContext context);
     }
 }

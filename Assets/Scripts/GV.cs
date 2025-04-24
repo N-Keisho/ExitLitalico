@@ -41,4 +41,21 @@ public class GV : MonoBehaviour
             PlayerPrefs.SetFloat("bobber_buf", value);
         }
     }
+
+    static public bool IsDoneIhen(string name)
+    {
+        return PlayerPrefs.GetInt(name, 0) == 1;
+    }
+
+    static public void SetDoneIhen(string name, bool isDone = true)
+    {
+        if (isDone)
+        {
+            PlayerPrefs.SetInt(name, 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt(name, 0);
+        }
+    }
 }

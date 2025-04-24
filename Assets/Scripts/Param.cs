@@ -18,9 +18,13 @@ public class Param : MonoBehaviour
     {
         _slider.minValue = _minValue;
         _slider.maxValue = _maxValue;
-
-        _slider.value = _initialValue;
-        _inputField.text = _initialValue.ToString("F2");
+        
+        if(_slider.value <= _minValue || _slider.value >= _maxValue)
+        {
+            _slider.value = _initialValue;
+        }
+        
+        _inputField.text = _slider.value.ToString("F2");
     }
 
     public void OnSliderChange()
@@ -71,6 +75,28 @@ public class Param : MonoBehaviour
         else
         {
             _inputField.text = _preValue.ToString("F2");
+        }
+    }
+
+    public void SetValue(float value)
+    {
+        if (value >= _minValue && value <= _maxValue)
+        {
+            _slider.value = value;
+            _inputField.text = value.ToString("F2");
+            _preValue = value;
+        }
+        else if (value < _minValue)
+        {
+            _slider.value = _minValue;
+            _inputField.text = _minValue.ToString("F2");
+            _preValue = _minValue;
+        }
+        else if (value > _maxValue)
+        {
+            _slider.value = _maxValue;
+            _inputField.text = _maxValue.ToString("F2");
+            _preValue = _maxValue;
         }
     }
 

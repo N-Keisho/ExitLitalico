@@ -12,28 +12,22 @@ public class Config : MonoBehaviour
     [SerializeField] private Param _bobber;
 
     private GameObject _configPanel;
-    private GameInputs _gameInputs;
     private bool _isOpen = false;
     void Start()
     {
         _configPanel = this.gameObject;
 
-        _gameInputs = new GameInputs();
-        _gameInputs.System.Config.started += OnConfig;
-        _gameInputs.Enable();
-
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        _sensX.SetValue(GV.sensX_buf);
+        _sensY.SetValue(GV.sensY_buf);
+        _bobber.SetValue(GV.bobber_buf);
 
         _configPanel.SetActive(false);
     }
 
-    void OnDestroy()
-    {
-        _gameInputs.Disable();
-    }
-
-    private void OnConfig(InputAction.CallbackContext context)
+    public void OnConfig(InputAction.CallbackContext context)
     {
         _isOpen = !_isOpen;
         if (_isOpen)
@@ -50,6 +44,16 @@ public class Config : MonoBehaviour
             _configPanel.SetActive(false);
             Time.timeScale = 1f;
         }
+    }
+
+    public void OnGameQuit(InputAction.CallbackContext context)
+    {
+        if(!_isOpen) return;
+        #if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;//ゲームプレイ終了
+        #else
+                Application.Quit();//ゲームプレイ終了
+        #endif
     }
 
     public void OnSensXChange()

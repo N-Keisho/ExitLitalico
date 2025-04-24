@@ -2,132 +2,149 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-enum Side
-{
-    A,
-    B
-}
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
+    public enum Side
+    {
+        A,
+        B
+    }
 
 
-    [SerializeField] private GameObject _LitalicoPrefab;
+    [Header("GameObjects")]
+    [SerializeField] private IhenList _ihenList;
+    [SerializeField] private Path _path;
+
+    [Header("Celling")]
     [SerializeField] private GameObject _CellingA;
     [SerializeField] private GameObject _CellingB;
+
+    [Header("Goal")]
+    [SerializeField] private GameObject _goalPath;
 
     [Header("Test")]
     [SerializeField] private bool _isTest = false;
     [SerializeField] private int _testIndex = 0;
 
     private readonly Vector3 _POSITION_A = new Vector3(27.6f, 0.0f, -16.35f);
+    private readonly Vector3 _POSITION_GOAL_PATH_A = new Vector3(18, 0, -6);
     private GameObject _litalicoObjA;
     private GameObject _litalicoObjB;
-    private TMP_Text _correctNumText;
-    private int correctNum = 0;
+    private CurrentNum _currentNum;
+    private int _correctNum = 0;
     private Side _currentSide;
-    private IhenList _ihenList;
     private int _listLen;
     private int _preIhenIndex = 0;
     private bool _isIhen = false;
+    private bool _isClear = false;
 
     void Start()
     {
-        InstantLitalico(Side.A);
+        InstantLitalico(_ihenList.getDefoLitalico(), Side.A);
         _currentSide = Side.A;
         _CellingA.SetActive(true);
         _CellingB.SetActive(false);
         _listLen = _ihenList.getListLen();
+
     }
 
     public void CheckIhen(bool? answerIhen) // ?をつけるとnull許容型になる
     {
-        if (answerIhen == null)
+        if (_isClear) return; // クリア済みなら何もしない
+        else if (answerIhen == null)
         {
             Debug.LogError("Answer is null, skipping Ihen check.");
             return;
         }
         else if (_isIhen == answerIhen)
         {
-            correctNum++;
-            // Debug.Log("answer is correct.");
+            _correctNum++;
         }
         else
         {
-            correctNum = 0;
-            // Debug.Log("answer is incorrect.");
+            _correctNum = 0;
         }
-        SwitchLitalico();
-    }
 
+        if (_correctNum >= 8)
+        {
+            Goal(_currentSide == Side.A ? Side.B : Side.A);
+        }
+        else
+        {
+            SwitchLitalico();
+        }
+    }
 
     private void SwitchLitalico()
     {
-        if (_currentSide == Side.A)
-        {
-            Destroy(_litalicoObjA);
-            InstantLitalico(Side.B);
-            _currentSide = Side.B;
-        }
-        else if (_currentSide == Side.B)
-        {
-            Destroy(_litalicoObjB);
-            InstantLitalico(Side.A);
-            _currentSide = Side.A;
-        }
-
+        GameObject _nextLita = null;
         if (_isTest)
         {
             _isIhen = true;
-            _ihenList.DoIhen(_testIndex, true);
+            _nextLita = _ihenList.getIhenLitalico(_testIndex, _isIhen);
             Debug.Log("[Test] Ihen index: " + _testIndex);
         }
         else if (IhenOrNot())
         {
             _isIhen = true;
-            RandomIhenDo();
+            _nextLita = RandomIhenGet();
         }
         else
         {
             _isIhen = false;
+            _nextLita = _ihenList.getDefoLitalico();
             Debug.Log("Ihen is false, skipping IhenDo.");
+        }
+
+        if (_currentSide == Side.A)
+        {
+            Destroy(_litalicoObjA);
+            InstantLitalico(_nextLita, Side.B);
+            _currentSide = Side.B;
+        }
+        else if (_currentSide == Side.B)
+        {
+            Destroy(_litalicoObjB);
+            InstantLitalico(_nextLita, Side.A);
+            _currentSide = Side.A;
         }
     }
 
-    private void InstantLitalico(Side type)
+    private void InstantLitalico(GameObject _nextLita, Side type)
     {
+        if (_nextLita == null)
+        {
+            Debug.LogError("Next Litalico is null, cannot instantiate.");
+            return;
+        }
+
         switch (type)
         {
             case Side.A:
-                _litalicoObjA = Instantiate(_LitalicoPrefab, _POSITION_A, Quaternion.Euler(0, 180, 0));
+                _litalicoObjA = Instantiate(_nextLita, _POSITION_A, Quaternion.Euler(0, 180, 0));
                 _litalicoObjA.name = "LitalicoA";
-                _ihenList = _litalicoObjA.GetComponent<IhenList>();
-                _correctNumText = _litalicoObjA.transform.Find("CorrectNum").GetComponent<TMP_Text>();
+                _currentNum = _litalicoObjA.transform.Find("CurrentNumPannel").GetComponent<CurrentNum>();
                 _CellingA.SetActive(true);
                 _CellingB.SetActive(false);
-
                 break;
+
             case Side.B:
-                _litalicoObjB = Instantiate(_LitalicoPrefab, _POSITION_A * -1, Quaternion.identity);
+                _litalicoObjB = Instantiate(_nextLita, _POSITION_A * -1, Quaternion.identity);
                 _litalicoObjB.name = "LitalicoB";
-                _ihenList = _litalicoObjB.GetComponent<IhenList>();
-                _correctNumText = _litalicoObjB.transform.Find("CorrectNum").GetComponent<TMP_Text>();
+                _currentNum = _litalicoObjB.transform.Find("CurrentNumPannel").GetComponent<CurrentNum>();
                 _CellingA.SetActive(false);
                 _CellingB.SetActive(true);
                 break;
         }
 
-        if (_ihenList == null)
+        if (_currentNum == null)
         {
-            Debug.LogError("Litalico component not found on the object.");
+            Debug.LogError("CurrentNum component not found on the object.");
             return;
         }
-        else if (_correctNumText == null)
-        {
-            Debug.LogError("CorrectNum text component not found on the object.");
-            return;
-        }
-        _correctNumText.text = correctNum.ToString();
+        _currentNum.SetCurrentNum(_correctNum);
     }
 
     private bool IhenOrNot()
@@ -135,12 +152,13 @@ public class GameManager : MonoBehaviour
         return Random.Range(0, 2) == 0;
     }
 
-    private void RandomIhenDo()
+    private GameObject RandomIhenGet()
     {
         if (_listLen <= 1)
         {
+            _isIhen = false;
             Debug.LogError("List length is less than or equal to 1, skipping IhenDo.");
-            return;
+            return _ihenList.getDefoLitalico();
         }
 
         int index = _preIhenIndex;
@@ -148,8 +166,33 @@ public class GameManager : MonoBehaviour
         {
             index = Random.Range(0, _listLen);
         }
-        Debug.Log("Ihen index: " + index);
-        _ihenList.DoIhen(index, true);
         _preIhenIndex = index;
+        return _ihenList.getIhenLitalico(index, _isIhen);
+    }
+
+    private void Goal(Side type)
+    {
+        _isClear = true;
+        _path.Clear(type);
+        switch (type)
+        {
+            case Side.A:
+                Instantiate(_goalPath, _POSITION_GOAL_PATH_A, Quaternion.identity);
+                _CellingA.SetActive(true);
+                break;
+            case Side.B:
+                Instantiate(_goalPath, _POSITION_GOAL_PATH_A * -1, Quaternion.Euler(0, 180, 0));
+                _CellingB.SetActive(true);
+                break;
+        }
+    }
+
+    public void OnCheat(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            _correctNum = 6;
+            Debug.Log("Cheat activated! Correct number set to 6.");
+        }
     }
 }

@@ -191,7 +191,7 @@ public class GameManager : MonoBehaviour
     {
         if (context.started)
         {
-            _correctNum = 7;
+            _correctNum = 6;
             Debug.Log("Cheat activated! Correct number set to 6.");
         }
     }

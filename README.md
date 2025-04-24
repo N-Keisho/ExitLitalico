@@ -8,9 +8,15 @@
 
 - 移動：WASD or 左スティック
 - 視点：マウス移動 or 右スティック
-- ダッシュ：Shift or 左右トリガー（R2L2）
-- ズーム：マウス中央押し込み or 左右ショルダー（R1L1）
+- ダッシュ：Shift or （左or右）トリガー（R2L2）
+- ズーム：Ctrl or マウス中央押し込み or （左or右）ショルダー（R1L1）
 - ポーズ画面：Tab or Homeボタン or Startボタン or Selectボタン
+- ゲーム終了：ポーズ画面でEsc
+
+#### 隠しコマンド
+- 異変発見チート：「Shift + Ctrl + Tab」 or 「（左or右）トリガー + （左or右）ショルダー + Startボタン」
+    - 正解数が6回になる
+- 異変発見状態リセット：backspace + delete
 
 ### ルール
 
@@ -83,13 +89,16 @@ Debug.Log(GV.moveSpeed);
 
 **なお，4/21に仕様を変更しました**
 
-### 最新版
+### 最新版：4/24 Update
 1. 異変に関するものは `Assets/Ihen/Main` に入れよう
-2. 異変は，`Assets/Ihen` にある `LitalicoDefo.prefab` を複製して作成しよう（以後「異変ワンダー」と呼称）
+2. 異変は，`Assets/Ihen` にある `LitalicoDefo.prefab` を `右クリック > Create > Prefab Variant` で作成しよう（以後「異変ワンダー」と呼称）
 3. 異変のスクリプトは必ず `IhenBase` を継承し，`I_XX.cs` という名前にしよう
 4. 異変のスクリプトは異変ワンダーにアタッチしよう
 5. 異変ワンダーの名前はスクリプト名と同じにしよう
-6. 異変ワンダーは `_GameManager_` の `IhenList`コンポーネントの `IhenList` に追加しよう
+6. 異変ワンダーは Mainシーンの `_GameManager_` の `IhenList`コンポーネントの `IhenList` に追加しよう
+7. 異変ワンダーは StaffRollシーンの `_StaffRoll_` の `StaffRoll`コンポーネントの `IhenList` に追加しよう
+
+**※注意**　Prefab Variantで作成しないと，`LitalicoDefo.prefab` の変更が適応されなくなるので気を付けて！
 
 #### IhenBase とスクリプト例
 

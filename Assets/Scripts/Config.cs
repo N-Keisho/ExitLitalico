@@ -20,6 +20,10 @@ public class Config : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
+        _sensX.SetValue(GV.sensX_buf);
+        _sensY.SetValue(GV.sensY_buf);
+        _bobber.SetValue(GV.bobber_buf);
+
         _configPanel.SetActive(false);
     }
 

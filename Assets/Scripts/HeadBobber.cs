@@ -27,6 +27,7 @@ public class HeadBobber : MonoBehaviour
     {
         _curveEndTime = _bobCurve[_bobCurve.length - 1].time;
         _xPlayhead = _yPlayhead = 0f;
+        _bobber_buf = GV.bobber_buf;
     }
 
     public Vector3 GetVectorOffset(float speed)

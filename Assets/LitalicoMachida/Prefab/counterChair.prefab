@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 6672654642878037576}
   - component: {fileID: -7617830534448307146}
   m_Layer: 0
-  m_Name: "\u9AA8\u7D44\u307F"
+  m_Name: counterChair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

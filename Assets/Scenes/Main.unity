@@ -1633,7 +1633,7 @@ MonoBehaviour:
   _CellingA: {fileID: 1371729857}
   _CellingB: {fileID: 1394242978}
   _goalPath: {fileID: 5571291561251729022, guid: c851a12b7b4a42844b50c9f793ba511a, type: 3}
-  _isTest: 0
+  _isTest: 1
   _testIndex: 0
 --- !u!114 &930434025
 MonoBehaviour:
@@ -1649,8 +1649,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _litalicoDefo: {fileID: 456981256593743237, guid: 4edd96128d38b75448ad2b338da1c8ad, type: 3}
   _ihenList:
-  - {fileID: 5127380165176790662, guid: 6a4cc2ea25897f4498ae54ebd3714288, type: 3}
-  - {fileID: 8733910706181900159, guid: abcff76a256445442ba7e1656f43cde7, type: 3}
+  - {fileID: 6972709096645651899, guid: 8b83f7911add0854ea4a5aaaad026191, type: 3}
+  - {fileID: 6972709096645651899, guid: 8b83f7911add0854ea4a5aaaad026191, type: 3}
 --- !u!114 &930434026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1755,7 +1755,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.51, z: 0}
+  m_LocalPosition: {x: 0, y: 0.76, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

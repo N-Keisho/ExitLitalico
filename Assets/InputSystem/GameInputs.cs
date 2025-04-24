@@ -317,6 +317,15 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ResetIhenDone"",
+                    ""type"": ""Button"",
+                    ""id"": ""a22e4605-d3ef-4e91-a0c0-c6f14b45693a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -365,7 +374,7 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""KeyBord"",
+                    ""name"": ""KeyBoard"",
                     ""id"": ""94459588-a363-4960-963b-3ef6a895b140"",
                     ""path"": ""TwoModifiers"",
                     ""interactions"": """",
@@ -462,6 +471,39 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
                     ""action"": ""GameQuit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""KeyBoard"",
+                    ""id"": ""57f9dd7f-2f7f-4969-a256-3eea0487ae08"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ResetIhenDone"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""52e2f4b3-a37b-4ac7-9158-e0f449f8145d"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ResetIhenDone"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""750f0aaa-9e39-44f7-a213-98484f3a424b"",
+                    ""path"": ""<Keyboard>/delete"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ResetIhenDone"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -479,6 +521,7 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
         m_System_Config = m_System.FindAction("Config", throwIfNotFound: true);
         m_System_Cheat = m_System.FindAction("Cheat", throwIfNotFound: true);
         m_System_GameQuit = m_System.FindAction("GameQuit", throwIfNotFound: true);
+        m_System_ResetIhenDone = m_System.FindAction("ResetIhenDone", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -613,6 +656,7 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_System_Config;
     private readonly InputAction m_System_Cheat;
     private readonly InputAction m_System_GameQuit;
+    private readonly InputAction m_System_ResetIhenDone;
     public struct SystemActions
     {
         private @GameInputs m_Wrapper;
@@ -620,6 +664,7 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
         public InputAction @Config => m_Wrapper.m_System_Config;
         public InputAction @Cheat => m_Wrapper.m_System_Cheat;
         public InputAction @GameQuit => m_Wrapper.m_System_GameQuit;
+        public InputAction @ResetIhenDone => m_Wrapper.m_System_ResetIhenDone;
         public InputActionMap Get() { return m_Wrapper.m_System; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -638,6 +683,9 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
             @GameQuit.started += instance.OnGameQuit;
             @GameQuit.performed += instance.OnGameQuit;
             @GameQuit.canceled += instance.OnGameQuit;
+            @ResetIhenDone.started += instance.OnResetIhenDone;
+            @ResetIhenDone.performed += instance.OnResetIhenDone;
+            @ResetIhenDone.canceled += instance.OnResetIhenDone;
         }
 
         private void UnregisterCallbacks(ISystemActions instance)
@@ -651,6 +699,9 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
             @GameQuit.started -= instance.OnGameQuit;
             @GameQuit.performed -= instance.OnGameQuit;
             @GameQuit.canceled -= instance.OnGameQuit;
+            @ResetIhenDone.started -= instance.OnResetIhenDone;
+            @ResetIhenDone.performed -= instance.OnResetIhenDone;
+            @ResetIhenDone.canceled -= instance.OnResetIhenDone;
         }
 
         public void RemoveCallbacks(ISystemActions instance)
@@ -680,5 +731,6 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
         void OnConfig(InputAction.CallbackContext context);
         void OnCheat(InputAction.CallbackContext context);
         void OnGameQuit(InputAction.CallbackContext context);
+        void OnResetIhenDone(InputAction.CallbackContext context);
     }
 }

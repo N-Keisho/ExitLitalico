@@ -3263,6 +3263,7 @@ MonoBehaviour:
   _gameManager: {fileID: 930434024}
   _player: {fileID: 809652861}
   _config: {fileID: 57543800}
+  _ihenList: {fileID: 930434025}
   _waitTime: 1.3
 --- !u!4 &1994951355 stripped
 Transform:

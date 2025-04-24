@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class IhenList : MonoBehaviour
 {
@@ -66,5 +67,14 @@ public class IhenList : MonoBehaviour
         }
 
         return _ihenList[index];
+    }
+
+    public void ResetIhenDone(InputAction.CallbackContext context)
+    {
+        foreach (GameObject item in _ihenList)
+        {
+            Debug.Log("Resetting Ihen: " + item.name);
+            GV.SetDoneIhen(item.name.Replace("(Clone)", ""), false);
+        }
     }
 }

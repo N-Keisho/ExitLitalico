@@ -10,6 +10,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private GameManager _gameManager;
     [SerializeField] private Player _player;
     [SerializeField] private Config _config;
+    [SerializeField] private IhenList _ihenList;
 
     [Header("Parameters")]
     [SerializeField] private float _waitTime = 1f; // 待機時間
@@ -33,6 +34,8 @@ public class InputManager : MonoBehaviour
         _gameInputs.System.Config.started += _config.OnConfig;
 
         _gameInputs.System.GameQuit.started += _config.OnGameQuit;
+
+        _gameInputs.System.ResetIhenDone.started += _ihenList.ResetIhenDone;
 
         Invoke("Enabled", _waitTime);
     }

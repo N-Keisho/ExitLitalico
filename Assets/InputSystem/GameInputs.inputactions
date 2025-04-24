@@ -295,6 +295,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ResetIhenDone",
+                    "type": "Button",
+                    "id": "a22e4605-d3ef-4e91-a0c0-c6f14b45693a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -343,7 +352,7 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "KeyBord",
+                    "name": "KeyBoard",
                     "id": "94459588-a363-4960-963b-3ef6a895b140",
                     "path": "TwoModifiers",
                     "interactions": "",
@@ -440,6 +449,39 @@
                     "action": "GameQuit",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "KeyBoard",
+                    "id": "57f9dd7f-2f7f-4969-a256-3eea0487ae08",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ResetIhenDone",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "52e2f4b3-a37b-4ac7-9158-e0f449f8145d",
+                    "path": "<Keyboard>/backspace",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ResetIhenDone",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "750f0aaa-9e39-44f7-a213-98484f3a424b",
+                    "path": "<Keyboard>/delete",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ResetIhenDone",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

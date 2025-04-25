@@ -1633,8 +1633,8 @@ MonoBehaviour:
   _CellingA: {fileID: 1371729857}
   _CellingB: {fileID: 1394242978}
   _goalPath: {fileID: 5571291561251729022, guid: c851a12b7b4a42844b50c9f793ba511a, type: 3}
-  _isTest: 0
-  _testIndex: 14
+  _isTest: 1
+  _testIndex: 4
 --- !u!114 &930434025
 MonoBehaviour:
   m_ObjectHideFlags: 0

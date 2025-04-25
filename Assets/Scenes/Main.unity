@@ -1634,7 +1634,7 @@ MonoBehaviour:
   _CellingB: {fileID: 1394242978}
   _goalPath: {fileID: 5571291561251729022, guid: c851a12b7b4a42844b50c9f793ba511a, type: 3}
   _isTest: 1
-  _testIndex: 3
+  _testIndex: 4
 --- !u!114 &930434025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1653,6 +1653,7 @@ MonoBehaviour:
   - {fileID: 1683182058174226781, guid: 9b66e73a747e26e41a6b9e60e8daa381, type: 3}
   - {fileID: 6074560693443177782, guid: 9f4b5e3a631b0aa468c28814e742d30e, type: 3}
   - {fileID: 4063341223758159732, guid: c18fdd430cea8fc46a162f0188eef3f8, type: 3}
+  - {fileID: 1651523582684415588, guid: 8c9bbc43547d9dc408a0fe26eb6a4e88, type: 3}
 --- !u!114 &930434026
 MonoBehaviour:
   m_ObjectHideFlags: 0

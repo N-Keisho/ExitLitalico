@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private Player _player;
     [SerializeField] private Config _config;
     [SerializeField] private IhenList _ihenList;
+    [SerializeField] private CameraZoom _cameraZoom;
 
     [Header("Parameters")]
     [SerializeField] private float _waitTime = 1f; // 待機時間
@@ -28,6 +29,9 @@ public class InputManager : MonoBehaviour
 
         _gameInputs.Player.Dash.started += _player.OnDash;
         _gameInputs.Player.Dash.canceled += _player.OnDash;
+
+        _gameInputs.Player.Zoom.started += _cameraZoom.OnZoom;
+        _gameInputs.Player.Zoom.canceled += _cameraZoom.OnZoom;
 
         _gameInputs.System.Cheat.started += _gameManager.OnCheat;
 

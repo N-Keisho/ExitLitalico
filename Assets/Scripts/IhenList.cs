@@ -60,8 +60,21 @@ public class IhenList : ScriptableObject
     {
         foreach (IhenBase item in _ihenList)
         {
-            Debug.Log("Resetting Ihen: " + item.gameObject.name);
             GV.SetDoneIhen(item.gameObject.name, false);
         }
+        Debug.Log("IhenList reset done status.");
+    }
+
+    public List<int> getNotDoneIhenIndexes()
+    {
+        List<int> notDoneIndexes = new List<int>();
+        for (int i = 0; i < _ihenList.Count; i++)
+        {
+            if (!GV.IsDoneIhen(_ihenList[i].gameObject.name))
+            {
+                notDoneIndexes.Add(i);
+            }
+        }
+        return notDoneIndexes;
     }
 }

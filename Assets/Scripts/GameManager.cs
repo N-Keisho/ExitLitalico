@@ -168,13 +168,27 @@ public class GameManager : MonoBehaviour
             return _ihenList.getDefoLitalico();
         }
 
-        int index = _preIhenIndex;
-        while (index == _preIhenIndex)
+        // まだ実行されていない異変のインデックス
+        List<int> _notDoneIhenIndexes = _ihenList.getNotDoneIhenIndexes();
+
+        if (_notDoneIhenIndexes.Count == 0) 
         {
-            index = Random.Range(0, _listLen);
+            // 0個のときは，ランダムな異変
+            int index = _preIhenIndex;
+            while (index == _preIhenIndex)
+            {
+                index = Random.Range(0, _listLen);
+            }
+            _preIhenIndex = index;
+            return _ihenList.getIhenLitalico(index, _isIhen);
         }
-        _preIhenIndex = index;
-        return _ihenList.getIhenLitalico(index, _isIhen);
+        else
+        {
+            // まだ実行されていない異変のインデックスからランダムに選ぶ
+            int index = Random.Range(0,  _notDoneIhenIndexes.Count);
+            _preIhenIndex = _notDoneIhenIndexes[index];
+            return _ihenList.getIhenLitalico(_preIhenIndex, _isIhen);
+        }
     }
 
     private void Goal(Side type)

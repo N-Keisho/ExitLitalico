@@ -156,7 +156,15 @@ public class GameManager : MonoBehaviour
 
     private bool IhenOrNot()
     {
-        return Random.Range(0, 2) == 0;
+        int _randomNum = Random.Range(0, 5);
+        if (_randomNum <= 2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private GameObject RandomIhenGet()

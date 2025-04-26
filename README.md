@@ -13,7 +13,7 @@
 - ポーズ画面：Tab or Homeボタン or Startボタン or Selectボタン
 - ゲーム終了：ポーズ画面でEsc
 
-#### 隠しコマンド
+#### 隠しコマンド（音が鳴る）
 - 異変発見チート：「Shift + Ctrl + Tab」 or 「（左or右）トリガー + （左or右）ショルダー + Startボタン」
     - 正解数が6回になる
 - 異変発見状態リセット：backspace + delete
@@ -89,14 +89,13 @@ Debug.Log(GV.moveSpeed);
 
 **なお，4/21に仕様を変更しました**
 
-### 最新版：4/24 Update
+### 最新版：4/27 Update
 1. 異変に関するものは `Assets/Ihen/Main` に入れよう
 2. 異変は，`Assets/Ihen` にある `LitalicoDefo.prefab` を `右クリック > Create > Prefab Variant` で作成しよう（以後「異変ワンダー」と呼称）
 3. 異変のスクリプトは必ず `IhenBase` を継承し，`I_XX.cs` という名前にしよう
 4. 異変のスクリプトは異変ワンダーにアタッチしよう
 5. 異変ワンダーの名前はスクリプト名と同じにしよう
-6. 異変ワンダーは Mainシーンの `_GameManager_` の `IhenList`コンポーネントの `IhenList` に追加しよう
-7. 異変ワンダーは StaffRollシーンの `_StaffRoll_` の `StaffRoll`コンポーネントの `IhenList` に追加しよう
+6. 異変ワンダーは `Assets/Ihen` にある　`Main`（ScriptableObject）の `IhenList` に追加しよう
 
 **※注意**　Prefab Variantで作成しないと，`LitalicoDefo.prefab` の変更が適応されなくなるので気を付けて！
 

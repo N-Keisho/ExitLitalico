@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     [Header("Test")]
     [SerializeField] private bool _isTest = false;
     [SerializeField] private int _testIndex = 0;
+    [SerializeField] private bool _ihenOnly = false;
 
     private readonly Vector3 _POSITION_A = new Vector3(27.6f, 0.0f, -16.35f);
     private readonly Vector3 _POSITION_GOAL_PATH_A = new Vector3(18, 0, -6);
@@ -85,6 +86,12 @@ public class GameManager : MonoBehaviour
             _isIhen = true;
             _nextLita = _ihenList.getIhenLitalico(_testIndex, _isIhen);
             Debug.Log("[Test] Ihen index: " + _testIndex);
+        }
+        else if (_ihenOnly)
+        {
+            _isIhen = true;
+            _nextLita = RandomIhenGet();
+            Debug.Log("[IhenOnly]");
         }
         else if (IhenOrNot())
         {

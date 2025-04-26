@@ -10,6 +10,7 @@ public class PlayVideo : MonoBehaviour
 
     // StreamingAssetsの動画ファイルへのパス
     [SerializeField] private string _streamingAssetsMoviePath;
+    [SerializeField] private float _videoSpeed = 1f; // 再生速度
     [SerializeField] private float _waitTime = 1f; // 待機時間
 
     private void Awake()
@@ -19,6 +20,7 @@ public class PlayVideo : MonoBehaviour
 
         // StreamingAssetsフォルダ配下のパスの動画をURLとして指定する
         _videoPlayer.url = Application.streamingAssetsPath + "/" + _streamingAssetsMoviePath;
+        _videoPlayer.playbackSpeed = _videoSpeed;
 
         Invoke("Play", _waitTime);
     }

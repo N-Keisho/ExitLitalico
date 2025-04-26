@@ -35,7 +35,7 @@ public class StaffRoll : MonoBehaviour
     [SerializeField] private IhenList _ihenList;
 
     private readonly Vector2 _POSITION_ROOT = new Vector2(0, -700f);
-    private readonly Vector2 _POSITION_UNKNOWN = new Vector2(0, -3000);
+    private readonly Vector2 _POSITION_UNKNOWN = new Vector2(0, -3100);
     private float _baseSpeed = 100f;
     private int _unknownCount = 0;
     private bool _isFin = false;

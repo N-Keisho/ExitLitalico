@@ -1632,8 +1632,8 @@ MonoBehaviour:
   _CellingA: {fileID: 1371729857}
   _CellingB: {fileID: 1394242978}
   _goalPath: {fileID: 5571291561251729022, guid: c851a12b7b4a42844b50c9f793ba511a, type: 3}
-  _isTest: 1
-  _testIndex: 23
+  _isTest: 0
+  _testIndex: 5
   _ihenOnly: 0
 --- !u!114 &930434026
 MonoBehaviour:
@@ -1648,7 +1648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fadeInObj: {fileID: 392707488}
-  _fadeDuration: 1.5
+  _fadeDuration: 2
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3249,7 +3249,7 @@ MonoBehaviour:
   _config: {fileID: 57543800}
   _ihenList: {fileID: 11400000, guid: ff49c16db5dacde468e396b291bc0138, type: 2}
   _cameraZoom: {fileID: 963194233}
-  _waitTime: 1.3
+  _waitTime: 1.7
 --- !u!4 &1994951355 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1133259826353618082, guid: f322b981de245e34c980897ad4c62457, type: 3}

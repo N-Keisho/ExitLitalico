@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour
         // まだ実行されていない異変のインデックス
         List<int> _notDoneIhenIndexes = _ihenList.getNotDoneIhenIndexes();
 
-        if (_notDoneIhenIndexes.Count == 0) 
+        if (_notDoneIhenIndexes.Count == 0)
         {
             // 0個のときは，ランダムな異変
             int index = _preIhenIndex;
@@ -184,10 +184,24 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // まだ実行されていない異変のインデックスからランダムに選ぶ
-            int index = Random.Range(0,  _notDoneIhenIndexes.Count);
-            _preIhenIndex = _notDoneIhenIndexes[index];
-            return _ihenList.getIhenLitalico(_preIhenIndex, _isIhen);
+            // 3回に1回の確率でランダムな異変を選ぶ
+            if (Random.Range(0, 3) == 0)
+            {
+                int index = _preIhenIndex;
+                while (index == _preIhenIndex)
+                {
+                    index = Random.Range(0, _listLen);
+                }
+                _preIhenIndex = index;
+                return _ihenList.getIhenLitalico(index, _isIhen);
+            }
+            else
+            {
+                // まだ実行されていない異変のインデックスからランダムに選ぶ
+                int index = Random.Range(0, _notDoneIhenIndexes.Count);
+                _preIhenIndex = _notDoneIhenIndexes[index];
+                return _ihenList.getIhenLitalico(_preIhenIndex, _isIhen);
+            }
         }
     }
 

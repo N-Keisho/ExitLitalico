@@ -4,6 +4,7 @@ using UnityEngine;
 
 abstract public class IhenBase : MonoBehaviour
 {
+    [Header("IhenBase Param")]
     [SerializeField] protected string _explanation = "初期値";
     public string Explanation { get { return _explanation; } }
 

@@ -223,10 +223,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _words:
-  - <color=#009e98>L
+  - <color=#006d6b>L
   - I</color>
   - T
-  - <color=red>A</color>
+  - <color=#a0000a>A</color>
   - L
   - I
   - C
@@ -332,7 +332,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <color=#009e98>LI</color>T<color=red>A</color>LICO
+  m_text: <color=#006d6b>LI</color>T<color=#a0000a>A</color>LICO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b94811d170f1623459a1b0d57c759e10, type: 2}
   m_sharedMaterial: {fileID: 8675999555959458186, guid: b94811d170f1623459a1b0d57c759e10, type: 2}
@@ -676,7 +676,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <color=#009e98>LI</color>T<color=red>A</color>LICO
+  m_text: <color=#006d6b>LI</color>T<color=#a0000a>A</color>LICO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b94811d170f1623459a1b0d57c759e10, type: 2}
   m_sharedMaterial: {fileID: 8675999555959458186, guid: b94811d170f1623459a1b0d57c759e10, type: 2}

@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     [Header("Test")]
     [SerializeField] private bool _isTest = false;
     [SerializeField] private int _testIndex = 0;
+    [SerializeField] private bool _ihenOnly = false;
 
     private readonly Vector3 _POSITION_A = new Vector3(27.6f, 0.0f, -16.35f);
     private readonly Vector3 _POSITION_GOAL_PATH_A = new Vector3(18, 0, -6);
@@ -85,6 +86,12 @@ public class GameManager : MonoBehaviour
             _isIhen = true;
             _nextLita = _ihenList.getIhenLitalico(_testIndex, _isIhen);
             Debug.Log("[Test] Ihen index: " + _testIndex);
+        }
+        else if (_ihenOnly)
+        {
+            _isIhen = true;
+            _nextLita = RandomIhenGet();
+            Debug.Log("[IhenOnly]");
         }
         else if (IhenOrNot())
         {
@@ -149,7 +156,15 @@ public class GameManager : MonoBehaviour
 
     private bool IhenOrNot()
     {
-        return Random.Range(0, 2) == 0;
+        int _randomNum = Random.Range(0, 5);
+        if (_randomNum <= 2)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private GameObject RandomIhenGet()
@@ -161,13 +176,41 @@ public class GameManager : MonoBehaviour
             return _ihenList.getDefoLitalico();
         }
 
-        int index = _preIhenIndex;
-        while (index == _preIhenIndex)
+        // まだ実行されていない異変のインデックス
+        List<int> _notDoneIhenIndexes = _ihenList.getNotDoneIhenIndexes();
+
+        if (_notDoneIhenIndexes.Count == 0)
         {
-            index = Random.Range(0, _listLen);
+            // 0個のときは，ランダムな異変
+            int index = _preIhenIndex;
+            while (index == _preIhenIndex)
+            {
+                index = Random.Range(0, _listLen);
+            }
+            _preIhenIndex = index;
+            return _ihenList.getIhenLitalico(index, _isIhen);
         }
-        _preIhenIndex = index;
-        return _ihenList.getIhenLitalico(index, _isIhen);
+        else
+        {
+            // 3回に1回の確率でランダムな異変を選ぶ
+            if (Random.Range(0, 3) == 0)
+            {
+                int index = _preIhenIndex;
+                while (index == _preIhenIndex)
+                {
+                    index = Random.Range(0, _listLen);
+                }
+                _preIhenIndex = index;
+                return _ihenList.getIhenLitalico(index, _isIhen);
+            }
+            else
+            {
+                // まだ実行されていない異変のインデックスからランダムに選ぶ
+                int index = Random.Range(0, _notDoneIhenIndexes.Count);
+                _preIhenIndex = _notDoneIhenIndexes[index];
+                return _ihenList.getIhenLitalico(_preIhenIndex, _isIhen);
+            }
+        }
     }
 
     private void Goal(Side type)

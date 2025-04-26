@@ -3,44 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class IhenList : MonoBehaviour
+[CreateAssetMenu(fileName = "IhenList", menuName = "IhenList", order = 0)]
+public class IhenList : ScriptableObject
 {
     [SerializeField] private GameObject _litalicoDefo;
-    [SerializeField] private List<GameObject> _ihenList = new List<GameObject>();
+    [SerializeField] private List<IhenBase> _ihenList = new List<IhenBase>();
 
-    private void Awake()
+    public int getListLen()
     {
-        if (_litalicoDefo == null)
-        {
-            Debug.LogError("LitalicoDefo is not assigned in the inspector.");
-        }
-        else
-        {
-            CheckIhenList();
-        }
+        return _ihenList.Count;
     }
 
-    private void CheckIhenList()
+    public IhenBase getIhen(int index)
     {
         if (_ihenList == null || _ihenList.Count == 0)
         {
             Debug.LogError("IhenList is not initialized or empty.");
+            return null;
         }
-        else
+        else if (index < 0 || index >= _ihenList.Count)
         {
-            foreach (GameObject item in _ihenList)
-            {
-                IhenBase ihenBase = item.GetComponent<IhenBase>();
-                if (ihenBase == null)
-                {
-                    Debug.LogError("IhenList contains an item without IhenBase component: " + item.name);
-                }
-            }
+            Debug.LogError("Index out of range: " + index);
+            return null;
         }
-    }
-    public int getListLen()
-    {
-        return _ihenList.Count;
+
+        return _ihenList[index];
     }
 
     public GameObject getDefoLitalico()
@@ -66,15 +53,15 @@ public class IhenList : MonoBehaviour
             return _litalicoDefo;
         }
 
-        return _ihenList[index];
+        return _ihenList[index].gameObject;
     }
 
     public void ResetIhenDone(InputAction.CallbackContext context)
     {
-        foreach (GameObject item in _ihenList)
+        foreach (IhenBase item in _ihenList)
         {
-            Debug.Log("Resetting Ihen: " + item.name);
-            GV.SetDoneIhen(item.name.Replace("(Clone)", ""), false);
+            Debug.Log("Resetting Ihen: " + item.gameObject.name);
+            GV.SetDoneIhen(item.gameObject.name, false);
         }
     }
 }

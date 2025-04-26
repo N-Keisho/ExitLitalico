@@ -32,7 +32,7 @@ public class StaffRoll : MonoBehaviour
     [SerializeField] private string _nextSceneName = "Main";
 
     [Header("IhenList")]
-    [SerializeField] private List<IhenBase> _ihenList = new List<IhenBase>();
+    [SerializeField] private IhenList _ihenList;
 
     private readonly Vector2 _POSITION_ROOT = new Vector2(0, -700f);
     private readonly Vector2 _POSITION_UNKNOWN = new Vector2(0, -3000);
@@ -48,8 +48,9 @@ public class StaffRoll : MonoBehaviour
         _ihenText.text = "";
         _fadeImage.gameObject.SetActive(false);
 
-        foreach (IhenBase ihen in _ihenList)
+        for(int i = 0; i < _ihenList.getListLen(); i++)
         {
+            IhenBase ihen = _ihenList.getIhen(i);
             if (GV.IsDoneIhen(ihen.name))
             {
                 _ihenText.text += ihen.Explanation + "\n";
@@ -61,9 +62,9 @@ public class StaffRoll : MonoBehaviour
             }
         }
 
-        _afterListObj.anchoredPosition = _POSITION_UNKNOWN - new Vector2(0, _ihenList.Count * _afterListOffset);
+        _afterListObj.anchoredPosition = _POSITION_UNKNOWN - new Vector2(0, _ihenList.getListLen() * _afterListOffset);
         _unknownText.text = _unknownCount.ToString();
-        _allIhenText.text = _ihenList.Count.ToString();
+        _allIhenText.text = _ihenList.getListLen().ToString();
 
         _gameInputs = new GameInputs();
         _gameInputs.Player.Dash.started += ctx => _isHighSpeed = true;

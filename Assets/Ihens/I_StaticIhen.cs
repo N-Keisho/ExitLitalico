@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class I_BackRain : IhenBase
+public class I_StaticIhen : IhenBase
 {
-
 }

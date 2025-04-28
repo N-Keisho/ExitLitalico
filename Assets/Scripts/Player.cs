@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -47,6 +48,7 @@ public class Player : MonoBehaviour
         _isMove = (_moveInputValue != Vector2.zero);
         if (_isMove) Move();
         Look();
+        if(transform.position.y < -10) SceneManager.LoadScene("Main");
     }
 
     // --- プレイヤーの行動 ---

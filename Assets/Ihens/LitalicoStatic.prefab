@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LitalicoStatic
       objectReference: {fileID: 0}
+    - target: {fileID: 456981256593743237, guid: 4edd96128d38b75448ad2b338da1c8ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 944725286480004927, guid: 4edd96128d38b75448ad2b338da1c8ad, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -59,6 +63,30 @@ PrefabInstance:
     - target: {fileID: 3191059994894270688, guid: 4edd96128d38b75448ad2b338da1c8ad, type: 3}
       propertyPath: _videoPlayer
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4027891007340361082, guid: 4edd96128d38b75448ad2b338da1c8ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4507853993657597244, guid: 4edd96128d38b75448ad2b338da1c8ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748723523848840107, guid: 4edd96128d38b75448ad2b338da1c8ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6434581181687939584, guid: 4edd96128d38b75448ad2b338da1c8ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861842953290530891, guid: 4edd96128d38b75448ad2b338da1c8ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 8333063806151002195, guid: 4edd96128d38b75448ad2b338da1c8ad, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

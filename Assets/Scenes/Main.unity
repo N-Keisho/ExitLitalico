@@ -548,6 +548,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 484162363435057347, guid: 7744304c0727adc4cb504070fb697252, type: 3}
   m_PrefabInstance: {fileID: 110773784}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &127099377 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1635805160654185570, guid: e4945babf734eba4095cfae1e9961aaa, type: 3}
+  m_PrefabInstance: {fileID: 906120347}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &379818294
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1762,9 +1767,11 @@ MonoBehaviour:
   _path: {fileID: 1568217116}
   _CellingA: {fileID: 1371729857}
   _CellingB: {fileID: 1394242978}
+  _staticLitalicoA: {fileID: 127099377}
+  _staticLitalicoB: {fileID: 1841219712}
   _goalPath: {fileID: 5571291561251729022, guid: c851a12b7b4a42844b50c9f793ba511a, type: 3}
   _isTest: 1
-  _testIndex: 5
+  _testIndex: 3
   _ihenOnly: 1
 --- !u!114 &930434026
 MonoBehaviour:
@@ -3171,6 +3178,11 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   priority: 0
+--- !u!1 &1841219712 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1635805160654185570, guid: e4945babf734eba4095cfae1e9961aaa, type: 3}
+  m_PrefabInstance: {fileID: 2051726813}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1916387277
 GameObject:
   m_ObjectHideFlags: 0

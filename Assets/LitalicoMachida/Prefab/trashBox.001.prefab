@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3615961654997051471}
   - component: {fileID: 1076391713950964750}
   - component: {fileID: 1914776706185760650}
-  - component: {fileID: 3743426952595337718}
+  - component: {fileID: 2813229869351712219}
   m_Layer: 0
   m_Name: trashBox.001
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1076391713950964750
 MeshFilter:
@@ -85,8 +85,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3743426952595337718
-MeshCollider:
+--- !u!65 &2813229869351712219
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -103,7 +103,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3787807746603318185, guid: 86ca8cbd343aa5b45a26cf1b4cbd5443, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.0041470854, y: 0.0034398295, z: 0.0056996965}
+  m_Center: {x: 1.7972786e-18, y: -5.95142e-12, z: 0.00009984826}

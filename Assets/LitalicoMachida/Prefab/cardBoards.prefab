@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8295005166527178166}
   - component: {fileID: 5883317553305824020}
   - component: {fileID: 6392307514777378912}
-  - component: {fileID: 8184096721272885240}
+  - component: {fileID: 5352630256460768184}
   m_Layer: 0
   m_Name: cardBoards
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5883317553305824020
 MeshFilter:
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8184096721272885240
-MeshCollider:
+--- !u!65 &5352630256460768184
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,7 +102,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5140844810434416534, guid: 86ca8cbd343aa5b45a26cf1b4cbd5443, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.005341158, y: 0.0053528333, z: 0.008914673}
+  m_Center: {x: 0.0026705784, y: 0.002257056, z: 0.0044573364}

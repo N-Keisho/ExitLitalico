@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5923343771942903201}
   - component: {fileID: 6379778346132768762}
   - component: {fileID: 8742662849436581666}
-  - component: {fileID: 6072407447195012184}
+  - component: {fileID: 4482653873049831379}
   m_Layer: 0
   m_Name: whiteBoard
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 65, z: 90}
 --- !u!33 &6379778346132768762
 MeshFilter:
@@ -85,8 +85,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6072407447195012184
-MeshCollider:
+--- !u!65 &4482653873049831379
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -103,7 +103,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1241323050863932375, guid: 86ca8cbd343aa5b45a26cf1b4cbd5443, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.009266698, y: 0.00039460903, z: 0.017162628}
+  m_Center: {x: -0.0000000020739581, y: 0.000496021, z: -0.0007273948}

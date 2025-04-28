@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1138707435120645170}
   - component: {fileID: 1785404870567676432}
   - component: {fileID: 4358342749657597546}
-  - component: {fileID: 3188136585461005611}
+  - component: {fileID: 4393721022087522257}
   m_Layer: 0
   m_Name: curtain.003
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1785404870567676432
 MeshFilter:
@@ -85,8 +85,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3188136585461005611
-MeshCollider:
+--- !u!65 &4393721022087522257
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -103,7 +103,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8038781318681792498, guid: 86ca8cbd343aa5b45a26cf1b4cbd5443, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.009500985, y: 0.00043656788, z: 0.015629128}
+  m_Center: {x: -0.00000034319237, y: 0, z: -0.00009718932}

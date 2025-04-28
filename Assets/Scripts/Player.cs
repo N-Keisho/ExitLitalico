@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
     private void Move()
     {
         // Rayの開始位置と方向を設定
-        Vector3 rayStart = transform.position;
+        Vector3 rayStart = transform.position - new Vector3(0, 1f, 0);
         Vector3 rayDirection = _direction;
 
         // Rayを飛ばして、障害物に当たったかどうかをチェック
@@ -79,7 +79,7 @@ public class Player : MonoBehaviour
         {
             _isMove = false;
         }
-        // Debug.DrawRay(rayStart, rayDirection * rayDistance, Color.red); // Rayの可視化
+        Debug.DrawRay(rayStart, rayDirection * rayDistance, Color.red); // Rayの可視化
     }
 
     private void Look()

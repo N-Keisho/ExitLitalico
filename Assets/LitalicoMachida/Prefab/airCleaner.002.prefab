@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8006911131136152642}
   - component: {fileID: 2418090861813408088}
   - component: {fileID: 1207806600064570125}
-  - component: {fileID: 7736214223404935815}
   m_Layer: 0
   m_Name: airCleaner.002
   m_TagString: Untagged
@@ -85,25 +84,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7736214223404935815
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9118445309967722661}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 5935914862322629148, guid: 86ca8cbd343aa5b45a26cf1b4cbd5443, type: 3}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6979880802104550704}
   - component: {fileID: 3753263899155038602}
   - component: {fileID: 8785223764524140193}
-  - component: {fileID: 1755058917903588633}
+  - component: {fileID: 8756586705862122904}
   m_Layer: 0
   m_Name: to_outDoor
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3753263899155038602
 MeshFilter:
@@ -85,8 +85,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1755058917903588633
-MeshCollider:
+--- !u!65 &8756586705862122904
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -103,7 +103,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -955377578513970753, guid: 86ca8cbd343aa5b45a26cf1b4cbd5443, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.0007633057, y: 0.0065209754, z: 0.019009816}
+  m_Center: {x: -0.00038165378, y: 0.0032604877, z: 0.009504908}

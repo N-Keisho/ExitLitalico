@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _CellingA;
     [SerializeField] private GameObject _CellingB;
 
+    [Header("StaticLitalico")]
+    [SerializeField] private GameObject _staticLitalicoA;
+    [SerializeField] private GameObject _staticLitalicoB;
+
     [Header("Goal")]
     [SerializeField] private GameObject _goalPath;
 
@@ -46,7 +50,9 @@ public class GameManager : MonoBehaviour
         InstantLitalico(_ihenList.getDefoLitalico(), Side.A);
         _currentSide = Side.A;
         _CellingA.SetActive(true);
+        _staticLitalicoA.SetActive(true);
         _CellingB.SetActive(false);
+        _staticLitalicoB.SetActive(false);
         _listLen = _ihenList.getListLen();
 
     }
@@ -134,7 +140,9 @@ public class GameManager : MonoBehaviour
                 _litalicoObjA.name = "LitalicoA";
                 _currentNum = _litalicoObjA.transform.Find("CurrentNumPannel").GetComponent<CurrentNum>();
                 _CellingA.SetActive(true);
+                _staticLitalicoA.SetActive(true);
                 _CellingB.SetActive(false);
+                _staticLitalicoB.SetActive(false);
                 break;
 
             case Side.B:
@@ -142,7 +150,9 @@ public class GameManager : MonoBehaviour
                 _litalicoObjB.name = "LitalicoB";
                 _currentNum = _litalicoObjB.transform.Find("CurrentNumPannel").GetComponent<CurrentNum>();
                 _CellingA.SetActive(false);
+                _staticLitalicoA.SetActive(false);
                 _CellingB.SetActive(true);
+                _staticLitalicoB.SetActive(true);
                 break;
         }
 

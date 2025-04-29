@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3180627064726886113}
   - component: {fileID: 8944017497102895257}
   - component: {fileID: 7260461795906468843}
-  - component: {fileID: 3566570142349755172}
+  - component: {fileID: 5275576261257901748}
   m_Layer: 0
   m_Name: waterServer.001
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8944017497102895257
 MeshFilter:
@@ -87,8 +87,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3566570142349755172
-MeshCollider:
+--- !u!65 &5275576261257901748
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -105,7 +105,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3161480007936132571, guid: 86ca8cbd343aa5b45a26cf1b4cbd5443, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.0037748974, y: 0.0035000008, z: 0.012382547}
+  m_Center: {x: 0.0018874487, y: 0.0017499997, z: 0.0061912737}

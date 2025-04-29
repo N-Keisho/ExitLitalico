@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 447747734808416358}
   - component: {fileID: 8122624965951717338}
   - component: {fileID: 5490406840137865384}
-  - component: {fileID: 6206140079899926208}
+  - component: {fileID: 661390300829738952}
   m_Layer: 0
   m_Name: shelfLegoSmall
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8122624965951717338
 MeshFilter:
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6206140079899926208
-MeshCollider:
+--- !u!65 &661390300829738952
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,7 +102,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8094929698569271129, guid: 86ca8cbd343aa5b45a26cf1b4cbd5443, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.004000002, y: 0.007995978, z: 0.010600014}
+  m_Center: {x: -0.0020000048, y: 0.003997989, z: -0.005300007}

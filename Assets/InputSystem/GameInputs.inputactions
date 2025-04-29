@@ -304,6 +304,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Skip",
+                    "type": "Button",
+                    "id": "372768f8-bd02-4d9e-b1ed-449d2f43ba00",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=3)",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -482,6 +491,127 @@
                     "action": "ResetIhenDone",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "4b02861e-7d15-4ff9-86c0-e626dbe2fe24",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2f8b826a-3d47-465a-87aa-1209a7af4a0b",
+                    "path": "<NimbusGamepadHid>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f37f4812-1540-40a1-a4e8-4f2acb05c332",
+                    "path": "<SwitchProControllerHID>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "26aa3fd3-db97-4dc4-adf7-eb67679cd159",
+                    "path": "<XInputController>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "55cba819-ea76-4ef2-ab6f-3dd1306c62a9",
+                    "path": "<XboxOneGamepadAndroid>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ee229336-f6ca-4936-9247-080dc874aa16",
+                    "path": "<XboxOneGampadiOS>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f5e3fe4d-be27-4181-b880-fd483f4a732b",
+                    "path": "<DualShockGamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "245bd703-2061-4df0-810a-14967b2968fc",
+                    "path": "<DualShock4GamepadAndroid>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1f065dff-4aca-4794-a2ab-9a53c46829d8",
+                    "path": "<DualSenseGamepadHID>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9203e33b-c2c3-4468-921a-82f983ec0d4b",
+                    "path": "<DualSenseGampadiOS>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3fbd616f-f1e2-4151-bc79-1d30305c0379",
+                    "path": "<DualShock4GampadiOS>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Skip",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

@@ -326,6 +326,15 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Skip"",
+                    ""type"": ""Button"",
+                    ""id"": ""372768f8-bd02-4d9e-b1ed-449d2f43ba00"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=3)"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -504,6 +513,127 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
                     ""action"": ""ResetIhenDone"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4b02861e-7d15-4ff9-86c0-e626dbe2fe24"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2f8b826a-3d47-465a-87aa-1209a7af4a0b"",
+                    ""path"": ""<NimbusGamepadHid>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f37f4812-1540-40a1-a4e8-4f2acb05c332"",
+                    ""path"": ""<SwitchProControllerHID>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""26aa3fd3-db97-4dc4-adf7-eb67679cd159"",
+                    ""path"": ""<XInputController>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""55cba819-ea76-4ef2-ab6f-3dd1306c62a9"",
+                    ""path"": ""<XboxOneGamepadAndroid>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ee229336-f6ca-4936-9247-080dc874aa16"",
+                    ""path"": ""<XboxOneGampadiOS>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f5e3fe4d-be27-4181-b880-fd483f4a732b"",
+                    ""path"": ""<DualShockGamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""245bd703-2061-4df0-810a-14967b2968fc"",
+                    ""path"": ""<DualShock4GamepadAndroid>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1f065dff-4aca-4794-a2ab-9a53c46829d8"",
+                    ""path"": ""<DualSenseGamepadHID>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9203e33b-c2c3-4468-921a-82f983ec0d4b"",
+                    ""path"": ""<DualSenseGampadiOS>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3fbd616f-f1e2-4151-bc79-1d30305c0379"",
+                    ""path"": ""<DualShock4GampadiOS>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -522,6 +652,7 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
         m_System_Cheat = m_System.FindAction("Cheat", throwIfNotFound: true);
         m_System_GameQuit = m_System.FindAction("GameQuit", throwIfNotFound: true);
         m_System_ResetIhenDone = m_System.FindAction("ResetIhenDone", throwIfNotFound: true);
+        m_System_Skip = m_System.FindAction("Skip", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -657,6 +788,7 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_System_Cheat;
     private readonly InputAction m_System_GameQuit;
     private readonly InputAction m_System_ResetIhenDone;
+    private readonly InputAction m_System_Skip;
     public struct SystemActions
     {
         private @GameInputs m_Wrapper;
@@ -665,6 +797,7 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
         public InputAction @Cheat => m_Wrapper.m_System_Cheat;
         public InputAction @GameQuit => m_Wrapper.m_System_GameQuit;
         public InputAction @ResetIhenDone => m_Wrapper.m_System_ResetIhenDone;
+        public InputAction @Skip => m_Wrapper.m_System_Skip;
         public InputActionMap Get() { return m_Wrapper.m_System; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -686,6 +819,9 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
             @ResetIhenDone.started += instance.OnResetIhenDone;
             @ResetIhenDone.performed += instance.OnResetIhenDone;
             @ResetIhenDone.canceled += instance.OnResetIhenDone;
+            @Skip.started += instance.OnSkip;
+            @Skip.performed += instance.OnSkip;
+            @Skip.canceled += instance.OnSkip;
         }
 
         private void UnregisterCallbacks(ISystemActions instance)
@@ -702,6 +838,9 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
             @ResetIhenDone.started -= instance.OnResetIhenDone;
             @ResetIhenDone.performed -= instance.OnResetIhenDone;
             @ResetIhenDone.canceled -= instance.OnResetIhenDone;
+            @Skip.started -= instance.OnSkip;
+            @Skip.performed -= instance.OnSkip;
+            @Skip.canceled -= instance.OnSkip;
         }
 
         public void RemoveCallbacks(ISystemActions instance)
@@ -732,5 +871,6 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
         void OnCheat(InputAction.CallbackContext context);
         void OnGameQuit(InputAction.CallbackContext context);
         void OnResetIhenDone(InputAction.CallbackContext context);
+        void OnSkip(InputAction.CallbackContext context);
     }
 }

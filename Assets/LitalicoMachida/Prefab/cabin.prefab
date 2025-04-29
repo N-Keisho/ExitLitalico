@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4603808218789875933}
   - component: {fileID: 2642425035579216517}
   - component: {fileID: 2964547341868807076}
-  - component: {fileID: 7221718480936461253}
   m_Layer: 0
   m_Name: cabin
   m_TagString: Untagged
@@ -84,25 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7221718480936461253
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8691097839494997375}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3176091971410332313, guid: 86ca8cbd343aa5b45a26cf1b4cbd5443, type: 3}

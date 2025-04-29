@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8675999555959458186, guid: b94811d170f1623459a1b0d57c759e10, type: 2}
+  - {fileID: 8675999555959458186, guid: 76f04d172160cf14d9eb78d9ec34a0ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -102,8 +102,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u3088\u3046\u3053\u305D\uFF01"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b94811d170f1623459a1b0d57c759e10, type: 2}
-  m_sharedMaterial: {fileID: 8675999555959458186, guid: b94811d170f1623459a1b0d57c759e10, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 76f04d172160cf14d9eb78d9ec34a0ee, type: 2}
+  m_sharedMaterial: {fileID: 8675999555959458186, guid: 76f04d172160cf14d9eb78d9ec34a0ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -290,7 +290,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8675999555959458186, guid: b94811d170f1623459a1b0d57c759e10, type: 2}
+  - {fileID: 8675999555959458186, guid: 76f04d172160cf14d9eb78d9ec34a0ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -334,8 +334,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: <color=#006d6b>LI</color>T<color=#a0000a>A</color>LICO
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b94811d170f1623459a1b0d57c759e10, type: 2}
-  m_sharedMaterial: {fileID: 8675999555959458186, guid: b94811d170f1623459a1b0d57c759e10, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 76f04d172160cf14d9eb78d9ec34a0ee, type: 2}
+  m_sharedMaterial: {fileID: 8675999555959458186, guid: 76f04d172160cf14d9eb78d9ec34a0ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -462,7 +462,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8675999555959458186, guid: b94811d170f1623459a1b0d57c759e10, type: 2}
+  - {fileID: 8675999555959458186, guid: 76f04d172160cf14d9eb78d9ec34a0ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -506,8 +506,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u5165\u53E3\u306F\u3053\u3061\u3089\u2192"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b94811d170f1623459a1b0d57c759e10, type: 2}
-  m_sharedMaterial: {fileID: 8675999555959458186, guid: b94811d170f1623459a1b0d57c759e10, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 76f04d172160cf14d9eb78d9ec34a0ee, type: 2}
+  m_sharedMaterial: {fileID: 8675999555959458186, guid: 76f04d172160cf14d9eb78d9ec34a0ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -634,7 +634,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8675999555959458186, guid: b94811d170f1623459a1b0d57c759e10, type: 2}
+  - {fileID: 8675999555959458186, guid: 76f04d172160cf14d9eb78d9ec34a0ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -678,8 +678,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: <color=#006d6b>LI</color>T<color=#a0000a>A</color>LICO
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b94811d170f1623459a1b0d57c759e10, type: 2}
-  m_sharedMaterial: {fileID: 8675999555959458186, guid: b94811d170f1623459a1b0d57c759e10, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 76f04d172160cf14d9eb78d9ec34a0ee, type: 2}
+  m_sharedMaterial: {fileID: 8675999555959458186, guid: 76f04d172160cf14d9eb78d9ec34a0ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -806,7 +806,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8675999555959458186, guid: b94811d170f1623459a1b0d57c759e10, type: 2}
+  - {fileID: 8675999555959458186, guid: 76f04d172160cf14d9eb78d9ec34a0ee, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -850,8 +850,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u30EF\u30F3\u30C0\u30FC\u753A\u7530"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b94811d170f1623459a1b0d57c759e10, type: 2}
-  m_sharedMaterial: {fileID: 8675999555959458186, guid: b94811d170f1623459a1b0d57c759e10, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 76f04d172160cf14d9eb78d9ec34a0ee, type: 2}
+  m_sharedMaterial: {fileID: 8675999555959458186, guid: 76f04d172160cf14d9eb78d9ec34a0ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

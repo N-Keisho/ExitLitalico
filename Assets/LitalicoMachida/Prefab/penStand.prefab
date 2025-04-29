@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4106581009074365450}
   - component: {fileID: 6289575281711869676}
   - component: {fileID: 643014487260742619}
-  - component: {fileID: 3319914198120275840}
   m_Layer: 0
   m_Name: penStand
   m_TagString: Untagged
@@ -84,25 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3319914198120275840
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1788440212383622498}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7384266658387092666, guid: 86ca8cbd343aa5b45a26cf1b4cbd5443, type: 3}

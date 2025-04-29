@@ -185,7 +185,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7861842953290530891, guid: 4edd96128d38b75448ad2b338da1c8ad, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8742294262101329738, guid: 4edd96128d38b75448ad2b338da1c8ad, type: 3}
       insertIndex: -1
@@ -195,9 +196,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: -9007350410667349228}
   m_SourcePrefab: {fileID: 100100000, guid: 4edd96128d38b75448ad2b338da1c8ad, type: 3}
---- !u!1 &1675449909679234996 stripped
+--- !u!1 &1733071602188397224 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 8174746794137060405, guid: 4edd96128d38b75448ad2b338da1c8ad, type: 3}
+  m_CorrespondingSourceObject: {fileID: 9097261650366968105, guid: 4edd96128d38b75448ad2b338da1c8ad, type: 3}
   m_PrefabInstance: {fileID: 7364208053755419521}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2260862422956235979 stripped
@@ -205,9 +206,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8742294262101329738, guid: 4edd96128d38b75448ad2b338da1c8ad, type: 3}
   m_PrefabInstance: {fileID: 7364208053755419521}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2764550868624370386 stripped
+--- !u!1 &4740468628299309583 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 4643004967462105427, guid: 4edd96128d38b75448ad2b338da1c8ad, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2881014227022150030, guid: 4edd96128d38b75448ad2b338da1c8ad, type: 3}
   m_PrefabInstance: {fileID: 7364208053755419521}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &5035307797201646275 stripped
@@ -234,8 +235,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _explanation: "3D\u30D7\u30EA\u30F3\u30BF\u30FC\u304C\u7206\u767A"
   _3DPrinters:
-  - {fileID: 2764550868624370386}
-  - {fileID: 1675449909679234996}
+  - {fileID: 4740468628299309583}
+  - {fileID: 1733071602188397224}
   - {fileID: 5035307797201646275}
   _explosionPrefab: {fileID: 1150934714579380, guid: 779aa8c25fbd0e1488637639c9fff976, type: 3}
   _audioSource: {fileID: 3856402592528825301}

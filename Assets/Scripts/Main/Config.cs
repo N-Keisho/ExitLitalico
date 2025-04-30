@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 using TMPro;
 public class Config : MonoBehaviour
 {
+    [SerializeField] private GameObject _configPanel;
+
     [Header("Buttons")]
     [SerializeField] private List<Button> _buttons = new List<Button>();
 
@@ -30,7 +32,6 @@ public class Config : MonoBehaviour
     [Header("Fade")]
     [SerializeField] private MainFade _mainFade;
 
-    private GameObject _configPanel;
     private bool _isOpen = false;
     private bool _isClear = false;
     private bool _isFade = false;
@@ -42,8 +43,6 @@ public class Config : MonoBehaviour
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-
-        _configPanel = this.gameObject;
 
         _sensX.SetValue(GV.sensX_buf);
         _sensY.SetValue(GV.sensY_buf);
@@ -173,11 +172,13 @@ public class Config : MonoBehaviour
 
     public void ToTitle()
     {
+        Debug.Log("ToTitle");
         if (_isFade) return;
         _isFade = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        _mainFade.FadeOut("TitleScene");
+        Time.timeScale = 0.1f;
+        _mainFade.FadeOut("Title", 0.1f);
     }
 
     public void Back()

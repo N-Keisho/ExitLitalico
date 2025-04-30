@@ -21,7 +21,7 @@ public class MainFade : MonoBehaviour
     private IEnumerator FadeIn()
     {
         float elapsedTime = 0f;
-        SetAlpha(_fadeInObj, 0f);
+        SetAlpha(_fadeInObj, 1f);
         while (elapsedTime < _fadeDuration)
         {
             elapsedTime += Time.deltaTime;
@@ -32,24 +32,24 @@ public class MainFade : MonoBehaviour
         _fadeInObj.gameObject.SetActive(false);
     }
 
-    public void FadeOut(string sceneName)
+    public void FadeOut(string sceneName, float fadeOutDuration = 1.0f)
     {
         _fadeInObj.gameObject.SetActive(true);
-        StartCoroutine(FadeOutAndLoadScene(sceneName));
+        StartCoroutine(FadeOutAndLoadScene(sceneName, fadeOutDuration));
     }
 
-    private IEnumerator FadeOutAndLoadScene(string sceneName)
+    private IEnumerator FadeOutAndLoadScene(string sceneName, float fadeOutDuration = 1.0f)
     {
         float elapsedTime = 0f;
         SetAlpha(_fadeInObj, 0f);
-        while (elapsedTime < _fadeDuration)
+        while (elapsedTime < fadeOutDuration)
         {
             elapsedTime += Time.deltaTime;
-            float alpha = Mathf.Clamp01(elapsedTime / _fadeDuration);
+            float alpha = Mathf.Clamp01(elapsedTime / fadeOutDuration);
             SetAlpha(_fadeInObj, alpha);
             yield return null;
         }
-        
+        yield return new WaitForSeconds(fadeOutDuration);
         SceneManager.LoadScene(sceneName);
     }
 

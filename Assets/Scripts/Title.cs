@@ -33,6 +33,8 @@ public class Title : MonoBehaviour
         _gameInputs = new GameInputs();
         _gameInputs.Title.Start.started += OnStart;
         _gameInputs.Title.Start.Enable();
+
+        Time.timeScale = 1f;
     }
 
     private void OnDestroy()

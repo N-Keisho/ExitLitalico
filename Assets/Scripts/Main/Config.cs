@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 using TMPro;
 public class Config : MonoBehaviour
 {
+    [Header("Buttons")]
     [SerializeField] private List<Button> _buttons = new List<Button>();
+
     [Header("Select")]
     [SerializeField] private GameObject _selectsObj;
     [SerializeField] private GameObject _optionsObj;
@@ -26,9 +27,13 @@ public class Config : MonoBehaviour
     [SerializeField] private TMP_Text _ihenListRightText;
     [SerializeField] private TMP_Text _ihenListLeftText;
 
+    [Header("Fade")]
+    [SerializeField] private MainFade _mainFade;
+
     private GameObject _configPanel;
     private bool _isOpen = false;
     private bool _isClear = false;
+    private bool _isFade = false;
     private int _unknownCount = 0;
     private int _currentSelect = 2;
     void Start()
@@ -159,17 +164,20 @@ public class Config : MonoBehaviour
 
     public void QuitGame()
     {
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
                             UnityEditor.EditorApplication.isPlaying = false;//ゲームプレイ終了
-        #else
-                Application.Quit();//ゲームプレイ終了
-        #endif
+#else
+        Application.Quit();//ゲームプレイ終了
+#endif
     }
 
     public void ToTitle()
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("Title");
+        if (_isFade) return;
+        _isFade = true;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        _mainFade.FadeOut("TitleScene");
     }
 
     public void Back()

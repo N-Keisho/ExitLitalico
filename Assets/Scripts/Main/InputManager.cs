@@ -65,12 +65,12 @@ public class InputManager : MonoBehaviour
         _gameInputs.Enable();
     }
 
-    private void Dispose()
+    public void Dispose()
     {
         _gameInputs?.Dispose();
     }
 
-    public void OnDestroy()
+    private void OnDestroy()
     {
         Dispose();
     }

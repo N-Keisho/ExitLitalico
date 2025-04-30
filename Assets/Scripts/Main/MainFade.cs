@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainFade : MonoBehaviour
 {
@@ -29,6 +30,27 @@ public class MainFade : MonoBehaviour
             yield return null;
         }
         _fadeInObj.gameObject.SetActive(false);
+    }
+
+    public void FadeOut(string sceneName)
+    {
+        _fadeInObj.gameObject.SetActive(true);
+        StartCoroutine(FadeOutAndLoadScene(sceneName));
+    }
+
+    private IEnumerator FadeOutAndLoadScene(string sceneName)
+    {
+        float elapsedTime = 0f;
+        SetAlpha(_fadeInObj, 0f);
+        while (elapsedTime < _fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = Mathf.Clamp01(elapsedTime / _fadeDuration);
+            SetAlpha(_fadeInObj, alpha);
+            yield return null;
+        }
+        
+        SceneManager.LoadScene(sceneName);
     }
 
     private void SetAlpha(Image obj, float alpha)

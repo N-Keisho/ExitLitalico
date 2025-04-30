@@ -333,7 +333,7 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
                     ""id"": ""372768f8-bd02-4d9e-b1ed-449d2f43ba00"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold(duration=3)"",
+                    ""interactions"": ""Hold(duration=2)"",
                     ""initialStateCheck"": false
                 }
             ],
@@ -706,6 +706,17 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""fe0c7e8a-8996-48cc-98dd-5752cf45d128"",
                     ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""33114b57-0334-4c36-9b0a-2cb363afee33"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

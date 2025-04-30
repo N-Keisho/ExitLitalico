@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using TMPro;
 public class Config : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class Config : MonoBehaviour
     [SerializeField] private IhenList _ihenList;
     [SerializeField] private TMP_Text _ihenListRightText;
     [SerializeField] private TMP_Text _ihenListLeftText;
-    
+
     private GameObject _configPanel;
     private bool _isOpen = false;
     private bool _isClear = false;
@@ -46,7 +47,7 @@ public class Config : MonoBehaviour
         _ihenListRightText.text = "";
         _ihenListLeftText.text = "";
 
-        if(_isClear)
+        if (_isClear)
         {
             _buttons[3].interactable = true;
             IhenListUpdate();
@@ -61,6 +62,12 @@ public class Config : MonoBehaviour
         ShowConfig();
     }
 
+    public void OnSelect(InputAction.CallbackContext context)
+    {
+        if (!_isOpen) return;
+        _buttons[_currentSelect].onClick.Invoke();
+    }
+
     public void OnBack(InputAction.CallbackContext context)
     {
         if (!_isOpen) return;
@@ -72,7 +79,7 @@ public class Config : MonoBehaviour
         if (!_isOpen) return;
 
         _currentSelect--;
-        
+
         if (_currentSelect < 0)
         {
             _currentSelect = _buttons.Count - 1;
@@ -81,9 +88,10 @@ public class Config : MonoBehaviour
         {
             _currentSelect = 2;
         }
-        Debug.Log(_currentSelect);
+
         _buttons[_currentSelect].Select();
     }
+
     public void OnDown(InputAction.CallbackContext context)
     {
         if (!_isOpen) return;
@@ -99,38 +107,39 @@ public class Config : MonoBehaviour
             _currentSelect = 4;
         }
 
-        Debug.Log(_currentSelect);
         _buttons[_currentSelect].Select();
     }
 
-    public void OnSelect(InputAction.CallbackContext context)
-    {
-        if (!_isOpen) return;
-        _buttons[_currentSelect].onClick.Invoke();
-    }
 
     // --- Select系の関数群 ---
     public void ShowConfig()
     {
-        _currentSelect = 2;
-        _buttons[_currentSelect].Select();
+
         _isOpen = !_isOpen;
         if (_isOpen)
         {
             Time.timeScale = 0f;
-            // Cursor.visible = true;
-            // Cursor.lockState = CursorLockMode.None;
+
             _configPanel.SetActive(true);
             _selectsObj.SetActive(true);
             _optionsObj.SetActive(false);
             _ihenListObj.SetActive(false);
+
+            _currentSelect = 2;
+            _buttons[_currentSelect].Select();
+
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
         else
         {
-            // Cursor.visible = false;
-            // Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             _configPanel.SetActive(false);
             Time.timeScale = 1f;
+
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
@@ -151,10 +160,16 @@ public class Config : MonoBehaviour
     public void QuitGame()
     {
         #if UNITY_EDITOR
-                    UnityEditor.EditorApplication.isPlaying = false;//ゲームプレイ終了
+                            UnityEditor.EditorApplication.isPlaying = false;//ゲームプレイ終了
         #else
                 Application.Quit();//ゲームプレイ終了
         #endif
+    }
+
+    public void ToTitle()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Title");
     }
 
     public void Back()
@@ -189,7 +204,7 @@ public class Config : MonoBehaviour
     private void IhenListUpdate()
     {
         string text = "";
-        for(int i = 0; i < _ihenList.getListLen(); i++)
+        for (int i = 0; i < _ihenList.getListLen(); i++)
         {
             IhenBase ihen = _ihenList.getIhen(i);
             if (GV.IsDoneIhen(ihen.name))

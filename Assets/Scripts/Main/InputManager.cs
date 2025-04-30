@@ -65,9 +65,14 @@ public class InputManager : MonoBehaviour
         _gameInputs.Enable();
     }
 
-    public void Dispose()
+    private void Dispose()
     {
         _gameInputs?.Dispose();
+    }
+
+    public void OnDestroy()
+    {
+        Dispose();
     }
 
     private void PlaySysSound(InputAction.CallbackContext context)

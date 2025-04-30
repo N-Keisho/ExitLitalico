@@ -11,6 +11,7 @@ public class Skip : MonoBehaviour
     [SerializeField] private string _sceneName = "Main";
 
     private GameInputs _gameInput;
+    private bool _isClear = false;
 
     void Start()
     {
@@ -18,10 +19,16 @@ public class Skip : MonoBehaviour
         _gameInput.System.Skip.Enable();
 
         _guage.fillAmount = 0f;
-        SetActiveChild(false);
+        _isClear = GV.isClear;
+
+        if (!_isClear)
+        {
+            SetActiveChild(false);
+        }
     }
 
-    void OnDestroy() {
+    void OnDestroy()
+    {
         _gameInput.System.Skip.Disable();
     }
 
@@ -30,13 +37,19 @@ public class Skip : MonoBehaviour
         float value = _gameInput.System.Skip.GetTimeoutCompletionPercentage();
         if (value > 0f)
         {
-            SetActiveChild(true);
             _guage.fillAmount = value;
+            if (!_isClear)
+            {
+                SetActiveChild(true);
+            }
         }
         else
         {
-            SetActiveChild(false);
             _guage.fillAmount = 0f;
+            if (!_isClear)
+            {
+                SetActiveChild(false);
+            }
         }
 
         if (value >= 1f)

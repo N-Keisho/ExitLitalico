@@ -225,6 +225,7 @@ public class GameManager : MonoBehaviour
 
     private void Goal(Side type)
     {
+        GV.isClear = true;
         _isClear = true;
         _path.Clear(type);
         switch (type)

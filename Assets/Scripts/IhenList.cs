@@ -18,12 +18,12 @@ public class IhenList : ScriptableObject
     {
         if (_ihenList == null || _ihenList.Count == 0)
         {
-            Debug.LogError("IhenList is not initialized or empty.");
+            Logger.Error("IhenList is not initialized or empty.");
             return null;
         }
         else if (index < 0 || index >= _ihenList.Count)
         {
-            Debug.LogError("Index out of range: " + index);
+            Logger.Error("Index out of range: " + index);
             return null;
         }
 
@@ -39,17 +39,17 @@ public class IhenList : ScriptableObject
     {
         if (isIhen == false)
         {
-            Debug.Log("Ihen is false.");
+            Logger.Log("Ihen is false.");
             return _litalicoDefo;
         }
         else if (_ihenList == null || _ihenList.Count == 0)
         {
-            Debug.LogError("IhenList is not initialized or empty.");
+            Logger.Error("IhenList is not initialized or empty.");
             return _litalicoDefo;
         }
         else if (index < 0 || index >= _ihenList.Count)
         {
-            Debug.LogError("Index out of range: " + index);
+            Logger.Error("Index out of range: " + index);
             return _litalicoDefo;
         }
 
@@ -63,7 +63,7 @@ public class IhenList : ScriptableObject
             GV.SetDoneIhen(item.gameObject.name, false);
         }
         GV.isClear = false;
-        Debug.Log("IhenList reset done status.");
+        Logger.Log("IhenList reset done status.");
     }
 
     public List<int> getNotDoneIhenIndexes()

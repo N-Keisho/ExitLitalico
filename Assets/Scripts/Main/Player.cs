@@ -140,7 +140,7 @@ public class Player : MonoBehaviour
             {
                 if (_preDetectTag.Equals("GateCheckB"))
                 {
-                    // Debug.Log("判定B");
+                    // Logger.Log("判定B");
                     _path.CheckB();
                     _gameManager.CheckIhen(_answer);
                     _answer = null;
@@ -151,7 +151,7 @@ public class Player : MonoBehaviour
             {
                 if (_preDetectTag.Equals("GateCheckA"))
                 {
-                    // Debug.Log("判定A");
+                    // Logger.Log("判定A");
                     _path.CheckA();
                     _gameManager.CheckIhen(_answer);
                     _answer = null;
@@ -161,7 +161,7 @@ public class Player : MonoBehaviour
             {
                 if (_preDetectTag.Equals("GateA1out"))
                 {
-                    // Debug.Log("GateA1から入った");
+                    // Logger.Log("GateA1から入った");
                     _path.InA1();
                     _answer = true;
                 }
@@ -170,7 +170,7 @@ public class Player : MonoBehaviour
             {
                 if (_preDetectTag.Equals("GateA1in"))
                 {
-                    // Debug.Log("GateA1から出た");
+                    // Logger.Log("GateA1から出た");
                     _path.Out();
                 }
             }
@@ -178,7 +178,7 @@ public class Player : MonoBehaviour
             {
                 if (_preDetectTag.Equals("GateA2out"))
                 {
-                    // Debug.Log("GateA2から入った");
+                    // Logger.Log("GateA2から入った");
                     _path.InA2();
                     _answer = false;
                 }
@@ -187,7 +187,7 @@ public class Player : MonoBehaviour
             {
                 if (_preDetectTag.Equals("GateA2in"))
                 {
-                    // Debug.Log("GateA2から出た");
+                    // Logger.Log("GateA2から出た");
                     _path.Out();
                 }
             }
@@ -195,7 +195,7 @@ public class Player : MonoBehaviour
             {
                 if (_preDetectTag.Equals("GateB1out"))
                 {
-                    // Debug.Log("GateB1から入った");
+                    // Logger.Log("GateB1から入った");
                     _path.InB1();
                     _answer = true;
                 }
@@ -204,7 +204,7 @@ public class Player : MonoBehaviour
             {
                 if (_preDetectTag.Equals("GateB1in"))
                 {
-                    // Debug.Log("GateB1から出た");
+                    // Logger.Log("GateB1から出た");
                     _path.Out();
                 }
             }
@@ -212,7 +212,7 @@ public class Player : MonoBehaviour
             {
                 if (_preDetectTag.Equals("GateB2out"))
                 {
-                    // Debug.Log("GateB2から入った");
+                    // Logger.Log("GateB2から入った");
                     _path.InB2();
                     _answer = false;
                 }
@@ -221,7 +221,7 @@ public class Player : MonoBehaviour
             {
                 if (_preDetectTag.Equals("GateB2in"))
                 {
-                    // Debug.Log("GateB2から出た");
+                    // Logger.Log("GateB2から出た");
                     _path.Out();
                 }
             }
@@ -234,7 +234,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Curpet"))
         {
             _isCurpet = true;
-            // Debug.Log("Curpetに乗った");
+            // Logger.Log("Curpetに乗った");
         }
     }
 
@@ -243,7 +243,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Curpet"))
         {
             _isCurpet = false;
-            // Debug.Log("Curpetから出た");
+            // Logger.Log("Curpetから出た");
         }
     }
 }

@@ -11,7 +11,8 @@ abstract public class IhenBase : MonoBehaviour
     private void Awake()
     {
         string name = this.name.Replace("(Clone)", "");
-        Debug.Log(name + " : " + _explanation);
+        // Logger.Log(name + " : " + _explanation);
+        Logger.Log(name + " : " + _explanation);
         GV.SetDoneIhen(name);
     }
 }

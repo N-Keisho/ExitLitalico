@@ -333,7 +333,7 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
                     ""id"": ""372768f8-bd02-4d9e-b1ed-449d2f43ba00"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold(duration=3)"",
+                    ""interactions"": ""Hold(duration=2)"",
                     ""initialStateCheck"": false
                 }
             ],
@@ -636,6 +636,117 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Title"",
+            ""id"": ""3b95dab9-3a8c-40f4-90b5-4cd360229740"",
+            ""actions"": [
+                {
+                    ""name"": ""Start"",
+                    ""type"": ""Button"",
+                    ""id"": ""c28be000-e743-4b72-8a90-7919d8a81c50"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""6896a4a3-896c-4d3e-8eb0-3b6b86338cbc"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""119ca845-8afb-45e1-9dbf-933ba1a87d4c"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd265c88-ed04-473a-8bb6-f255e7720966"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""ProLogue"",
+            ""id"": ""d7d837cc-5b70-4ea6-a99c-33bde8fe7a31"",
+            ""actions"": [
+                {
+                    ""name"": ""Next"",
+                    ""type"": ""Button"",
+                    ""id"": ""a8ad6ea4-c17d-445c-8711-3284266ee87c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""fe0c7e8a-8996-48cc-98dd-5752cf45d128"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""33114b57-0334-4c36-9b0a-2cb363afee33"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""94d36175-a1e1-4261-be50-2b6c2c746aca"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bfd0027f-04f5-4903-bde8-0c7a9667b58b"",
+                    ""path"": ""<Mouse>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -653,6 +764,12 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
         m_System_GameQuit = m_System.FindAction("GameQuit", throwIfNotFound: true);
         m_System_ResetIhenDone = m_System.FindAction("ResetIhenDone", throwIfNotFound: true);
         m_System_Skip = m_System.FindAction("Skip", throwIfNotFound: true);
+        // Title
+        m_Title = asset.FindActionMap("Title", throwIfNotFound: true);
+        m_Title_Start = m_Title.FindAction("Start", throwIfNotFound: true);
+        // ProLogue
+        m_ProLogue = asset.FindActionMap("ProLogue", throwIfNotFound: true);
+        m_ProLogue_Next = m_ProLogue.FindAction("Next", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -858,6 +975,98 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
         }
     }
     public SystemActions @System => new SystemActions(this);
+
+    // Title
+    private readonly InputActionMap m_Title;
+    private List<ITitleActions> m_TitleActionsCallbackInterfaces = new List<ITitleActions>();
+    private readonly InputAction m_Title_Start;
+    public struct TitleActions
+    {
+        private @GameInputs m_Wrapper;
+        public TitleActions(@GameInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Start => m_Wrapper.m_Title_Start;
+        public InputActionMap Get() { return m_Wrapper.m_Title; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TitleActions set) { return set.Get(); }
+        public void AddCallbacks(ITitleActions instance)
+        {
+            if (instance == null || m_Wrapper.m_TitleActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_TitleActionsCallbackInterfaces.Add(instance);
+            @Start.started += instance.OnStart;
+            @Start.performed += instance.OnStart;
+            @Start.canceled += instance.OnStart;
+        }
+
+        private void UnregisterCallbacks(ITitleActions instance)
+        {
+            @Start.started -= instance.OnStart;
+            @Start.performed -= instance.OnStart;
+            @Start.canceled -= instance.OnStart;
+        }
+
+        public void RemoveCallbacks(ITitleActions instance)
+        {
+            if (m_Wrapper.m_TitleActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ITitleActions instance)
+        {
+            foreach (var item in m_Wrapper.m_TitleActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_TitleActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public TitleActions @Title => new TitleActions(this);
+
+    // ProLogue
+    private readonly InputActionMap m_ProLogue;
+    private List<IProLogueActions> m_ProLogueActionsCallbackInterfaces = new List<IProLogueActions>();
+    private readonly InputAction m_ProLogue_Next;
+    public struct ProLogueActions
+    {
+        private @GameInputs m_Wrapper;
+        public ProLogueActions(@GameInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Next => m_Wrapper.m_ProLogue_Next;
+        public InputActionMap Get() { return m_Wrapper.m_ProLogue; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ProLogueActions set) { return set.Get(); }
+        public void AddCallbacks(IProLogueActions instance)
+        {
+            if (instance == null || m_Wrapper.m_ProLogueActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ProLogueActionsCallbackInterfaces.Add(instance);
+            @Next.started += instance.OnNext;
+            @Next.performed += instance.OnNext;
+            @Next.canceled += instance.OnNext;
+        }
+
+        private void UnregisterCallbacks(IProLogueActions instance)
+        {
+            @Next.started -= instance.OnNext;
+            @Next.performed -= instance.OnNext;
+            @Next.canceled -= instance.OnNext;
+        }
+
+        public void RemoveCallbacks(IProLogueActions instance)
+        {
+            if (m_Wrapper.m_ProLogueActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IProLogueActions instance)
+        {
+            foreach (var item in m_Wrapper.m_ProLogueActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ProLogueActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public ProLogueActions @ProLogue => new ProLogueActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -872,5 +1081,13 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
         void OnGameQuit(InputAction.CallbackContext context);
         void OnResetIhenDone(InputAction.CallbackContext context);
         void OnSkip(InputAction.CallbackContext context);
+    }
+    public interface ITitleActions
+    {
+        void OnStart(InputAction.CallbackContext context);
+    }
+    public interface IProLogueActions
+    {
+        void OnNext(InputAction.CallbackContext context);
     }
 }

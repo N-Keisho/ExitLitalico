@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
         if (_isClear) return; // クリア済みなら何もしない
         else if (answerIhen == null)
         {
-            Debug.LogError("Answer is null, skipping Ihen check.");
+            Logger.Error("Answer is null, skipping Ihen check.");
             return;
         }
         else if (_isIhen == answerIhen)
@@ -91,13 +91,13 @@ public class GameManager : MonoBehaviour
         {
             _isIhen = true;
             _nextLita = _ihenList.getIhenLitalico(_testIndex, _isIhen);
-            Debug.Log("[Test] Ihen index: " + _testIndex);
+            Logger.Log("[Test] Ihen index: " + _testIndex);
         }
         else if (_ihenOnly)
         {
             _isIhen = true;
             _nextLita = RandomIhenGet();
-            Debug.Log("[IhenOnly]");
+            Logger.Log("[IhenOnly]");
         }
         else if (IhenOrNot())
         {
@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
         {
             _isIhen = false;
             _nextLita = _ihenList.getDefoLitalico();
-            Debug.Log("Ihen is false, skipping IhenDo.");
+            Logger.Log("Ihen is false, skipping IhenDo.");
         }
 
         if (_currentSide == Side.A)
@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
     {
         if (_nextLita == null)
         {
-            Debug.LogError("Next Litalico is null, cannot instantiate.");
+            Logger.Error("Next Litalico is null, cannot instantiate.");
             return;
         }
 
@@ -158,7 +158,7 @@ public class GameManager : MonoBehaviour
 
         if (_currentNum == null)
         {
-            Debug.LogError("CurrentNum component not found on the object.");
+            Logger.Error("CurrentNum component not found on the object.");
             return;
         }
         _currentNum.SetCurrentNum(_correctNum);
@@ -182,7 +182,7 @@ public class GameManager : MonoBehaviour
         if (_listLen <= 1)
         {
             _isIhen = false;
-            Debug.LogError("List length is less than or equal to 1, skipping IhenDo.");
+            Logger.Error("List length is less than or equal to 1, skipping IhenDo.");
             return _ihenList.getDefoLitalico();
         }
 
@@ -245,7 +245,7 @@ public class GameManager : MonoBehaviour
         if (context.started)
         {
             _correctNum = 6;
-            Debug.Log("Cheat activated! Correct number set to 6.");
+            Logger.Log("Cheat activated! Correct number set to 6.");
         }
     }
 }

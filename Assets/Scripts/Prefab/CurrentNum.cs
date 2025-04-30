@@ -14,7 +14,7 @@ public class CurrentNum : MonoBehaviour
     {
         if (num < 0 || num > _words.Count)
         {
-            Debug.LogError("Invalid number index: " + num);
+            Logger.Error("Invalid number index: " + num);
             return;
         }
 

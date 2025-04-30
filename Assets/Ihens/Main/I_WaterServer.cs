@@ -12,7 +12,7 @@ public class I_WaterServer : IhenBase
     {
         if (_water == null)
         {
-            Debug.LogError("Water GameObject is not assigned.");
+            Logger.Error("Water GameObject is not assigned.");
             return;
         }
 

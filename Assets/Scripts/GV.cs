@@ -42,6 +42,25 @@ public class GV : MonoBehaviour
         }
     }
 
+    public static bool isClear
+    {
+        get
+        {
+            return PlayerPrefs.GetInt("isClear", 0) == 1;
+        }
+        set
+        {
+            if (value)
+            {
+                PlayerPrefs.SetInt("isClear", 1);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("isClear", 0);
+            }
+        }
+    }
+
     static public bool IsDoneIhen(string name)
     {
         return PlayerPrefs.GetInt(name, 0) == 1;

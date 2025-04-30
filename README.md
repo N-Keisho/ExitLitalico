@@ -73,7 +73,7 @@ GV は上記のように定義され，代入時には PlaerPrefs に保存さ�
 GV.moveSpeed = 10f;
 
 // 参照
-Debug.Log(GV.moveSpeed);
+Logger.Log(GV.moveSpeed);
 ```
 
 ### 異変について
@@ -132,7 +132,7 @@ public class I_Example : IhenBase
     {
         // 異変の初期化処理
         _ihenDo = true; // 異変が起きている状態にする
-        Debug.Log("Ihen_Example: 異変が起きました！");
+        Logger.Log("Ihen_Example: 異変が起きました！");
     }
 
     void Update()

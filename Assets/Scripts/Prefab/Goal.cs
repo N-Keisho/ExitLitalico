@@ -11,7 +11,7 @@ public class Goal : MonoBehaviour
         _inputManager = GameObject.Find("_InputManager_").GetComponent<InputManager>();
         if (_inputManager == null)
         {
-            Debug.LogError("InputManager not found in the scene.");
+            Logger.Error("InputManager not found in the scene.");
         }
     }
     private void OnTriggerEnter(Collider other)

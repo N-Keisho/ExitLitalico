@@ -120,7 +120,7 @@ public class Path : MonoBehaviour
                 _posterA.sprite = _goHome;
                 break;
             default:
-                Debug.LogError("Invalid side type for clearing path.");
+                Logger.Error("Invalid side type for clearing path.");
                 break;
         }
     }

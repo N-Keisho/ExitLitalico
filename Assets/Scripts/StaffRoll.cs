@@ -96,6 +96,7 @@ public class StaffRoll : MonoBehaviour
 
     private void OnDestroy()
     {
+        GV.isClear = true;
         _gameInputs.Disable();
     }
 

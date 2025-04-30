@@ -3368,6 +3368,7 @@ MonoBehaviour:
   _cameraZoom: {fileID: 963194233}
   _audioSource: {fileID: 963194232}
   _sysSound: {fileID: 8300000, guid: 242868695197bff48bcd32a849659e5a, type: 3}
+  _configSound: {fileID: 8300000, guid: 68a9ab7ce4db9a14ab7dcbc5f5784288, type: 3}
   _waitTime: 1.7
 --- !u!4 &1994951355 stripped
 Transform:

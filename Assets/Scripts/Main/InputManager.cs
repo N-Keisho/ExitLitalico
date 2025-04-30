@@ -15,6 +15,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private CameraZoom _cameraZoom;
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _sysSound;
+    [SerializeField] private AudioClip _configSound;
 
     [Header("Parameters")]
     [SerializeField] private float _waitTime = 1f; // 待機時間
@@ -40,6 +41,7 @@ public class InputManager : MonoBehaviour
         _gameInputs.System.Cheat.started += PlaySysSound;
 
         _gameInputs.System.Config.started += _config.OnConfig;
+        _gameInputs.System.Config.started += PlayConfigSound;
 
         _gameInputs.System.GameQuit.started += _config.OnGameQuit;
 
@@ -64,6 +66,14 @@ public class InputManager : MonoBehaviour
         if (_audioSource != null && _sysSound != null)
         {
             _audioSource.PlayOneShot(_sysSound);
+        }
+    }
+
+    private void PlayConfigSound(InputAction.CallbackContext context)
+    {
+        if (_audioSource != null && _config != null)
+        {
+            _audioSource.PlayOneShot(_configSound);
         }
     }
 }

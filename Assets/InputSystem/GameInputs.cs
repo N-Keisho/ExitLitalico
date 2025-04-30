@@ -335,6 +335,15 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Hold(duration=3)"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Start"",
+                    ""type"": ""Button"",
+                    ""id"": ""e32a4ae3-c630-4c14-a023-9c5fa7c2bc17"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -634,6 +643,28 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Skip"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""646d9854-9ea2-45aa-a89c-fe81adf61aa7"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9018df00-3042-4c26-8d39-444804ef99cf"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -653,6 +684,7 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
         m_System_GameQuit = m_System.FindAction("GameQuit", throwIfNotFound: true);
         m_System_ResetIhenDone = m_System.FindAction("ResetIhenDone", throwIfNotFound: true);
         m_System_Skip = m_System.FindAction("Skip", throwIfNotFound: true);
+        m_System_Start = m_System.FindAction("Start", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -789,6 +821,7 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_System_GameQuit;
     private readonly InputAction m_System_ResetIhenDone;
     private readonly InputAction m_System_Skip;
+    private readonly InputAction m_System_Start;
     public struct SystemActions
     {
         private @GameInputs m_Wrapper;
@@ -798,6 +831,7 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
         public InputAction @GameQuit => m_Wrapper.m_System_GameQuit;
         public InputAction @ResetIhenDone => m_Wrapper.m_System_ResetIhenDone;
         public InputAction @Skip => m_Wrapper.m_System_Skip;
+        public InputAction @Start => m_Wrapper.m_System_Start;
         public InputActionMap Get() { return m_Wrapper.m_System; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -822,6 +856,9 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
             @Skip.started += instance.OnSkip;
             @Skip.performed += instance.OnSkip;
             @Skip.canceled += instance.OnSkip;
+            @Start.started += instance.OnStart;
+            @Start.performed += instance.OnStart;
+            @Start.canceled += instance.OnStart;
         }
 
         private void UnregisterCallbacks(ISystemActions instance)
@@ -841,6 +878,9 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
             @Skip.started -= instance.OnSkip;
             @Skip.performed -= instance.OnSkip;
             @Skip.canceled -= instance.OnSkip;
+            @Start.started -= instance.OnStart;
+            @Start.performed -= instance.OnStart;
+            @Start.canceled -= instance.OnStart;
         }
 
         public void RemoveCallbacks(ISystemActions instance)
@@ -872,5 +912,6 @@ public partial class @GameInputs: IInputActionCollection2, IDisposable
         void OnGameQuit(InputAction.CallbackContext context);
         void OnResetIhenDone(InputAction.CallbackContext context);
         void OnSkip(InputAction.CallbackContext context);
+        void OnStart(InputAction.CallbackContext context);
     }
 }

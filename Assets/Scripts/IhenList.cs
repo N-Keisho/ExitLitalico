@@ -62,6 +62,7 @@ public class IhenList : ScriptableObject
         {
             GV.SetDoneIhen(item.gameObject.name, false);
         }
+        GV.isClear = false;
         Debug.Log("IhenList reset done status.");
     }
 

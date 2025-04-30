@@ -12,6 +12,8 @@ public class Title : MonoBehaviour
     [SerializeField] private Camera _mainCamera;
     [SerializeField] private Image _fadeImage;
     [SerializeField] private TMP_Text _pressStartText;
+    [SerializeField] private AudioSource _bgmSource;
+    [SerializeField] private AudioClip _se;
 
     [Header("Settings")]
     [SerializeField] private float _rotationSpeed = 10f;
@@ -53,6 +55,9 @@ public class Title : MonoBehaviour
         {
             _isFading = true;
             _gameInputs.Title.Start.Disable();
+            _bgmSource.Stop();
+            _bgmSource.volume = 0.5f;
+            _bgmSource.PlayOneShot(_se);
             StartCoroutine(FadeOut());
         }
     }

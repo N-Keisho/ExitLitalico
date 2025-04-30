@@ -8,9 +8,14 @@ using UnityEngine.SceneManagement;
 
 public class ProLogue : MonoBehaviour
 {
+    [Header("Objects")]
     [SerializeField] private List<string> _prologueText = new List<string>();
     [SerializeField] private TMP_Text _prologueTextBox;
     [SerializeField] private Image _fadeInObj;
+    [SerializeField] private AudioSource _bgmSource;
+    [SerializeField] private AudioClip _se;
+
+    [Header("Settings")]
     [SerializeField] private float _fadeDuration = 1.0f;
     [SerializeField] private string _nextSceneName = "Main";
 
@@ -86,6 +91,7 @@ public class ProLogue : MonoBehaviour
         }
         else
         {
+            _bgmSource.PlayOneShot(_se);
             for (int i = 0; i < text.Length; i++)
             {
                 _prologueTextBox.text += text[i];

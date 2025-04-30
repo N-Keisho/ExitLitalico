@@ -5,6 +5,7 @@ using System.IO;
 
 public class Logger : MonoBehaviour
 {
+    // C:\Users\[UserName]\AppData\LocalLow\N-Keisho\ExitLitalicoに保存
     private static string path = Application.persistentDataPath + "/Log.txt";
     public static void Log(string message)
     {

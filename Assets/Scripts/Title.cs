@@ -28,14 +28,14 @@ public class Title : MonoBehaviour
         SetAlpha(0f);
 
         _gameInputs = new GameInputs();
-        _gameInputs.System.Start.started += OnStart;
-        _gameInputs.System.Start.Enable();
+        _gameInputs.Title.Start.started += OnStart;
+        _gameInputs.Title.Start.Enable();
     }
 
     private void OnDestroy()
     {
-        _gameInputs.System.Start.started -= OnStart;
-        _gameInputs.System.Start.Disable();
+        _gameInputs.Title.Start.started -= OnStart;
+        _gameInputs.Title.Start.Disable();
     }
 
     // Update is called once per frame
@@ -73,6 +73,7 @@ public class Title : MonoBehaviour
             yield return null;
         }
         SetAlpha(1f);
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(_nextSceneName);
     }
 }

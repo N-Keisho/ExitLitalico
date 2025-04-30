@@ -20,6 +20,7 @@ public class Title : MonoBehaviour
     [SerializeField] private string _nextSceneName = "Main";
 
     private GameInputs _gameInputs;
+    private bool _isFading = false;
     void Start()
     {
         Cursor.visible = false;
@@ -48,8 +49,10 @@ public class Title : MonoBehaviour
     
     private void OnStart(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && !_isFading)
         {
+            _isFading = true;
+            _gameInputs.Title.Start.Disable();
             StartCoroutine(FadeOut());
         }
     }

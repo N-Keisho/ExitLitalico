@@ -61,6 +61,16 @@ public class ProLogue : MonoBehaviour
         }
         else if (context.started && _currentLine >= _prologueText.Count - 1 && !_isFading)
         {
+            if(_isTyping)
+            {
+                StopAllCoroutines();
+                _prologueTextBox.text = "";
+                for (int i = 0; i <= _currentLine; i++)
+                {
+                    _prologueTextBox.text += _prologueText[i] + "\n";
+                }
+            }
+
             _isFading = true;
             _gameInputs.ProLogue.Next.Disable();
             StartCoroutine(FadeOut());

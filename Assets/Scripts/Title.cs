@@ -32,7 +32,9 @@ public class Title : MonoBehaviour
 
         _gameInputs = new GameInputs();
         _gameInputs.Title.Start.started += OnStart;
-        _gameInputs.Title.Start.Enable();
+
+        Time.timeScale = 1f;
+        StartCoroutine(FadeIn());
     }
 
     private void OnDestroy()
@@ -48,7 +50,7 @@ public class Title : MonoBehaviour
 
         _pressStartText.color = new Color(_pressStartText.color.r, _pressStartText.color.g, _pressStartText.color.b, Mathf.PingPong(Time.time * _blinkSpeed, 1f));
     }
-    
+
     private void OnStart(InputAction.CallbackContext context)
     {
         if (context.started && !_isFading)
@@ -69,10 +71,27 @@ public class Title : MonoBehaviour
         _fadeImage.color = color;
     }
 
+    private IEnumerator FadeIn()
+    {
+        float elapsedTime = 0f;
+        SetAlpha(1f);
+        while (elapsedTime < _fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = 1f - Mathf.Clamp01(elapsedTime / _fadeDuration);
+            SetAlpha(alpha);
+            yield return null;
+        }
+        SetAlpha(0f);
+        yield return new WaitForSeconds(1.5f);
+        _gameInputs.Title.Start.Enable();
+    }
+
     private IEnumerator FadeOut()
     {
         float elapsedTime = 0f;
         _blinkSpeed *= 10f;
+        SetAlpha(0f);
         while (elapsedTime < _fadeDuration)
         {
             elapsedTime += Time.deltaTime;

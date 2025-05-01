@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     private GameInputs _gameInputs;
-    
+
     [Header("GameObjects")]
     [SerializeField] private GameManager _gameManager;
     [SerializeField] private Player _player;
@@ -19,10 +19,12 @@ public class InputManager : MonoBehaviour
 
     [Header("Parameters")]
     [SerializeField] private float _waitTime = 1f; // 待機時間
+
     void Start()
     {
         _gameInputs = new GameInputs();
 
+        // Playerの動作
         _gameInputs.Player.Move.started += _player.OnMove;
         _gameInputs.Player.Move.performed += _player.OnMove;
         _gameInputs.Player.Move.canceled += _player.OnMove;
@@ -37,16 +39,24 @@ public class InputManager : MonoBehaviour
         _gameInputs.Player.Zoom.started += _cameraZoom.OnZoom;
         _gameInputs.Player.Zoom.canceled += _cameraZoom.OnZoom;
 
+        // 秘密コマンド
         _gameInputs.System.Cheat.started += _gameManager.OnCheat;
         _gameInputs.System.Cheat.started += PlaySysSound;
 
-        _gameInputs.System.Config.started += _config.OnConfig;
-        _gameInputs.System.Config.started += PlayConfigSound;
-
-        _gameInputs.System.GameQuit.started += _config.OnGameQuit;
-
         _gameInputs.System.ResetIhenDone.started += _ihenList.ResetIhenDone;
         _gameInputs.System.ResetIhenDone.started += PlaySysSound;
+
+        // Config周り
+        _gameInputs.System.Config.started += _config.OnConfig;
+        _gameInputs.System.Config.started += OnPlayConfigSound;
+
+        _gameInputs.UI.Select.started += _config.OnSelect;
+        _gameInputs.UI.Up.started += _config.OnUp;
+        _gameInputs.UI.Down.started += _config.OnDown;
+        _gameInputs.UI.Back.started += _config.OnBack;
+
+        _config.OnConfigStateChanged += OnConfigToggled;
+        _config.OnConfigSoundPlayed += PlayConfigSound;
 
         Invoke("Enabled", _waitTime);
     }
@@ -56,9 +66,14 @@ public class InputManager : MonoBehaviour
         _gameInputs.Enable();
     }
 
-    public void Dispose() 
+    public void Dispose()
     {
         _gameInputs?.Dispose();
+    }
+
+    private void OnDestroy()
+    {
+        Dispose();
     }
 
     private void PlaySysSound(InputAction.CallbackContext context)
@@ -69,11 +84,28 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    private void PlayConfigSound(InputAction.CallbackContext context)
+    private void OnPlayConfigSound(InputAction.CallbackContext context)
+    {
+        PlayConfigSound();
+    }
+
+    private void PlayConfigSound()
     {
         if (_audioSource != null && _config != null)
         {
             _audioSource.PlayOneShot(_configSound);
+        }
+    }
+
+    private void OnConfigToggled(bool isOpen)
+    {
+        if (isOpen)
+        {
+            _gameInputs.Player.Disable();
+        }
+        else
+        {
+            _gameInputs.Player.Enable();
         }
     }
 }

@@ -48,7 +48,7 @@ public class InputManager : MonoBehaviour
 
         // Config周り
         _gameInputs.System.Config.started += _config.OnConfig;
-        _gameInputs.System.Config.started += PlayConfigSound;
+        _gameInputs.System.Config.started += OnPlayConfigSound;
 
         _gameInputs.UI.Select.started += _config.OnSelect;
         _gameInputs.UI.Up.started += _config.OnUp;
@@ -56,6 +56,7 @@ public class InputManager : MonoBehaviour
         _gameInputs.UI.Back.started += _config.OnBack;
 
         _config.OnConfigStateChanged += OnConfigToggled;
+        _config.OnConfigSoundPlayed += PlayConfigSound;
 
         Invoke("Enabled", _waitTime);
     }
@@ -83,7 +84,12 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    private void PlayConfigSound(InputAction.CallbackContext context)
+    private void OnPlayConfigSound(InputAction.CallbackContext context)
+    {
+        PlayConfigSound();
+    }
+
+    private void PlayConfigSound()
     {
         if (_audioSource != null && _config != null)
         {

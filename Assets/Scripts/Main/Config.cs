@@ -40,6 +40,7 @@ public class Config : MonoBehaviour
     private int _unknownCount = 0;
     private int _currentSelect = 2;
     public event Action<bool> OnConfigStateChanged;
+    public event Action OnConfigSoundPlayed;
 
     void Start()
     {
@@ -78,6 +79,7 @@ public class Config : MonoBehaviour
     {
         if (!_isOpen) return;
         _buttons[_currentSelect].onClick.Invoke();
+        OnConfigSoundPlayed?.Invoke();
     }
 
     public void OnBack(InputAction.CallbackContext context)

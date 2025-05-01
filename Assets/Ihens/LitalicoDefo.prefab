@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7724250315091835266}
   - component: {fileID: 1242006566863204870}
   - component: {fileID: 1817700549779934408}
-  - component: {fileID: 835350419115574513}
+  - component: {fileID: 7025487620668803063}
   m_Layer: 0
   m_Name: doorToilet.002 (1)
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2625032892950973546}
+  m_Father: {fileID: 4661852279700334447}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -89.98, y: -90, z: 0}
 --- !u!33 &1242006566863204870
@@ -85,8 +85,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &835350419115574513
-MeshCollider:
+--- !u!65 &7025487620668803063
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -103,10 +103,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 20947930747344808, guid: 86ca8cbd343aa5b45a26cf1b4cbd5443, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.0010955117, y: 0.007097621, z: 0.019389708}
+  m_Center: {x: 0.00049246656, y: -0.003548812, z: 0.009694854}
 --- !u!1 &117429115936111245
 GameObject:
   m_ObjectHideFlags: 0
@@ -979,7 +978,6 @@ Transform:
   - {fileID: 4690914811730454156}
   - {fileID: 4209412282257738449}
   - {fileID: 1228203126445748746}
-  - {fileID: 7724250315091835266}
   m_Father: {fileID: 8035294380202332411}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2407,6 +2405,7 @@ Transform:
   m_Children:
   - {fileID: 2036015104629862034}
   - {fileID: 1910737205323391356}
+  - {fileID: 7724250315091835266}
   - {fileID: 546125267620806514}
   - {fileID: 3113996619749665608}
   - {fileID: 2329025170441441426}

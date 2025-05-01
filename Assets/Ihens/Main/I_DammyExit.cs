@@ -19,7 +19,6 @@ public class I_DammyExit : IhenBase
     void Update()
     {
         float distance = Vector3.Distance(_target.transform.position, _exitObj.transform.position);
-        Debug.Log("Distance: " + distance);
         if(distance < 1.8f)
         {
             _inputManager.Dispose();

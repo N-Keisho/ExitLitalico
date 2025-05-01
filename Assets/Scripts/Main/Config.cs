@@ -37,7 +37,7 @@ public class Config : MonoBehaviour
     private bool _isFade = false;
     private int _unknownCount = 0;
     private int _currentSelect = 2;
-    
+
     void Start()
     {
         _isClear = GV.isClear;
@@ -56,6 +56,10 @@ public class Config : MonoBehaviour
         {
             _buttons[3].interactable = true;
             IhenListUpdate();
+        }
+        else
+        {
+            _buttons[3].GetComponentInChildren<TMP_Text>().text = "???";
         }
 
         _configPanel.SetActive(false);
@@ -214,7 +218,8 @@ public class Config : MonoBehaviour
     private void IhenListUpdate()
     {
         string text = "";
-        for (int i = 0; i < _ihenList.getListLen(); i++)
+        int len = _ihenList.getListLen();
+        for (int i = 0; i < len; i++)
         {
             IhenBase ihen = _ihenList.getIhen(i);
             if (GV.IsDoneIhen(ihen.name))
@@ -227,7 +232,7 @@ public class Config : MonoBehaviour
                 _unknownCount++;
             }
 
-            if (i % 2 == 0)
+            if (i < len / 2)
             {
                 _ihenListLeftText.text += text;
             }

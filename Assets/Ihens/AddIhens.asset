@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e760119e52f71c4da6fb62a5ef2d348, type: 3}
+  m_Name: AddIhens
+  m_EditorClassIdentifier: 
+  _litalicoDefo: {fileID: 1845257951068903903, guid: 744e37142fd876c43ae045f43b02c4e8, type: 3}
+  _ihenList:
+  - {fileID: -4830714255733463706, guid: 28b1fa09891a6d04ba9f47fef7b0160e, type: 3}
+  - {fileID: 1763986696388202893, guid: 1d99347de4b68654eac0e7e77b04443c, type: 3}
+  - {fileID: 8656482730928089621, guid: 83032ec0612b5714dbda77cee7d4ae73, type: 3}
+  - {fileID: 3321310938012554867, guid: 3697babe566094c469999c0c9dc34a3f, type: 3}
+  - {fileID: -7804761899659445469, guid: 267cf0204bd0ede45a0ea96b7fe10e05, type: 3}
+  - {fileID: 5643546967289108567, guid: 65cfdc96e54911d4287450c0437358d0, type: 3}
+  - {fileID: 3244776446836535585, guid: edb9482808234fb40a9bcd7e0c2ef613, type: 3}
+  - {fileID: 7292807622460819746, guid: daebfe1c5fd2ca644a7b3cfcfdb0849b, type: 3}
+  - {fileID: 5596427395648911032, guid: 78d71244e284f1544867d00164699c5d, type: 3}
+  - {fileID: 4763765181974543084, guid: 799e7a8caef77634eb4a7cfb4ef514ea, type: 3}

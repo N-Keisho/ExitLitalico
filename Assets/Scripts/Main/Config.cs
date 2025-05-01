@@ -37,6 +37,7 @@ public class Config : MonoBehaviour
     private bool _isFade = false;
     private int _unknownCount = 0;
     private int _currentSelect = 2;
+    
     void Start()
     {
         _isClear = GV.isClear;
@@ -177,8 +178,8 @@ public class Config : MonoBehaviour
         _isFade = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        Time.timeScale = 0.1f;
-        _mainFade.FadeOut("Title", 0.1f);
+        Time.timeScale = 0.01f;
+        _mainFade.FadeOut("Title", 0.01f);
     }
 
     public void Back()

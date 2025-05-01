@@ -693,6 +693,17 @@
                 },
                 {
                     "name": "",
+                    "id": "36a2b8f8-17ee-410e-98d4-af0264ef673a",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "33114b57-0334-4c36-9b0a-2cb363afee33",
                     "path": "<Keyboard>/a",
                     "interactions": "",
@@ -704,8 +715,8 @@
                 },
                 {
                     "name": "",
-                    "id": "94d36175-a1e1-4261-be50-2b6c2c746aca",
-                    "path": "<Gamepad>/buttonEast",
+                    "id": "bfd0027f-04f5-4903-bde8-0c7a9667b58b",
+                    "path": "<Mouse>/press",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -715,8 +726,8 @@
                 },
                 {
                     "name": "",
-                    "id": "bfd0027f-04f5-4903-bde8-0c7a9667b58b",
-                    "path": "<Mouse>/press",
+                    "id": "94d36175-a1e1-4261-be50-2b6c2c746aca",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

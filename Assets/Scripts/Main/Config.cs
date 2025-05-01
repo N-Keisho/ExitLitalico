@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,6 +39,7 @@ public class Config : MonoBehaviour
     private bool _isFade = false;
     private int _unknownCount = 0;
     private int _currentSelect = 2;
+    public event Action<bool> OnConfigStateChanged;
 
     void Start()
     {
@@ -143,14 +145,14 @@ public class Config : MonoBehaviour
         }
         else
         {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            _configPanel.SetActive(false);
             Time.timeScale = 1f;
 
+            _configPanel.SetActive(false);
+            
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
+        OnConfigStateChanged?.Invoke(_isOpen);
     }
 
     public void ShowOptions()

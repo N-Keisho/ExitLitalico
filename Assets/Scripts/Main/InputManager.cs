@@ -20,7 +20,6 @@ public class InputManager : MonoBehaviour
     [Header("Parameters")]
     [SerializeField] private float _waitTime = 1f; // 待機時間
 
-    private bool _isConfigOpen = false;
     void Start()
     {
         _gameInputs = new GameInputs();
@@ -50,12 +49,13 @@ public class InputManager : MonoBehaviour
         // Config周り
         _gameInputs.System.Config.started += _config.OnConfig;
         _gameInputs.System.Config.started += PlayConfigSound;
-        _gameInputs.System.Config.started += OnConfig;
 
         _gameInputs.UI.Select.started += _config.OnSelect;
         _gameInputs.UI.Up.started += _config.OnUp;
         _gameInputs.UI.Down.started += _config.OnDown;
         _gameInputs.UI.Back.started += _config.OnBack;
+
+        _config.OnConfigStateChanged += OnConfigToggled;
 
         Invoke("Enabled", _waitTime);
     }
@@ -91,17 +91,15 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    private void OnConfig(InputAction.CallbackContext context)
+    private void OnConfigToggled(bool isOpen)
     {
-        if (_isConfigOpen)
+        if (isOpen)
         {
-            _isConfigOpen = false;
-            _gameInputs.Player.Enable();
+            _gameInputs.Player.Disable();
         }
         else
         {
-            _isConfigOpen = true;
-            _gameInputs.Player.Disable();
+            _gameInputs.Player.Enable();
         }
     }
 }

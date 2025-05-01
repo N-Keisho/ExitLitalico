@@ -28,6 +28,7 @@ public class Config : MonoBehaviour
     [SerializeField] private IhenList _ihenList;
     [SerializeField] private TMP_Text _ihenListRightText;
     [SerializeField] private TMP_Text _ihenListLeftText;
+    [SerializeField] private TMP_Text _ihenListUnknownText;
 
     [Header("Fade")]
     [SerializeField] private MainFade _mainFade;
@@ -240,6 +241,11 @@ public class Config : MonoBehaviour
             {
                 _ihenListRightText.text += text;
             }
+        }
+
+        if (_unknownCount > 0)
+        {
+            _ihenListUnknownText.text = "未発見数　" + _unknownCount;
         }
     }
 }

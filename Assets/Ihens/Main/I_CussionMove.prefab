@@ -100,7 +100,7 @@ MonoBehaviour:
   - {fileID: 9137750873451984570}
   - {fileID: 9075979567482397710}
   - {fileID: 8638485730329904452}
-  _moveSpeed: 2
+  _moveSpeed: 3
   _targetYPos:
   - 0
   - 0.9

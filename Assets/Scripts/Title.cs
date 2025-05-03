@@ -32,6 +32,7 @@ public class Title : MonoBehaviour
 
         _gameInputs = new GameInputs();
         _gameInputs.Title.Start.started += OnStart;
+        _gameInputs.System.GameQuit.started += OnQuitGame;
 
         Time.timeScale = 1f;
         StartCoroutine(FadeIn());
@@ -64,6 +65,18 @@ public class Title : MonoBehaviour
         }
     }
 
+    private void OnQuitGame(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+#if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
+        }
+    }
+
     private void SetAlpha(float alpha)
     {
         Color color = _fadeImage.color;
@@ -84,6 +97,7 @@ public class Title : MonoBehaviour
         }
         SetAlpha(0f);
         _gameInputs.Title.Start.Enable();
+        _gameInputs.System.GameQuit.Enable();
     }
 
     private IEnumerator FadeOut()

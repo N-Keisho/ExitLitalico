@@ -83,7 +83,6 @@ public class Title : MonoBehaviour
             yield return null;
         }
         SetAlpha(0f);
-        yield return new WaitForSeconds(1.5f);
         _gameInputs.Title.Start.Enable();
     }
 

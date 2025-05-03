@@ -92,6 +92,9 @@ public class GameManager : MonoBehaviour
             _isIhen = true;
             _nextLita = _ihenList.getIhenLitalico(_testIndex, _isIhen);
             Logger.Log("[Test] Ihen index: " + _testIndex);
+            
+            // _testIndex++;
+            // if (_testIndex >= _listLen) _testIndex = 0;
         }
         else if (_ihenOnly)
         {

@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     private int _preIhenIndex = 0;
     private bool _isIhen = false;
     private bool _isClear = false;
+    private bool _isInit = false;
 
     void Start()
     {
@@ -68,10 +69,12 @@ public class GameManager : MonoBehaviour
         else if (_isIhen == answerIhen)
         {
             _correctNum++;
+            _isInit = false;
         }
         else
         {
             _correctNum = 0;
+            _isInit = true;
         }
 
         if (_correctNum >= 8)
@@ -101,6 +104,12 @@ public class GameManager : MonoBehaviour
             _isIhen = true;
             _nextLita = RandomIhenGet();
             Logger.Log("[IhenOnly]");
+        }
+        else if (_isInit)
+        {
+            _isIhen = false;
+            _nextLita = _ihenList.getDefoLitalico();
+            Logger.Log("[Init] Ihen is false, skipping IhenDo.");
         }
         else if (IhenOrNot())
         {

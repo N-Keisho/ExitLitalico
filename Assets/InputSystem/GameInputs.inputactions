@@ -493,6 +493,39 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "Pad",
+                    "id": "4025344b-3195-4926-92f9-551e0cf48890",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ResetIhenDone",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "e5ff0c9d-6780-49ac-a93d-89c596c640b2",
+                    "path": "<DualShockGamepad>/touchpadButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ResetIhenDone",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "adbc3350-33fe-4fc9-b1a4-42020be5d24c",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ResetIhenDone",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "4b02861e-7d15-4ff9-86c0-e626dbe2fe24",
                     "path": "<Keyboard>/x",
@@ -913,8 +946,19 @@
                 },
                 {
                     "name": "",
-                    "id": "eeaa28f7-3d67-424f-9d3b-6789d320aa34",
+                    "id": "9570b446-d79b-4bbd-b19b-1f4020e9a50c",
                     "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Back",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eeaa28f7-3d67-424f-9d3b-6789d320aa34",
+                    "path": "<DualShockGamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

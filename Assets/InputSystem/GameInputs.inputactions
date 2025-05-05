@@ -493,6 +493,50 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "Two Modifiers",
+                    "id": "49e057c1-e85c-4f67-8140-ff1a52119072",
+                    "path": "TwoModifiers",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ResetIhenDone",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier1",
+                    "id": "bdfa1b4f-597b-41cd-b0eb-be9511ed5b15",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ResetIhenDone",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "modifier2",
+                    "id": "d3316fd1-5e5c-4b39-b47f-4d68a8305acb",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ResetIhenDone",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "034fa1a3-8860-4734-9074-e72a9c480fac",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ResetIhenDone",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "4b02861e-7d15-4ff9-86c0-e626dbe2fe24",
                     "path": "<Keyboard>/x",

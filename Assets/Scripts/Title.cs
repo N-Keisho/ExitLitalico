@@ -41,7 +41,9 @@ public class Title : MonoBehaviour
     private void OnDestroy()
     {
         _gameInputs.Title.Start.started -= OnStart;
+        _gameInputs.System.GameQuit.started -= OnQuitGame;
         _gameInputs.Title.Start.Disable();
+        _gameInputs.System.GameQuit.Disable();
     }
 
     // Update is called once per frame

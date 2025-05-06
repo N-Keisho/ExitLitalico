@@ -38,6 +38,10 @@
 ### 異変一覧
 <details><summary>重大なネタバレを含みます．ご注意ください．</summary>
 
+こちらの動画にてすべての異変を紹介しています．
+
+Youtube：https://youtu.be/EBgsgwEjfvo
+
 #### 本採用
 1. 3Dプリンターが爆発
 2. 空気清浄機から煙

@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 456981256593743237, guid: 4edd96128d38b75448ad2b338da1c8ad, type: 3}
       propertyPath: m_Name
-      value: LitalicoDefo2
+      value: LitalicoNormal
       objectReference: {fileID: 0}
     - target: {fileID: 944725286480004927, guid: 4edd96128d38b75448ad2b338da1c8ad, type: 3}
       propertyPath: m_RootOrder
@@ -55,6 +55,10 @@ PrefabInstance:
     - target: {fileID: 944725286480004927, guid: 4edd96128d38b75448ad2b338da1c8ad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7742593529940541801, guid: 4edd96128d38b75448ad2b338da1c8ad, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

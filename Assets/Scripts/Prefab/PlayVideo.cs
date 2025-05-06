@@ -18,8 +18,12 @@ public class PlayVideo : MonoBehaviour
         // URL指定
         _videoPlayer.source = VideoSource.Url;
 
-        // StreamingAssetsフォルダ配下のパスの動画をURLとして指定する
+        #if UNITY_WEBGL
+        _videoPlayer.url = "https://n-keisho.github.io/ExitLitalico/videos/" + _streamingAssetsMoviePath;
+        #else
         _videoPlayer.url = Application.streamingAssetsPath + "/" + _streamingAssetsMoviePath;
+        #endif
+        
         _videoPlayer.playbackSpeed = _videoSpeed;
 
         Invoke("Play", _waitTime);

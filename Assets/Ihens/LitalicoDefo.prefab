@@ -7520,6 +7520,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5683943022913958800, guid: 63567d312fc36374d9da7db54e2794a3, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6677125303974614314, guid: 63567d312fc36374d9da7db54e2794a3, type: 3}
       propertyPath: m_Name
       value: moniter
@@ -7527,7 +7531,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6727629738057183385, guid: 63567d312fc36374d9da7db54e2794a3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3023656769473402619}
   m_SourcePrefab: {fileID: 100100000, guid: 63567d312fc36374d9da7db54e2794a3, type: 3}
 --- !u!328 &1053000250277246299 stripped
 VideoPlayer:
@@ -7539,6 +7546,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 834167551288988620, guid: 63567d312fc36374d9da7db54e2794a3, type: 3}
   m_PrefabInstance: {fileID: 2707327324910564089}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8705190080345539168 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6727629738057183385, guid: 63567d312fc36374d9da7db54e2794a3, type: 3}
+  m_PrefabInstance: {fileID: 2707327324910564089}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3023656769473402619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8705190080345539168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf0f317cf81ce640bc3f1ebc1a5bd3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2808367926415544571
 PrefabInstance:
   m_ObjectHideFlags: 0

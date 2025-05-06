@@ -21,7 +21,7 @@ public class PlayVideo : MonoBehaviour
         #if UNITY_WEBGL
         _videoPlayer.url = "https://n-keisho.github.io/ExitLitalico/videos/" + _streamingAssetsMoviePath;
         #else
-        // _videoPlayer.url = Application.streamingAssetsPath + "/" + _streamingAssetsMoviePath;
+        _videoPlayer.url = Application.streamingAssetsPath + "/" + _streamingAssetsMoviePath;
         #endif
         
         _videoPlayer.playbackSpeed = _videoSpeed;

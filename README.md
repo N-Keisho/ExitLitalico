@@ -1,29 +1,43 @@
 # ワンダー町田から脱出せよ！
+![スクリーンショット 2025-05-06 153520](https://github.com/user-attachments/assets/c62c1a98-7186-4090-a820-794302892e20)
 
 ごにきが作ってくれたワンダー町田のモデルを基に開発した「8 番出口」ライクなゲームです．
 
+- Windows版（推奨）：https://github.com/N-Keisho/ExitLitalico/releases
+- Web版：https://unityroom.com/games/exitlitalico
+
+※Windows版は「Build.zip」のみダウンロード -> 解凍して「ExitLitalico.exe」を実行　で遊べます！
+
+※重たいのでWindows版推奨です．Web版でも遊べますが，カクつくかも...．
+
 ## ゲーム説明
+あなたはLITALICOワンダー町田教室に囚われてしまった。
+異変があるときは引き返し、ない時は先に進んで、おうちに帰ろう！
+
+### ルール
+- 異変があったら引き返そう！
+- 異変がなかったら先に進もう！
+- この教室からおうちに帰ろう！
+
+### 注意事項
+- LITALICOの文字がすべて消えているときは異変がないので，よく見て覚えてね！
 
 ### 基本操作
-
 - 移動：WASD or 左スティック
 - 視点：マウス移動 or 右スティック
 - ダッシュ：Shift or （左or右）トリガー（R2L2）
 - ズーム：Ctrl or マウス中央押し込み or （左or右）ショルダー（R1L1）
 - ポーズ画面：Tab or Homeボタン or Startボタン or Selectボタン
-- ゲーム終了：ポーズ画面でEsc
+- ゲーム終了：ポーズ画面でから選択 or タイトル画面でEsc
 
-#### 隠しコマンド（音が鳴る）
+### 隠しコマンド（音が鳴る）
 - 異変発見チート：「Shift + Ctrl + Tab」 or 「（左or右）トリガー + （左or右）ショルダー + Startボタン」
     - 正解数が6回になる
 - 異変発見状態リセット：backspace + delete
 
-### ルール
 
-- 異変を見逃さないこと
-- 異変を見つけたら，すぐに引き返すこと（出入り口から戻る）
-- 異変がみつからなかったら，引き返さないこと（休憩口に進む）
-- ワンダー町田から外に出ること（8回）
+
+
 
 ## 開発メモ
 
@@ -96,6 +110,7 @@ Logger.Log(GV.moveSpeed);
 4. 異変のスクリプトは異変ワンダーにアタッチしよう
 5. 異変ワンダーの名前はスクリプト名と同じにしよう
 6. 異変ワンダーは `Assets/Ihen` にある　`Main`（ScriptableObject）の `IhenList` に追加しよう
+7. 容量削減のため，異変ワンダーの'WillDelete'は削除しよう
 
 **※注意**　Prefab Variantで作成しないと，`LitalicoDefo.prefab` の変更が適応されなくなるので気を付けて！
 
@@ -166,7 +181,7 @@ public class I_BoxColor : IhenBase
 ```
 
 #### dev1以前（Legacy）
-**以降に書かれているのは古いバージョンのモノなので無視してOK．**
+<details><summary>以降に書かれているのは古いバージョンのモノなので無視してOK．</summary>
 
 1. 1 つ 1 つの異変に関連するものは，`Assets/Ihen` に入れること
 2. 異変のスクリプトは必ず `IhenBase` を継承し，`Ihen_XX.cs` という名前にすること
@@ -253,3 +268,4 @@ public class Ihen_BoxColor : IhenBase
     }
 }
 ```
+</details>
